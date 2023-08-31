@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         Boolean isMoving = velocity != Vector2.zero;
         animator.SetBool("isMoving", isMoving); 
         
-        if (isMoving) {
+        if (isMoving && velocity.x != 0) {
             spriteRenderer.flipX = velocity.x < 0;
         }
     }
