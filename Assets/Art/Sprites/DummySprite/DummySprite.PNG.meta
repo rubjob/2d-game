@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a311c6c91cb3b42a3928eefe45350003
+guid: b419674932c0df14c8823237c2e92c69
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerWalkingSprites_0
+      name: DummySprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 40
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6ad0cf7ec73f4f3c933e7d926a9137c
-      internalID: -1343944673
+      spriteID: 120f9211b3009d145aa72e07c187150f
+      internalID: -1706680093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkingSprites_1
+      name: DummySprite_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 40
         y: 0
-        width: 64
+        width: 40
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,19 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ef4e1392c5614130b22ab863f83fb4c
-      internalID: 137755567
+      spriteID: 2e556beb9b0d39a4e8ce2a0d63995ab2
+      internalID: -398767261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkingSprites_2
+      name: DummySprite_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 80
         y: 0
-        width: 64
+        width: 40
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,19 +179,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 701dac2697a7848eb813ae69ad34d251
-      internalID: 884773031
+      spriteID: 08403ec24d376224c80ce49b492ecb10
+      internalID: -1350343748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalkingSprites_3
+      name: DummySprite_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 120
         y: 0
-        width: 64
+        width: 40
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,29 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27e00383146e74139af0816105d13fdd
-      internalID: 433565630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayerWalkingSprites_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f33768a9e26744129b3fea466aaf8f70
-      internalID: -63372954
+      spriteID: 1a2320014f030f54db466d215996b2eb
+      internalID: 1670346701
       vertices: []
       indices: 
       edges: []
@@ -238,11 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerWalkingSprites_0: -1343944673
-      PlayerWalkingSprites_1: 137755567
-      PlayerWalkingSprites_2: 884773031
-      PlayerWalkingSprites_3: 433565630
-      PlayerWalkingSprites_4: -63372954
+      DummySprite_0: -1706680093
+      DummySprite_1: -398767261
+      DummySprite_2: -1350343748
+      DummySprite_3: 1670346701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
