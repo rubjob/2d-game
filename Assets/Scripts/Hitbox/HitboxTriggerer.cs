@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitboxTriggerer : MonoBehaviour
-{
+public class HitboxTriggerer : MonoBehaviour {
     private GameObject triggeringObject = null;
     public GameObject TriggeringObject {
         get { return triggeringObject; }

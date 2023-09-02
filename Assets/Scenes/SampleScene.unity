@@ -367,6 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 9188137400428301609}
   lerpAmount: 0.15
+  targetPos: {x: 0, y: 0}
+  currentPos: {x: 0, y: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +546,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -985,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3592701842846074453, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       propertyPath: m_Name

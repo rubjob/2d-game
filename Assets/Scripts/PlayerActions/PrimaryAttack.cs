@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrimaryAttack : PlayerStateBase
-{
+public class PrimaryAttack : BasePlayerState {
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 

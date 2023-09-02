@@ -15,7 +15,7 @@ public class PlayerController : BaseEntity {
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
     
-    private PlayerStateBase playerState;
+    private BasePlayerState playerState;
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -27,7 +27,7 @@ public class PlayerController : BaseEntity {
         rb.velocity = velocity;
         
         // Combat
-        playerState = playerStates[currentState].GetComponent<PlayerStateBase>();
+        playerState = playerStates[currentState].GetComponent<BasePlayerState>();
         playerState.hitbox.RotateTo(mouseUtil.GetMouseAngle());
         
         if (Input.GetAxis("Fire1") == 1) {

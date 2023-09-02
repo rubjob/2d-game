@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitboxManager : MonoBehaviour
-{
+public class HitboxManager : MonoBehaviour {
     [SerializeField] private HitboxTriggerer trigger;
     public HitboxTriggerer Trigger {
         get { return trigger; }

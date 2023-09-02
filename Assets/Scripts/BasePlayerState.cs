@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerStateBase : MonoBehaviour
-{
+public abstract class BasePlayerState : MonoBehaviour {
     [SerializeField] protected GameObject player;
     public HitboxManager hitbox;
     public int attackDamage = 20;

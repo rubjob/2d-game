@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MouseUtil : MonoBehaviour
-{
+public class MouseUtil : MonoBehaviour {
     public new Camera camera;
-
     public float GetMouseAngle() {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = camera.nearClipPlane;
