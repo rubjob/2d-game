@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ActionState : MonoBehaviour
 {
+    public HitboxManager hitbox;
     public int attackDamage = 20;
     public float attackSpeed = 0.5f;
     private float attackDelay, lastAttackTime;
@@ -13,13 +14,13 @@ public abstract class ActionState : MonoBehaviour
         lastAttackTime = -attackDelay;
     }
 
-    protected abstract void Action();
-    public void PerformAction() {
+    protected abstract void Action(GameObject target);
+    public void PerformAction(GameObject target) {
         float currentTime = Time.time;
         if (currentTime >= lastAttackTime + attackDelay) {
             lastAttackTime = currentTime;
 
-            Action();
+            Action(target);
         }
     }
 }

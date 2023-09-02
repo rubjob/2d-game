@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrimaryAttack : ActionState
 {
-    protected override void Action() {
-        Debug.Log("PRIMARY ATTACK");
+    protected override void Action(GameObject target) {
+        Debug.Log("PRIMARY ATTACKING to " + target.name);
     }
 }

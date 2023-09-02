@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SecondaryAttack : ActionState
 {
-    protected override void Action() {
-        Debug.Log("SECONDARY ATTACK");
+    protected override void Action(GameObject target) {
+        Debug.Log("SECONDARY ATTACKING to " + target.name);
     }
 }
