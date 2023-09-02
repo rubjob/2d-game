@@ -35,7 +35,7 @@ public class PlayerController : BaseEntity {
         }
     }
 
-    protected override void OnTakenDamage() {
+    protected override void OnTakenDamage(float amount) {
 
     }
 

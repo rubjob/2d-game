@@ -20,7 +20,7 @@ public class PrimaryAttack : PlayerStateBase
 
     protected override void Action(GameObject target) {
         if (target != null) {
-            Debug.Log("PRIMARY ATTACKING to " + target.name);
+            target.GetComponent<BaseEntity>().takeDamage(attackDamage);
         }
     }
 }

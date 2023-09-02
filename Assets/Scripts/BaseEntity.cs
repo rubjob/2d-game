@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour {
     [Header("Base Entity")]
+    public bool IsInvulnerable = false;
     public float maxHealth = 100f;
 
     protected float health;
@@ -17,21 +18,25 @@ public abstract class BaseEntity : MonoBehaviour {
     }
 
     public void takeDamage(float amount) {
-        health -= amount;
+        if (!IsInvulnerable) {
+            health -= amount;
+        }
 
         if (health <= 0f) {
             OnDead();
         } else {
-            OnTakenDamage();
+            OnTakenDamage(amount);
         }
     }
 
     public void heal(float amount) {
-        health += amount;
+        if (!IsInvulnerable) {
+            health += amount;
+        }
 
         if (health > maxHealth) health = maxHealth;
     }
 
-    protected abstract void OnTakenDamage();
+    protected abstract void OnTakenDamage(float damage);
     protected abstract void OnDead();
 }
