@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : BaseEntity {
     public float movementSpeed = 5f;
 
     [Header("Player Action States")]
@@ -23,8 +20,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         // Movement
         velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         velocity = velocity.normalized * movementSpeed;
@@ -37,5 +33,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Fire1") == 1) {
             playerState.PerformAction();
         }
+    }
+
+    protected override void OnTakenDamage() {
+
+    }
+
+    protected override void OnDead() {
+        
     }
 }
