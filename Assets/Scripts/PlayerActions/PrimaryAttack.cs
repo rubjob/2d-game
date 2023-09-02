@@ -2,9 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrimaryAttack : ActionState
+public class PrimaryAttack : PlayerStateBase
 {
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
+    private void Update() {
+        // Play animation
+        Vector2 velocity = player.GetComponent<Rigidbody2D>().velocity;
+        bool isMoving = velocity != Vector2.zero;
+
+        animator.SetBool("isMoving", isMoving);
+        if (isMoving && velocity.x != 0) {
+            spriteRenderer.flipX = velocity.x < 0;
+        }
+    }
+
     protected override void Action(GameObject target) {
-        Debug.Log("PRIMARY ATTACKING to " + target.name);
+        if (target != null) {
+            Debug.Log("PRIMARY ATTACKING to " + target.name);
+        }
     }
 }

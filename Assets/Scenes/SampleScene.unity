@@ -1156,9 +1156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d8c2bfa43d2254bbd7754037351931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 792200467}
   hitbox: {fileID: 423162964}
   attackDamage: 20
-  attackSpeed: 0.5
+  attackSpeed: 1
+  animator: {fileID: 2529779142694604165}
+  spriteRenderer: {fileID: 8236401202550238696}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
