@@ -7,7 +7,7 @@ public class DummyController : BaseEntity {
 
     protected override void OnTakenDamage(float amount) {
         Debug.Log("Damaged taken: " + amount);
-        animator.SetBool("isDamaged", true);
+        animator.SetTrigger("isDamaged");
     }
 
     protected override void OnDead() {

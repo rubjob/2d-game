@@ -1108,7 +1108,7 @@ MonoBehaviour:
   player: {fileID: 792200467}
   hitbox: {fileID: 423162964}
   attackDamage: 20
-  attackSpeed: 2
+  attackSpeed: 4
   animator: {fileID: 2529779142694604165}
   spriteRenderer: {fileID: 8236401202550238696}
 --- !u!1660057539 &9223372036854775807
