@@ -17,9 +17,12 @@ public class PlayerController : BaseEntity
     private Vector2 velocity = Vector2.zero;
 
     private BasePlayerState playerState;
+    public HealthBar healthBar;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        healthBar.setMaxHealth(maxHealth);
     }
 
     private void FixedUpdate()
@@ -41,7 +44,8 @@ public class PlayerController : BaseEntity
 
     protected override void OnTakenDamage(float amount)
     {
-
+        
+        healthBar.decreseHealth(amount);    
     }
 
     protected override void OnDead()
