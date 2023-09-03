@@ -11,13 +11,12 @@ public class DoDamage : MonoBehaviour
 
     public HealthBar healthBar;
 
-    public void onClick(){
-        Debug.Log(amount);
+    public void decreasePlayerHealth(){
         Player.takeDamage(amount);
     }
 
-    public void decreseHealthbar(){
-        healthBar.decreseHealth(amount);
+    public void decreaseHealthbar(){
+        healthBar.decreaseHealth(amount);
     }
 
 

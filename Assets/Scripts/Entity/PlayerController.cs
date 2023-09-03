@@ -45,7 +45,7 @@ public class PlayerController : BaseEntity
     protected override void OnTakenDamage(float amount)
     {
         
-        healthBar.decreseHealth(amount);    
+        healthBar.decreaseHealth(amount);    
     }
 
     protected override void OnDead()
