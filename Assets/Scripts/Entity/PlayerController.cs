@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : BaseEntity {
+public class PlayerController : BaseEntity
+{
     public float movementSpeed = 5f;
 
     [Header("Player Action States")]
@@ -14,32 +15,37 @@ public class PlayerController : BaseEntity {
 
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
-    
+
     private BasePlayerState playerState;
-    private void Start() {
+    private void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
     }
-    
-    private void FixedUpdate() {
+
+    private void FixedUpdate()
+    {
         // Movement
         velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         velocity = velocity.normalized * movementSpeed;
         rb.velocity = velocity;
-        
+
         // Combat
         playerState = playerStates[currentState].GetComponent<BasePlayerState>();
         playerState.hitbox.RotateTo(mouseUtil.GetMouseAngle());
-        
-        if (Input.GetAxis("Fire1") == 1) {
+
+        if (Input.GetAxis("Fire1") == 1)
+        {
             playerState.PerformAction();
         }
     }
 
-    protected override void OnTakenDamage(float amount) {
+    protected override void OnTakenDamage(float amount)
+    {
 
     }
 
-    protected override void OnDead() {
-        
+    protected override void OnDead()
+    {
+
     }
 }
