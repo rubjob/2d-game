@@ -39,7 +39,7 @@ public class PrimaryAttack : BasePlayerState
         float mAngle = mouseUtil.GetMouseAngle();
         Debug.Log(mAngle);
         //attack right animation
-        if (mAngle <= 30 && mAngle >= -30)
+        if (mAngle <= 45 && mAngle >= -45)
         {
             anim.SetBool("isAttackingSide", true);
             if (spriteRenderer.flipX)
@@ -49,7 +49,7 @@ public class PrimaryAttack : BasePlayerState
             }
         }
         //attack left animation
-        if (mAngle >= 150 || mAngle <= -150)
+        if (mAngle >= 135 || mAngle <= -135)
         {
             anim.SetBool("isAttackingSide", true);
             if (!spriteRenderer.flipX)
@@ -59,12 +59,12 @@ public class PrimaryAttack : BasePlayerState
             }
         }
         //attack down animation
-        if (mAngle < -30 && mAngle > -150)
+        if (mAngle < -45 && mAngle > -135)
         {
             anim.SetBool("isAttackingDown", true);
         }
         //attack up animation
-        if (mAngle > 30 && mAngle < 150)
+        if (mAngle > 45 && mAngle < 135)
         {
             anim.SetBool("isAttackingUp", true);
         }
