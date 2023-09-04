@@ -29,6 +29,18 @@ public abstract class BaseEntity : MonoBehaviour {
         }
     }
 
+    public void SpecialtakeDamage(float amount) {
+        if (!IsInvulnerable) {
+            health -= amount;
+        }
+
+        if (health <= 0f) {
+            OnDead();
+        } else {
+            OnTakenDamage(amount);
+        }
+    }
+
     public void heal(float amount) {
         if (!IsInvulnerable) {
             health += amount;

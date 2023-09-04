@@ -12,7 +12,8 @@ public class DoDamage : MonoBehaviour
     public HealthBar healthBar;
 
     public void decreasePlayerHealth(){
-        Player.takeDamage(amount);
+        // Player.takeDamage(amount);
+        Player.SpecialtakeDamage(amount);
     }
 
     public void decreaseHealthbar(){
