@@ -9,8 +9,9 @@ public abstract class BaseEntity : MonoBehaviour {
 
     protected float health;
 
-    private void Start() {
+    public BaseEntity() {
         health = maxHealth;
+        Debug.Log(health + ", " + maxHealth);
     }
 
     public float Health {
@@ -22,23 +23,13 @@ public abstract class BaseEntity : MonoBehaviour {
             health -= amount;
         }
 
-        if (health <= 0f) {
-            OnDead();
-        } else {
-            OnTakenDamage(amount);
-        }
-    }
-
-    public void SpecialtakeDamage(float amount) {
-        if (!IsInvulnerable) {
-            health -= amount;
-        }
 
         if (health <= 0f) {
             OnDead();
         } else {
             OnTakenDamage(amount);
         }
+
     }
 
     public void heal(float amount) {

@@ -7,13 +7,13 @@ public class DoDamage : MonoBehaviour
 {
 
     public float amount;
-    public PlayerController Player;
+    public BaseEntity Player;
 
     public HealthBar healthBar;
 
-    public void decreasePlayerHealth(){
+    public void decreasePlayerHealth() {
         // Player.takeDamage(amount);
-        Player.SpecialtakeDamage(amount);
+        Player.takeDamage(amount);
     }
 
     public void decreaseHealthbar(){

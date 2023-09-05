@@ -20,6 +20,7 @@ public class PlayerController : BaseEntity
     public HealthBar healthBar;
     private void Start()
     {
+        Debug.Log(health + ", " + maxHealth);
         rb = GetComponent<Rigidbody2D>();
 
         healthBar.setMaxHealth(maxHealth);
@@ -38,14 +39,14 @@ public class PlayerController : BaseEntity
 
         if (Input.GetAxis("Fire1") == 1)
         {
-            playerState.PerformAction();
+            // playerState.PerformAction();
         }
     }
 
     protected override void OnTakenDamage(float amount)
     {
-        
-        healthBar.decreaseHealth(amount);    
+        Debug.Log(amount);
+        healthBar.decreaseHealth(amount); 
     }
 
     protected override void OnDead()
