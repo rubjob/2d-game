@@ -18,12 +18,10 @@ public class HitboxTriggerer : MonoBehaviour
         {
             triggeringObjects.Add(other.gameObject);
         }
-        // triggeringObject = other.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         triggeringObjects.Remove(other.gameObject);
-        // triggeringObject = null;
     }
 }

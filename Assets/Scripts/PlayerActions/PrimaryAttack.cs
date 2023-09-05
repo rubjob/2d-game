@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PrimaryAttack : BasePlayerState
@@ -9,18 +11,15 @@ public class PrimaryAttack : BasePlayerState
     PlayerController playerController;
     MouseUtil mouseUtil;
     private Animator anim;
-
-    int combo;
-
-
+    private bool isAttacking = false;
 
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
         mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
         anim = GetComponent<Animator>();
-        combo = 0;
     }
+
     private void Update()
     {
         // Play animation
@@ -37,61 +36,51 @@ public class PrimaryAttack : BasePlayerState
     protected override void Action(GameObject[] targets)
     {
         float mAngle = mouseUtil.GetMouseAngle();
-        //attack right animation
+
         if (mAngle <= 45 && mAngle >= -45)
         {
+            //attack right animation
+            spriteRenderer.flipX = false;
             anim.SetBool("isAttackingSide", true);
-            if (spriteRenderer.flipX)
-            {
-
-                spriteRenderer.flipX = false;
-            }
         }
-        //attack left animation
-        if (mAngle >= 135 || mAngle <= -135)
+        else if (mAngle >= 135 || mAngle <= -135)
         {
+            //attack left animation
+            spriteRenderer.flipX = true;
             anim.SetBool("isAttackingSide", true);
-            if (!spriteRenderer.flipX)
-            {
-
-                spriteRenderer.flipX = true;
-            }
         }
-        //attack down animation
-        if (mAngle < -45 && mAngle > -135)
+        else if (mAngle < -45 && mAngle > -135)
         {
+            //attack down animation
             anim.SetBool("isAttackingDown", true);
         }
-        //attack up animation
-        if (mAngle > 45 && mAngle < 135)
+        else if (mAngle > 45 && mAngle < 135)
         {
+            //attack up animation
             anim.SetBool("isAttackingUp", true);
         }
 
         //trigger normal attack and deal damage to entity in hitbox.
-        if (combo == 0)
+        anim.SetTrigger("Attack");
+        if (targets.Length > 0)
         {
-            anim.SetTrigger("Attack");
-            if (targets.Length > 0)
+            for (int i = 0; i < targets.Length; i++)
             {
-                for (int i = 0; i < targets.Length; i++)
-                {
-                    // Debug.Log(targets[i].name);
-                    targets[i].GetComponent<BaseEntity>().takeDamage(attackDamage);
-                }
+                targets[i].GetComponent<BaseEntity>().takeDamage(attackDamage);
             }
-
         }
     }
-    public void lockMovement()
+
+    public void LockMovement()
     {
+        isAttacking = true;
         playerController.movementSpeed = 0;
-        combo += 1;
     }
-    public void unlockMovement()
+
+    public void UnlockMovement()
     {
+        isAttacking = false;
         playerController.movementSpeed = 5f;
-        combo -= 1;
         //reset animation condition
         anim.SetBool("isAttackingSide", false);
         anim.SetBool("isAttackingDown", false);

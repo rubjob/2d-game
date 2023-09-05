@@ -7,11 +7,11 @@ public abstract class BasePlayerState : MonoBehaviour
     [SerializeField] protected GameObject player;
     public HitboxManager hitbox;
     public int attackDamage = 20;
-    public float attackSpeed = 0.5f;
+    public float attackSpeed = 1f;
 
     private float attackDelay, lastAttackTime;
 
-    private void Start()
+    public BasePlayerState()
     {
         attackDelay = 1f / attackSpeed;
         lastAttackTime = -attackDelay;
