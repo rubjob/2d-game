@@ -7,6 +7,7 @@ public class PrimaryAttack : BasePlayerState
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     PlayerController playerController;
+    MouseUtil mouseUtil;
     private Animator anim;
 
     int combo;
@@ -16,6 +17,7 @@ public class PrimaryAttack : BasePlayerState
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
+        mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
         anim = GetComponent<Animator>();
         combo = 0;
     }
@@ -34,15 +36,48 @@ public class PrimaryAttack : BasePlayerState
 
     protected override void Action(GameObject target)
     {
+        float mAngle = mouseUtil.GetMouseAngle();
+        Debug.Log(mAngle);
+        //attack right animation
+        if (mAngle <= 45 && mAngle >= -45)
+        {
+            anim.SetBool("isAttackingSide", true);
+            if (spriteRenderer.flipX)
+            {
 
+                spriteRenderer.flipX = false;
+            }
+        }
+        //attack left animation
+        if (mAngle >= 135 || mAngle <= -135)
+        {
+            anim.SetBool("isAttackingSide", true);
+            if (!spriteRenderer.flipX)
+            {
+
+                spriteRenderer.flipX = true;
+            }
+        }
+        //attack down animation
+        if (mAngle < -45 && mAngle > -135)
+        {
+            anim.SetBool("isAttackingDown", true);
+        }
+        //attack up animation
+        if (mAngle > 45 && mAngle < 135)
+        {
+            anim.SetBool("isAttackingUp", true);
+        }
+
+        //trigger normal attack and deal damage to entity in hitbox.
         if (combo == 0)
         {
             anim.SetTrigger("Attack");
+            if (target != null)
+            {
+                target.GetComponent<BaseEntity>().takeDamage(attackDamage);
 
-        }
-        if (target != null)
-        {
-            target.GetComponent<BaseEntity>().takeDamage(attackDamage);
+            }
 
         }
     }
@@ -55,7 +90,10 @@ public class PrimaryAttack : BasePlayerState
     {
         playerController.movementSpeed = 5f;
         combo -= 1;
-
+        //reset animation condition
+        anim.SetBool("isAttackingSide", false);
+        anim.SetBool("isAttackingDown", false);
+        anim.SetBool("isAttackingUp", false);
     }
 
 }
