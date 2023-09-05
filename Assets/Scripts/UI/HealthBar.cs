@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class HealthBar : MonoBehaviour
@@ -10,17 +11,25 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    public TextMeshProUGUI textHealth;
+
 
     public void setMaxHealth(float health){
         slider.maxValue=health;
         slider.value=health;
 
         fill.color=gradient.Evaluate(1f);
+        updateText();
     }
 
     public void decreaseHealth(float amount){
         slider.value-=amount;
         fill.color=gradient.Evaluate(slider.normalizedValue);
+        updateText();
+    }
+
+    public void updateText(){
+        textHealth.text=slider.value.ToString()+"/"+slider.maxValue.ToString();
     }
 
   
