@@ -34,10 +34,9 @@ public class PrimaryAttack : BasePlayerState
         }
     }
 
-    protected override void Action(GameObject target)
+    protected override void Action(GameObject[] targets)
     {
         float mAngle = mouseUtil.GetMouseAngle();
-        Debug.Log(mAngle);
         //attack right animation
         if (mAngle <= 45 && mAngle >= -45)
         {
@@ -73,10 +72,13 @@ public class PrimaryAttack : BasePlayerState
         if (combo == 0)
         {
             anim.SetTrigger("Attack");
-            if (target != null)
+            if (targets.Length > 0)
             {
-                target.GetComponent<BaseEntity>().takeDamage(attackDamage);
-
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    // Debug.Log(targets[i].name);
+                    targets[i].GetComponent<BaseEntity>().takeDamage(attackDamage);
+                }
             }
 
         }
