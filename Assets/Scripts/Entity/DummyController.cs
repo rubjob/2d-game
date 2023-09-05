@@ -16,4 +16,9 @@ public class DummyController : BaseEntity
     {
         Debug.Log("IM DEAD ARRRRRRRRRRRRRRRRRRRRRR");
     }
+
+    protected override void OnHeal(float amount)
+    {
+       
+    }
 }

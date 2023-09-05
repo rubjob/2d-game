@@ -38,8 +38,12 @@ public abstract class BaseEntity : MonoBehaviour {
         }
 
         if (health > maxHealth) health = maxHealth;
+
+        OnHeal(amount);
     }
 
     protected abstract void OnTakenDamage(float damage);
+
+    protected abstract void OnHeal(float amount);
     protected abstract void OnDead();
 }

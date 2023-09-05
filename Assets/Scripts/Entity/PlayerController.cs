@@ -45,8 +45,15 @@ public class PlayerController : BaseEntity
 
     protected override void OnTakenDamage(float amount)
     {
-        Debug.Log(amount);
+        Debug.Log("Damage : "+ amount);
         healthBar.decreaseHealth(amount); 
+    }
+
+    protected override void OnHeal(float amount)
+    {
+        Debug.Log("Heal: "+ amount);
+        healthBar.increaseHealth(amount);
+
     }
 
     protected override void OnDead()

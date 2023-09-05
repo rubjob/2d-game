@@ -28,6 +28,12 @@ public class HealthBar : MonoBehaviour
         updateText();
     }
 
+    public void increaseHealth(float amount){
+        slider.value+=amount;
+        fill.color=gradient.Evaluate(slider.normalizedValue);
+        updateText();
+    }
+
     public void updateText(){
         textHealth.text=slider.value.ToString()+"/"+slider.maxValue.ToString();
     }
