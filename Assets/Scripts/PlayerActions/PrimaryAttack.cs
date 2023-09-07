@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PrimaryAttack : BasePlayerState
@@ -8,25 +10,22 @@ public class PrimaryAttack : BasePlayerState
     public SpriteRenderer spriteRenderer;
     PlayerController playerController;
     MouseUtil mouseUtil;
-    private Animator anim;
-
-    int combo;
-
-
+    private bool isAttacking = false;
 
     private void Start()
     {
+        Setup();
+        
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
         mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
-        anim = GetComponent<Animator>();
-        combo = 0;
     }
+
     private void Update()
     {
         // Play animation
         Vector2 velocity = player.GetComponent<Rigidbody2D>().velocity;
         bool isMoving = velocity != Vector2.zero;
-
+        
         animator.SetBool("isMoving", isMoving);
         if (isMoving && velocity.x != 0)
         {
@@ -34,66 +33,61 @@ public class PrimaryAttack : BasePlayerState
         }
     }
 
-    protected override void Action(GameObject target)
+    protected override void Action(GameObject[] targets)
     {
         float mAngle = mouseUtil.GetMouseAngle();
-        Debug.Log(mAngle);
-        //attack right animation
+
         if (mAngle <= 45 && mAngle >= -45)
         {
-            anim.SetBool("isAttackingSide", true);
-            if (spriteRenderer.flipX)
-            {
-
-                spriteRenderer.flipX = false;
-            }
+            //attack right animation
+            spriteRenderer.flipX = false;
+            animator.SetBool("isAttackingSide", true);
         }
-        //attack left animation
-        if (mAngle >= 135 || mAngle <= -135)
+        else if (mAngle >= 135 || mAngle <= -135)
         {
-            anim.SetBool("isAttackingSide", true);
-            if (!spriteRenderer.flipX)
-            {
-
-                spriteRenderer.flipX = true;
-            }
+            //attack left animation
+            spriteRenderer.flipX = true;
+            animator.SetBool("isAttackingSide", true);
         }
-        //attack down animation
-        if (mAngle < -45 && mAngle > -135)
+        else if (mAngle < -45 && mAngle > -135)
         {
-            anim.SetBool("isAttackingDown", true);
+            //attack down animation
+            animator.SetBool("isAttackingDown", true);
         }
-        //attack up animation
-        if (mAngle > 45 && mAngle < 135)
+        else if (mAngle > 45 && mAngle < 135)
         {
-            anim.SetBool("isAttackingUp", true);
+            //attack up animation
+            animator.SetBool("isAttackingUp", true);
         }
 
         //trigger normal attack and deal damage to entity in hitbox.
-        if (combo == 0)
+        animator.SetTrigger("Attack");
+        if (targets.Length > 0)
         {
-            anim.SetTrigger("Attack");
-            if (target != null)
+            for (int i = 0; i < targets.Length; i++)
             {
-                target.GetComponent<BaseEntity>().takeDamage(attackDamage);
-
+                targets[i].GetComponent<BaseEntity>().takeDamage(attackDamage);
             }
-
         }
     }
-    public void lockMovement()
+
+    public void LockMovement()
     {
+        isAttacking = true;
+        animator.speed = attackSpeed;
         playerController.movementSpeed = 0;
-        combo += 1;
     }
-    public void unlockMovement()
+
+    public void UnlockMovement()
     {
+        isAttacking = false;
+        animator.speed = 1f;
         playerController.movementSpeed = 5f;
-        combo -= 1;
+        
         //reset animation condition
-        anim.SetBool("isAttackingSide", false);
-        anim.SetBool("isAttackingDown", false);
-        anim.SetBool("isAttackingUp", false);
+        animator.SetBool("isAttackingSide", false);
+        animator.SetBool("isAttackingDown", false);
+        animator.SetBool("isAttackingUp", false);
     }
 
 }

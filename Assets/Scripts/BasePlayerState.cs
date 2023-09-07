@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BasePlayerState : MonoBehaviour {
+public abstract class BasePlayerState : MonoBehaviour
+{
     [SerializeField] protected GameObject player;
     public HitboxManager hitbox;
     public int attackDamage = 20;
-    public float attackSpeed = 0.5f;
-
+    public float attackSpeed = 1f;
     private float attackDelay, lastAttackTime;
-
-    private void Start() {
+    
+    protected void Setup()
+    {
         attackDelay = 1f / attackSpeed;
         lastAttackTime = -attackDelay;
     }
 
-    protected abstract void Action(GameObject target);
-    public void PerformAction() {
+    protected abstract void Action(GameObject[] targets);
+    public void PerformAction()
+    {
         float currentTime = Time.time;
-        if (currentTime >= lastAttackTime + attackDelay) {
+        if (currentTime >= lastAttackTime + attackDelay)
+        {
             lastAttackTime = currentTime;
 
-            Action(hitbox.Trigger.TriggeringObject);
+            Action(hitbox.Trigger.TriggeringObjects);
         }
     }
 }

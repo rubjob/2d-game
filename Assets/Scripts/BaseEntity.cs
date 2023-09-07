@@ -2,35 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseEntity : MonoBehaviour {
+public abstract class BaseEntity : MonoBehaviour
+{
     [Header("Base Entity")]
     public bool IsInvulnerable = false;
     public float maxHealth = 100f;
 
     protected float health;
 
-    private void Start() {
+    private void Start()
+    {
         health = maxHealth;
     }
 
-    public float Health {
+    public float Health
+    {
         get { return health; }
     }
 
-    public void takeDamage(float amount) {
-        if (!IsInvulnerable) {
+    public void takeDamage(float amount)
+    {
+        if (!IsInvulnerable)
+        {
             health -= amount;
         }
 
-        if (health <= 0f) {
+        if (health <= 0f)
+        {
             OnDead();
-        } else {
+        }
+        else
+        {
             OnTakenDamage(amount);
         }
     }
 
-    public void heal(float amount) {
-        if (!IsInvulnerable) {
+    public void heal(float amount)
+    {
+        if (!IsInvulnerable)
+        {
             health += amount;
         }
 
