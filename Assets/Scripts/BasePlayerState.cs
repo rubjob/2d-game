@@ -8,10 +8,9 @@ public abstract class BasePlayerState : MonoBehaviour
     public HitboxManager hitbox;
     public int attackDamage = 20;
     public float attackSpeed = 1f;
-
     private float attackDelay, lastAttackTime;
-
-    public BasePlayerState()
+    
+    protected void Setup()
     {
         attackDelay = 1f / attackSpeed;
         lastAttackTime = -attackDelay;

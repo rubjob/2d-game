@@ -10,14 +10,14 @@ public class PrimaryAttack : BasePlayerState
     public SpriteRenderer spriteRenderer;
     PlayerController playerController;
     MouseUtil mouseUtil;
-    private Animator anim;
     private bool isAttacking = false;
 
     private void Start()
     {
+        Setup();
+        
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
         mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
-        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class PrimaryAttack : BasePlayerState
         // Play animation
         Vector2 velocity = player.GetComponent<Rigidbody2D>().velocity;
         bool isMoving = velocity != Vector2.zero;
-
+        
         animator.SetBool("isMoving", isMoving);
         if (isMoving && velocity.x != 0)
         {
@@ -41,27 +41,27 @@ public class PrimaryAttack : BasePlayerState
         {
             //attack right animation
             spriteRenderer.flipX = false;
-            anim.SetBool("isAttackingSide", true);
+            animator.SetBool("isAttackingSide", true);
         }
         else if (mAngle >= 135 || mAngle <= -135)
         {
             //attack left animation
             spriteRenderer.flipX = true;
-            anim.SetBool("isAttackingSide", true);
+            animator.SetBool("isAttackingSide", true);
         }
         else if (mAngle < -45 && mAngle > -135)
         {
             //attack down animation
-            anim.SetBool("isAttackingDown", true);
+            animator.SetBool("isAttackingDown", true);
         }
         else if (mAngle > 45 && mAngle < 135)
         {
             //attack up animation
-            anim.SetBool("isAttackingUp", true);
+            animator.SetBool("isAttackingUp", true);
         }
 
         //trigger normal attack and deal damage to entity in hitbox.
-        anim.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
         if (targets.Length > 0)
         {
             for (int i = 0; i < targets.Length; i++)
@@ -74,17 +74,20 @@ public class PrimaryAttack : BasePlayerState
     public void LockMovement()
     {
         isAttacking = true;
+        animator.speed = attackSpeed;
         playerController.movementSpeed = 0;
     }
 
     public void UnlockMovement()
     {
         isAttacking = false;
+        animator.speed = 1f;
         playerController.movementSpeed = 5f;
+        
         //reset animation condition
-        anim.SetBool("isAttackingSide", false);
-        anim.SetBool("isAttackingDown", false);
-        anim.SetBool("isAttackingUp", false);
+        animator.SetBool("isAttackingSide", false);
+        animator.SetBool("isAttackingDown", false);
+        animator.SetBool("isAttackingUp", false);
     }
 
 }
