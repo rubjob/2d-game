@@ -8,6 +8,7 @@ public class PrimaryAttack : BaseEntityState
 {
     PlayerController playerController;
     MouseUtil mouseUtil;
+    private float mAngle;
 
     private void Start()
     {
@@ -32,8 +33,7 @@ public class PrimaryAttack : BaseEntityState
 
     protected override void Action(GameObject[] targets)
     {
-        float mAngle = mouseUtil.GetMouseAngle();
-
+        mAngle = mouseUtil.GetMouseAngle();
         if (mAngle <= 45 && mAngle >= -45)
         {
             //attack right animation
