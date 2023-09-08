@@ -9,11 +9,12 @@ public class PrimaryAttack : BaseEntityState
     PlayerController playerController;
     MouseUtil mouseUtil;
     private float mAngle;
+    private int comboCount;
 
     private void Start()
     {
         Setup();
-
+        comboCount = 0;
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
         mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
     }
@@ -56,7 +57,21 @@ public class PrimaryAttack : BaseEntityState
             //attack up animation
             animator.SetBool("isAttackingUp", true);
         }
-
+        switch (SuccessiveAttack())
+        {
+            case 1:
+                attackDamage = 40;
+                break;
+            case 2:
+                attackDamage *= 2;
+                break;
+            case 3:
+                attackDamage *= 2;
+                break;
+            default:
+                break;
+        }
+        // Debug.Log(comboCount);
         //trigger normal attack and deal damage to entity in hitbox.
         animator.SetTrigger("Attack");
         if (targets.Length > 0)
@@ -67,7 +82,19 @@ public class PrimaryAttack : BaseEntityState
             }
         }
     }
+    private int SuccessiveAttack()
+    {
 
+        if (attackWindow < 1.5f && comboCount < 3)
+        {
+            comboCount += 1;
+        }
+        else
+        {
+            comboCount = 1;
+        }
+        return comboCount;
+    }
     public void LockMovement()
     {
         animator.speed = (attackSpeed >= 1) ? attackSpeed : 1f;

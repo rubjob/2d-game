@@ -13,6 +13,7 @@ public abstract class BaseEntityState : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float attackSpeed = 1f;
     private float attackDelay, lastAttackTime;
+    protected float attackWindow;
 
     protected void Setup()
     {
@@ -26,6 +27,7 @@ public abstract class BaseEntityState : MonoBehaviour
         float currentTime = Time.time;
         if (currentTime >= lastAttackTime + attackDelay)
         {
+            attackWindow = currentTime - lastAttackTime;
             lastAttackTime = currentTime;
 
             Action(hitbox.Trigger.TriggeringObjects);
