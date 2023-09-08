@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerController : BaseEntity
 {
+    [Header("Player Controller")]
     public float movementSpeed = 5f;
-
-    [Header("Player Action States")]
-    public int currentState = 0;
-    public GameObject[] playerStates;
 
     [Header("Mouse Util")]
     public MouseUtil mouseUtil;
@@ -16,9 +13,11 @@ public class PlayerController : BaseEntity
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
 
-    private BasePlayerState playerState;
+    private BaseEntityState playerState;
     private void Start()
     {
+        Setup();
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,22 +29,15 @@ public class PlayerController : BaseEntity
         rb.velocity = velocity;
 
         // Combat
-        playerState = playerStates[currentState].GetComponent<BasePlayerState>();
-        playerState.hitbox.RotateTo(mouseUtil.GetMouseAngle());
+        UpdateHitBox(mouseUtil.GetMouseAngle());
 
         if (Input.GetAxis("Fire1") == 1)
-        {
-            playerState.PerformAction();
-        }
+            Attack(BindingState.PrimaryAttack);
+
+        else if (Input.GetAxis("Fire2") == 1)
+            Attack(BindingState.HeavyAttack);
     }
 
-    protected override void OnTakenDamage(float amount)
-    {
-
-    }
-
-    protected override void OnDead()
-    {
-
-    }
+    protected override void OnTakenDamage(float amount) { }
+    protected override void OnDead() { }
 }

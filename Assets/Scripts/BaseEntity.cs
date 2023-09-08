@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
@@ -8,19 +10,52 @@ public abstract class BaseEntity : MonoBehaviour
     public bool IsInvulnerable = false;
     public float maxHealth = 100f;
 
+    [Header("Entity States")]
+    public BindingState currentState;
+    public EntityStateBinding[] stateBindings;
+    private Dictionary<BindingState, BaseEntityState> states = new Dictionary<BindingState, BaseEntityState>();
+
     protected float health;
 
-    private void Start()
+    protected void Setup()
     {
         health = maxHealth;
+
+        foreach (EntityStateBinding e in stateBindings)
+            states.Add(e.StateBinding, e.EntityState);
     }
 
-    public float Health
+    // State
+    protected void SetState(BindingState state)
     {
-        get { return health; }
+        if (GetCurrentState().IsReadyToChange())
+            currentState = state;
     }
 
-    public void takeDamage(float amount)
+    protected BaseEntityState GetCurrentState()
+    {
+        foreach (KeyValuePair<BindingState, BaseEntityState> entry in states)
+            entry.Value.spriteRenderer.enabled = currentState == entry.Key;
+
+        return states[currentState];
+    }
+
+    // Combat
+    protected void UpdateHitBox(float angle)
+    {
+        foreach (KeyValuePair<BindingState, BaseEntityState> entry in states)
+        {
+            entry.Value.hitbox.RotateTo(angle);
+        }
+    }
+
+    protected void Attack(BindingState state)
+    {
+        SetState(state);
+        GetCurrentState().PerformAction();
+    }
+
+    public void TakeDamage(float amount)
     {
         if (!IsInvulnerable)
         {
@@ -37,7 +72,7 @@ public abstract class BaseEntity : MonoBehaviour
         }
     }
 
-    public void heal(float amount)
+    public void Heal(float amount)
     {
         if (!IsInvulnerable)
         {
@@ -47,6 +82,13 @@ public abstract class BaseEntity : MonoBehaviour
         if (health > maxHealth) health = maxHealth;
     }
 
+    // Abstract method
     protected abstract void OnTakenDamage(float damage);
     protected abstract void OnDead();
+
+    // Getters and Setters
+    public float Health
+    {
+        get { return health; }
+    }
 }

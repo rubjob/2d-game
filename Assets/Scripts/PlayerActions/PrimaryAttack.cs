@@ -4,18 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PrimaryAttack : BasePlayerState
+public class PrimaryAttack : BaseEntityState
 {
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
     PlayerController playerController;
     MouseUtil mouseUtil;
-    private bool isAttacking = false;
 
     private void Start()
     {
         Setup();
-        
+
         playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
         mouseUtil = GameObject.FindGameObjectWithTag("MouseUtil").GetComponent<MouseUtil>();
     }
@@ -25,7 +22,7 @@ public class PrimaryAttack : BasePlayerState
         // Play animation
         Vector2 velocity = player.GetComponent<Rigidbody2D>().velocity;
         bool isMoving = velocity != Vector2.zero;
-        
+
         animator.SetBool("isMoving", isMoving);
         if (isMoving && velocity.x != 0)
         {
@@ -66,24 +63,22 @@ public class PrimaryAttack : BasePlayerState
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                targets[i].GetComponent<BaseEntity>().takeDamage(attackDamage);
+                targets[i].GetComponent<BaseEntity>().TakeDamage(attackDamage);
             }
         }
     }
 
     public void LockMovement()
     {
-        isAttacking = true;
-        animator.speed = attackSpeed;
+        animator.speed = (attackSpeed >= 1) ? attackSpeed : 1f;
         playerController.movementSpeed = 0;
     }
 
     public void UnlockMovement()
     {
-        isAttacking = false;
         animator.speed = 1f;
         playerController.movementSpeed = 5f;
-        
+
         //reset animation condition
         animator.SetBool("isAttackingSide", false);
         animator.SetBool("isAttackingDown", false);

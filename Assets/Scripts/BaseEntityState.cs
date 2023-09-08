@@ -1,23 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
-public abstract class BasePlayerState : MonoBehaviour
+public abstract class BaseEntityState : MonoBehaviour
 {
     [SerializeField] protected GameObject player;
     public HitboxManager hitbox;
     public int attackDamage = 20;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
     public float attackSpeed = 1f;
     private float attackDelay, lastAttackTime;
-    
+
     protected void Setup()
     {
-        // attackDelay = 1f / attackSpeed;
-        lastAttackTime = -attackDelay;
-    }
-    private void Start()
-    {
         attackDelay = 1f / attackSpeed;
+        lastAttackTime = -attackDelay;
     }
 
     protected abstract void Action(GameObject[] targets);
@@ -30,5 +30,10 @@ public abstract class BasePlayerState : MonoBehaviour
 
             Action(hitbox.Trigger.TriggeringObjects);
         }
+    }
+
+    public bool IsReadyToChange()
+    {
+        return Time.time >= lastAttackTime + attackDelay;
     }
 }
