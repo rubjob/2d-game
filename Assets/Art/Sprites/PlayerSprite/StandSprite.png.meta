@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25035e82eb0438f4f85302f98c01cb42
+guid: 2230c316bf1314246b4d76b90685c884
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NAttackSprite_0
+      name: StandSprite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,41 +131,41 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02bdb01468f92ff4399b85d2d9b14941
-      internalID: -387649980
+      spriteID: 9d48ed6ce3fe95b4b9a8f33977b38428
+      internalID: 1714804323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_1
+      name: StandSprite_1
       rect:
         serializedVersion: 2
-        x: 59
+        x: 64
         y: 64
-        width: 83
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b40d7ee767580b4c9b1559ce7403307
-      internalID: -268932963
+      spriteID: a7c134295878f6a44a255153c2f71f6a
+      internalID: -244249585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_2
+      name: StandSprite_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,41 +173,83 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ca1873d635aef94d8e332d5e5b5665a
-      internalID: -1973949232
+      spriteID: da1ff6f1344b61d40b32be0f8891f015
+      internalID: 1766917378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_3
+      name: StandSprite_3
       rect:
         serializedVersion: 2
-        x: 186
+        x: 192
         y: 64
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.6583483, y: 0.5006527}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79262e1cb1ba7384f94348e7bad7078a
-      internalID: -2086213112
+      spriteID: 7a5f5e65db94ea0498dba3eb44f9b532
+      internalID: 2073628319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_4
+      name: StandSprite_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2dcc863be1b8b4b8389198a8940a27
+      internalID: 1319466063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StandSprite_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a08de0a7cb0d384788b4446e5dbbdb7
+      internalID: 2147265931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StandSprite_6
       rect:
         serializedVersion: 2
         x: 0
@@ -215,20 +257,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1c617594e1ff064790a85fabecc70be
-      internalID: -240936450
+      spriteID: 803da358e09c43341a3b449c02f1e40c
+      internalID: -1202500637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_5
+      name: StandSprite_7
       rect:
         serializedVersion: 2
         x: 64
@@ -236,20 +278,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caf3a0cd049a6aa4eaeee67993faf8e1
-      internalID: -586152765
+      spriteID: 3bd156e93786ace439cc761957bc9200
+      internalID: 476789422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_6
+      name: StandSprite_8
       rect:
         serializedVersion: 2
         x: 128
@@ -257,20 +299,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0124872291a72e47ad9bb2dda5e8df2
-      internalID: -736111893
+      spriteID: 254ee604a9de5d94e9e9ea17a05aa4e8
+      internalID: 917526428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NAttackSprite_7
+      name: StandSprite_9
       rect:
         serializedVersion: 2
         x: 192
@@ -278,14 +320,56 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31a33cd63758d8543895229b74165ce5
-      internalID: 1510726028
+      spriteID: fef844fd1827af24390fbad7c0bdb04c
+      internalID: 926656921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StandSprite_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13312a0f574defa4dbb7e9918e05693a
+      internalID: -881114567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StandSprite_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6868c2f3e45376349a9ba1823b2ae635
+      internalID: 1224468518
       vertices: []
       indices: 
       edges: []
@@ -301,14 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NAttackSprite_0: -387649980
-      NAttackSprite_1: -268932963
-      NAttackSprite_2: -1973949232
-      NAttackSprite_3: -2086213112
-      NAttackSprite_4: -240936450
-      NAttackSprite_5: -586152765
-      NAttackSprite_6: -736111893
-      NAttackSprite_7: 1510726028
+      StandSprite_0: 1714804323
+      StandSprite_1: -244249585
+      StandSprite_10: -881114567
+      StandSprite_11: 1224468518
+      StandSprite_2: 1766917378
+      StandSprite_3: 2073628319
+      StandSprite_4: 1319466063
+      StandSprite_5: 2147265931
+      StandSprite_6: -1202500637
+      StandSprite_7: 476789422
+      StandSprite_8: 917526428
+      StandSprite_9: 926656921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,8 +12,12 @@ public abstract class BasePlayerState : MonoBehaviour
     
     protected void Setup()
     {
-        attackDelay = 1f / attackSpeed;
+        // attackDelay = 1f / attackSpeed;
         lastAttackTime = -attackDelay;
+    }
+    private void Start()
+    {
+        attackDelay = 1f / attackSpeed;
     }
 
     protected abstract void Action(GameObject[] targets);
