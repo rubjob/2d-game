@@ -60,13 +60,13 @@ public class PrimaryAttack : BaseEntityState
         switch (SuccessiveAttack())
         {
             case 1:
-                attackDamage = 40;
+                attackDamage = 80;
                 break;
             case 2:
-                attackDamage *= 2;
+                attackDamage = 120;
                 break;
             case 3:
-                attackDamage *= 2;
+                attackDamage = 250;
                 break;
             default:
                 break;

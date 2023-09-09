@@ -35,13 +35,11 @@ public class HeavyAttack : BaseEntityState
         if (mAngle <= 45 && mAngle >= -45)
         {
             //attack right animation
-            spriteRenderer.flipX = false;
             animator.SetBool("isAttackingSide", true);
         }
         else if (mAngle >= 135 || mAngle <= -135)
         {
             //attack left animation
-            spriteRenderer.flipX = true;
             animator.SetBool("isAttackingSide", true);
         }
         else if (mAngle < -45 && mAngle > -135)
