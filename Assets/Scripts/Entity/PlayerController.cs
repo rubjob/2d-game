@@ -61,6 +61,6 @@ public class PlayerController : BaseEntity
 
     protected override void OnDead()
     {
-
+        healthBar.decreaseHealth(healthBar.slider.value); 
     }
 }

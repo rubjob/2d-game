@@ -7,13 +7,17 @@ public class Debugger : MonoBehaviour
 {
 
     public float amount;
-    public BaseEntity Player;
+    public PlayerController Player;
 
     public HealthBar healthBar;
 
     public void decreasePlayerHealth() {
         // Player.takeDamage(amount);
         Player.takeDamage(amount);
+    }
+
+    public void killPlayer(){
+        Player.takeDamage(Player.maxHealth);
     }
 
     public void healPlayer(){
