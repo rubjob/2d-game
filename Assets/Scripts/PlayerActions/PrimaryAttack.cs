@@ -110,6 +110,7 @@ public class PrimaryAttack : BaseEntityState
         animator.SetBool("isAttackingSide", false);
         animator.SetBool("isAttackingDown", false);
         animator.SetBool("isAttackingUp", false);
+
     }
 
 }

@@ -79,5 +79,6 @@ public class HeavyAttack : BaseEntityState
         animator.SetBool("isAttackingSide", false);
         animator.SetBool("isAttackingDown", false);
         animator.SetBool("isAttackingUp", false);
+
     }
 }
