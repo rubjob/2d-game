@@ -11,7 +11,7 @@ public abstract class BaseEntity : MonoBehaviour {
 
     public BaseEntity() {
         health = maxHealth;
-        Debug.Log(health + ", " + maxHealth);
+        Debug.Log("Base; Base : "+health + ", " + maxHealth);
     }
 
     public float Health {
@@ -23,7 +23,7 @@ public abstract class BaseEntity : MonoBehaviour {
             health -= amount;
         }
 
-
+        Debug.Log("Base; health left from take damage : "+health);
         if (health <= 0f) {
             OnDead();
         } else {

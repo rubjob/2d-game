@@ -20,10 +20,13 @@ public class PlayerController : BaseEntity
     public HealthBar healthBar;
     private void Start()
     {
-        Debug.Log(health + ", " + maxHealth);
         rb = GetComponent<Rigidbody2D>();
-
+        Debug.Log("Player; start : "+maxHealth);
         healthBar.setMaxHealth(maxHealth);
+        
+        health=maxHealth;
+        Debug.Log("Player; Player : "+health + ", " + maxHealth);
+
     }
 
     private void FixedUpdate()
@@ -45,13 +48,13 @@ public class PlayerController : BaseEntity
 
     protected override void OnTakenDamage(float amount)
     {
-        Debug.Log("Damage : "+ amount);
+        Debug.Log("Player; Damage : "+ amount);
         healthBar.decreaseHealth(amount); 
     }
 
     protected override void OnHeal(float amount)
     {
-        Debug.Log("Heal: "+ amount);
+        Debug.Log("Player; Heal: "+ amount);
         healthBar.increaseHealth(amount);
 
     }
