@@ -10,10 +10,14 @@ public abstract class BaseEntity : MonoBehaviour
     public bool IsInvulnerable = false;
     public float maxHealth = 100f;
 
+    [Header("Animation")]
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     [Header("Entity States")]
     public BindingState currentState;
     public EntityStateBinding[] stateBindings;
-    private Dictionary<BindingState, BaseEntityState> states = new Dictionary<BindingState, BaseEntityState>();
+    private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
 
     protected float health;
 
@@ -22,67 +26,62 @@ public abstract class BaseEntity : MonoBehaviour
         health = maxHealth;
 
         foreach (EntityStateBinding e in stateBindings)
-            states.Add(e.StateBinding, e.EntityState);
+            states.Add(e.StateBinding, e);
     }
 
     // State
     protected void SetState(BindingState state)
     {
-        if (GetCurrentState().IsReadyToChange())
+        if (GetCurrentState().EntityState.IsReadyToChange())
             currentState = state;
     }
 
-    protected BaseEntityState GetCurrentState()
+    protected EntityStateBinding GetCurrentState()
     {
-        foreach (KeyValuePair<BindingState, BaseEntityState> entry in states)
-            entry.Value.spriteRenderer.enabled = currentState == entry.Key;
-
         return states[currentState];
     }
 
     // Combat
     protected void UpdateHitBox(float angle)
     {
-        foreach (KeyValuePair<BindingState, BaseEntityState> entry in states)
+        foreach (KeyValuePair<BindingState, EntityStateBinding> entry in states)
         {
-            entry.Value.hitbox.RotateTo(angle);
+            entry.Value.EntityState.hitbox.RotateTo(angle);
         }
     }
 
     protected void Attack(BindingState state)
     {
         SetState(state);
-        GetCurrentState().PerformAction();
+
+        if (GetCurrentState().EntityState.IsReadyToChange()) {
+            OnAttacking();
+            animator.SetTrigger(GetCurrentState().AnimationTriggerName);
+        }
+
+        GetCurrentState().EntityState.PerformAction();
     }
 
     public void TakeDamage(float amount)
     {
         if (!IsInvulnerable)
-        {
             health -= amount;
-        }
 
         if (health <= 0f)
-        {
             OnDead();
-        }
         else
-        {
             OnTakenDamage(amount);
-        }
     }
 
     public void Heal(float amount)
     {
-        if (!IsInvulnerable)
-        {
-            health += amount;
-        }
+        if (!IsInvulnerable) health += amount;
 
         if (health > maxHealth) health = maxHealth;
     }
 
     // Abstract method
+    protected abstract void OnAttacking();
     protected abstract void OnTakenDamage(float damage);
     protected abstract void OnDead();
 

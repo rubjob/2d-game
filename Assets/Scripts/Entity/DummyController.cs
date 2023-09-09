@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DummyController : BaseEntity
 {
-    public Animator animator;
-
     private void Start()
     {
         Setup();
     }
+
+    protected override void OnAttacking() { }
 
     protected override void OnTakenDamage(float amount)
     {
