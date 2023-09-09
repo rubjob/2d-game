@@ -3193,7 +3193,7 @@ MonoBehaviour:
   - StateBinding: 1
     EntityState: {fileID: 9188137400428301610}
   - StateBinding: 2
-    EntityState: {fileID: 996538968}
+    EntityState: {fileID: 996538971}
   movementSpeed: 5
   mouseUtil: {fileID: 1330045769}
 --- !u!61 &792200472
@@ -3387,7 +3387,7 @@ GameObject:
   - component: {fileID: 996538967}
   - component: {fileID: 996538970}
   - component: {fileID: 996538969}
-  - component: {fileID: 996538968}
+  - component: {fileID: 996538971}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -3411,24 +3411,6 @@ Transform:
   - {fileID: 1270198797}
   m_Father: {fileID: 595793991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &996538968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996538966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d8c2bfa43d2254bbd7754037351931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 792200467}
-  hitbox: {fileID: 1270198798}
-  attackDamage: 60
-  animator: {fileID: 996538969}
-  spriteRenderer: {fileID: 996538970}
-  attackSpeed: 1
 --- !u!95 &996538969
 Animator:
   serializedVersion: 5
@@ -3502,6 +3484,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &996538971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996538966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7d6c8b841b8c74c9df2a75f35093fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 792200467}
+  hitbox: {fileID: 1270198798}
+  attackDamage: 40
+  animator: {fileID: 996538969}
+  spriteRenderer: {fileID: 996538970}
+  attackSpeed: 1
 --- !u!1 &1038304462
 GameObject:
   m_ObjectHideFlags: 3
