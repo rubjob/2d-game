@@ -3522,7 +3522,7 @@ MonoBehaviour:
   player: {fileID: 792200467}
   hitbox: {fileID: 1270198798}
   attackDamage: 40
-  attackSpeed: 1
+  attackSpeed: 2
 --- !u!1 &1038304462
 GameObject:
   m_ObjectHideFlags: 3
@@ -4176,7 +4176,7 @@ MonoBehaviour:
   player: {fileID: 792200467}
   hitbox: {fileID: 423162964}
   attackDamage: 40
-  attackSpeed: 2
+  attackSpeed: 3
   playerController: {fileID: 792200471}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
