@@ -93,6 +93,4 @@ public class PlayerController : BaseEntity
             animator.SetTrigger("isAttackingUp");
         }
     }
-    protected override void OnTakenDamage(float amount) { }
-    protected override void OnDead() { }
 }

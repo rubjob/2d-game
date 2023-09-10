@@ -3126,6 +3126,7 @@ GameObject:
   - component: {fileID: 792200474}
   - component: {fileID: 792200476}
   - component: {fileID: 792200471}
+  - component: {fileID: 792200477}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameController
@@ -3189,8 +3190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f3e7ac2fcbf4266a5a35982bd8cc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsInvulnerable: 0
-  maxHealth: 100
   animator: {fileID: 792200475}
   spriteRenderer: {fileID: 792200474}
   currentState: 1
@@ -3384,6 +3383,29 @@ MonoBehaviour:
   dashSpeedMultipiler: 5
   dashDuration: 0.7
   dashCooldown: 0.5
+--- !u!114 &792200477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792200467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bb27a1c27ca73409335e619e3b5c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvulnerable: 0
+  maxHealth: 100
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakenDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &957831470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,6 +3939,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1678429466}
+--- !u!114 &1678429469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6461867472328072006, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+  m_PrefabInstance: {fileID: 2906230825165880955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678429445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93ac59912e2a484f9f9c7cd9fba49b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1678429472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678429445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bb27a1c27ca73409335e619e3b5c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvulnerable: 1
+  maxHealth: 100
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakenDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1678429469}
+        m_TargetAssemblyTypeName: DummyController, Assembly-CSharp
+        m_MethodName: OnTakenDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1678429469}
+        m_TargetAssemblyTypeName: DummyController, Assembly-CSharp
+        m_MethodName: OnDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1942752118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1678429452}
+    - targetCorrespondingSourceObject: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1678429472}
     - targetCorrespondingSourceObject: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1678429468}

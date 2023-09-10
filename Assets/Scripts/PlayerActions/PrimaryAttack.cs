@@ -47,7 +47,7 @@ public class PrimaryAttack : BaseEntityState
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                targets[i].GetComponent<BaseEntity>().TakeDamage(attackDamage);
+                targets[i].GetComponent<HealthScript>().TakeDamage(attackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;

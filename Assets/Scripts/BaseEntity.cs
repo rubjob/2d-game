@@ -6,10 +6,6 @@ using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
 {
-    [Header("Base Entity")]
-    public bool IsInvulnerable = false;
-    public float maxHealth = 100f;
-
     [Header("Animation")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -19,12 +15,8 @@ public abstract class BaseEntity : MonoBehaviour
     public EntityStateBinding[] stateBindings;
     private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
 
-    protected float health;
-
     protected void Setup()
     {
-        health = maxHealth;
-
         foreach (EntityStateBinding e in stateBindings)
             states.Add(e.StateBinding, e);
     }
@@ -62,32 +54,6 @@ public abstract class BaseEntity : MonoBehaviour
         GetCurrentState().EntityState.PerformAction();
     }
 
-    public void TakeDamage(float amount)
-    {
-        if (!IsInvulnerable)
-            health -= amount;
-
-        if (health <= 0f)
-            OnDead();
-        else
-            OnTakenDamage(amount);
-    }
-
-    public void Heal(float amount)
-    {
-        if (!IsInvulnerable) health += amount;
-
-        if (health > maxHealth) health = maxHealth;
-    }
-
     // Abstract method
     protected abstract void OnPerformingAction();
-    protected abstract void OnTakenDamage(float damage);
-    protected abstract void OnDead();
-
-    // Getters and Setters
-    public float Health
-    {
-        get { return health; }
-    }
 }

@@ -17,7 +17,7 @@ public class HeavyAttack : BaseEntityState
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                targets[i].GetComponent<BaseEntity>().TakeDamage(attackDamage);
+                targets[i].GetComponent<HealthScript>().TakeDamage(attackDamage);
             }
         }
     }
