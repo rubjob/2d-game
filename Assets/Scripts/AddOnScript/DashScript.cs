@@ -6,23 +6,26 @@ public class DashScript : MonoBehaviour
 {
     public Rigidbody2D rb;
 
+
     public float dashSpeedMultipiler = 5f;
     public float dashDuration = 0.7f;
     public float dashCooldown = 0.5f;
 
     private float nextDash;
     private bool isDashing = false;
+    private PlayerController pc;
 
     void Start()
     {
         nextDash = -dashCooldown;
+        pc = gameObject.GetComponent<PlayerController>();
     }
 
     void FixedUpdate()
     {
-        if (nextDash - Time.time < dashCooldown) {
+        if (nextDash - Time.time < dashCooldown)
+        {
             isDashing = false;
-            rb.velocity = Vector2.zero;
         }
     }
 
@@ -34,16 +37,18 @@ public class DashScript : MonoBehaviour
             isDashing = true;
             nextDash = currentTime + dashDuration;
 
-            if (rb.velocity == Vector2.zero) {
-                // rb.velocity = sr.flipX ? new Vector2(-movementSpeed, 0) : new Vector2(movementSpeed, 0);
+            if (rb.velocity == Vector2.zero)
+            {
+                rb.velocity = pc.spriteRenderer.flipX ? new Vector2(-pc.movementSpeed, 0) : new Vector2(pc.movementSpeed, 0);
             }
-            else {
-                rb.velocity *= dashSpeedMultipiler;
-            }
+
+            rb.velocity *= dashSpeedMultipiler;
+
         }
     }
 
-    public bool IsDashing {
+    public bool IsDashing
+    {
         get { return isDashing; }
     }
 }
