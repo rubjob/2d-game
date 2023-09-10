@@ -69,6 +69,9 @@ public class PlayerController : BaseEntity
 
         //reset animation condition
         animator.SetBool("isAttackingSide", false);
+        animator.SetBool("isAttacking1", false);
+        animator.SetBool("isAttacking2", false);
+        animator.SetBool("isAttacking3", false);
         animator.SetBool("isAttackingDown", false);
         animator.SetBool("isAttackingUp", false);
     }

@@ -8,6 +8,7 @@ public class PrimaryAttack : BaseEntityState
 {
     private float mAngle;
     private int comboCount;
+    public PlayerController playerController;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class PrimaryAttack : BaseEntityState
         comboCount = 0;
     }
 
-    private void Update() {}
+    private void Update() { }
 
     protected override void Action(GameObject[] targets)
     {
@@ -23,12 +24,15 @@ public class PrimaryAttack : BaseEntityState
         {
             case 1:
                 attackDamage = 80;
+                playerController.animator.SetBool("isAttacking1", true);
                 break;
             case 2:
                 attackDamage = 120;
+                playerController.animator.SetBool("isAttacking2", true);
                 break;
             case 3:
                 attackDamage = 250;
+                playerController.animator.SetBool("isAttacking3", true);
                 break;
             default:
                 break;
@@ -44,7 +48,7 @@ public class PrimaryAttack : BaseEntityState
     }
     private int SuccessiveAttack()
     {
-        if (attackWindow < 1.5f && comboCount < 3)
+        if (attackWindow < 1f && comboCount < 3)
         {
             comboCount += 1;
         }
