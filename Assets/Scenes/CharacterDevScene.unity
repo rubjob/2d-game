@@ -3899,6 +3899,24 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6438685618538553682, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
   m_PrefabInstance: {fileID: 2906230825165880955}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1678429466 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8668597462182679634, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+  m_PrefabInstance: {fileID: 2906230825165880955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678429468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678429445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706a6a4a905ad3d4c89b868038fb6ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1678429466}
 --- !u!1 &1942752118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,7 +4133,11 @@ PrefabInstance:
       objectReference: {fileID: 1678429463}
     - target: {fileID: 8668597462182679634, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       propertyPath: m_BodyType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668597462182679634, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4127,6 +4149,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1678429452}
+    - targetCorrespondingSourceObject: {fileID: 5902188337208266331, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1678429468}
   m_SourcePrefab: {fileID: 100100000, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
 --- !u!4 &7936431383890160591
 Transform:
@@ -4178,6 +4203,8 @@ MonoBehaviour:
   attackDamage: 40
   attackSpeed: 3
   playerController: {fileID: 792200471}
+  knockbackStrength: 10
+  knockbackDelay: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
