@@ -3124,6 +3124,7 @@ GameObject:
   - component: {fileID: 792200472}
   - component: {fileID: 792200475}
   - component: {fileID: 792200474}
+  - component: {fileID: 792200476}
   - component: {fileID: 792200471}
   m_Layer: 0
   m_Name: Player
@@ -3201,9 +3202,8 @@ MonoBehaviour:
     EntityState: {fileID: 996538971}
     AnimationTriggerName: HeavyAttack
   movementSpeed: 5
-  dashSpeedMultipiler: 5
-  dashDuration: 0
   mouseUtil: {fileID: 1330045769}
+  dash: {fileID: 792200476}
 --- !u!61 &792200472
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3367,6 +3367,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &792200476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792200467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f5ee4d272f7234189c378f0dcfa83c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 792200469}
+  dashSpeedMultipiler: 5
+  dashDuration: 0.7
+  dashCooldown: 0.5
 --- !u!1 &957831470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3877,6 +3893,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 295423397568812637, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
   m_PrefabInstance: {fileID: 2906230825165880955}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1678429463 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6438685618538553682, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+  m_PrefabInstance: {fileID: 2906230825165880955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1942752118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,6 +4108,10 @@ PrefabInstance:
       propertyPath: IsInvulnerable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6461867472328072006, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1678429463}
     - target: {fileID: 8668597462182679634, guid: 506b3da2ae3210148a84c6a8d05ee17e, type: 3}
       propertyPath: m_BodyType
       value: 2

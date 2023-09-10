@@ -6,37 +6,27 @@ public class PlayerController : BaseEntity
 {
     [Header("Player Controller")]
     public float movementSpeed = 5f;
-    public float dashSpeedMultipiler = 5f, dashDuration;
 
     [Header("Mouse Util")]
     public MouseUtil mouseUtil;
 
+    [Header("Dash Script")]
+    public DashScript dash;
+
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
-    private float nextDash;
-    private bool isDashing;
+
     private void Start()
     {
         Setup();
-        nextDash = -0.5f;
-        isDashing = false;
-        dashDuration = 0.7f;
+
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-
-        if (nextDash - Time.time < 0.5f)
-        {
-
-            // Debug.Log(Time.time - nextDash);
-
-            isDashing = false;
-            rb.velocity = Vector2.zero;
-        }
         // Movement
-        if (!isDashing)
+        if (!dash.IsDashing)
         {
             velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             velocity = velocity.normalized * movementSpeed;
@@ -61,8 +51,8 @@ public class PlayerController : BaseEntity
         else if (Input.GetAxis("Fire2") == 1)
             PerformAction(BindingState.HeavyAttack);
 
-        else if (Input.GetAxis("Jump") == 1 && Time.time > nextDash + 0.5f)
-            Dash();
+        else if (Input.GetAxis("Jump") == 1)
+            dash.Dash();
     }
     public void LockMovement() {
         float attackSpeed = GetCurrentState().EntityState.attackSpeed;
@@ -78,20 +68,6 @@ public class PlayerController : BaseEntity
         animator.SetBool("isAttackingSide", false);
         animator.SetBool("isAttackingDown", false);
         animator.SetBool("isAttackingUp", false);
-    }
-
-    private void Dash()
-    {
-        isDashing = true;
-        nextDash = Time.time + dashDuration;
-        if (rb.velocity == Vector2.zero)
-        {
-            // rb.velocity = sr.flipX ? new Vector2(-movementSpeed, 0) : new Vector2(movementSpeed, 0);
-        }
-        else
-        {
-            rb.velocity *= dashSpeedMultipiler;
-        }
     }
 
     protected override void OnPerformingAction()
