@@ -7,7 +7,7 @@ using UnityEngine;
 public class PrimaryAttack : BaseEntityState
 {
     public PlayerController playerController;
-    public float knockbackStrength = 16f;
+    public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
     
     private int comboCount;

@@ -3545,6 +3545,9 @@ MonoBehaviour:
   hitbox: {fileID: 1270198798}
   attackDamage: 40
   attackSpeed: 2
+  playerController: {fileID: 792200471}
+  knockbackStrength: 16
+  knockbackDelay: 0.15
 --- !u!1 &1038304462
 GameObject:
   m_ObjectHideFlags: 3
