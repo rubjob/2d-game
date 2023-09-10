@@ -22,11 +22,11 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1317168366, guid: 31c546c30bea36a49bed9056eecfdedc, type: 3}
-    - time: 0.16666667
+    - time: 0.3
       value: {fileID: -1894532570, guid: 31c546c30bea36a49bed9056eecfdedc, type: 3}
-    - time: 0.33333334
+    - time: 0.53333336
       value: {fileID: 1267955835, guid: 31c546c30bea36a49bed9056eecfdedc, type: 3}
-    - time: 0.5
+    - time: 0.8333333
       value: {fileID: 1267955835, guid: 31c546c30bea36a49bed9056eecfdedc, type: 3}
     attribute: m_Sprite
     path: 
@@ -59,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.84999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,7 +86,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.8333333
     functionName: UnlockMovement
     data: 
     objectReferenceParameter: {fileID: 0}

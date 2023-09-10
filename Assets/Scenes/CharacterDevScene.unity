@@ -3201,6 +3201,7 @@ MonoBehaviour:
   - StateBinding: 2
     EntityState: {fileID: 996538971}
     AnimationTriggerName: HeavyAttack
+  defaultMovementSpeed: 5
   movementSpeed: 5
   mouseUtil: {fileID: 1330045769}
   dash: {fileID: 792200476}
