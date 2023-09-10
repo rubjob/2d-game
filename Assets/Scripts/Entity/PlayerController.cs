@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : BaseEntity
 {
     [Header("Player Controller")]
+    public float defaultMovementSpeed = 5f;
     public float movementSpeed = 5f;
 
     [Header("Mouse Util")]
@@ -31,29 +32,27 @@ public class PlayerController : BaseEntity
             velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             velocity = velocity.normalized * movementSpeed;
             rb.velocity = velocity;
+            velocity = GetComponent<Rigidbody2D>().velocity;
+            // Play walking animation
+            bool isMoving = velocity != Vector2.zero;
+            animator.SetBool("isMoving", isMoving);
+            if (isMoving && velocity.x != 0)
+            {
+                spriteRenderer.flipX = velocity.x < 0;
+            }
         }
 
-        // Play animation
-        velocity = GetComponent<Rigidbody2D>().velocity;
-        bool isMoving = velocity != Vector2.zero;
 
-        animator.SetBool("isMoving", isMoving);
-        if (isMoving && velocity.x != 0)
-        {
-            spriteRenderer.flipX = velocity.x < 0;
-        }
-
-        // Combat
+        // Combat input
         UpdateHitBox(mouseUtil.GetMouseAngle());
 
         if (Input.GetAxis("Fire1") == 1)
             PerformAction(BindingState.PrimaryAttack);
-
         else if (Input.GetAxis("Fire2") == 1)
             PerformAction(BindingState.HeavyAttack);
-
         else if (Input.GetAxis("Jump") == 1)
             dash.Dash();
+
     }
     public void LockMovement()
     {
@@ -65,15 +64,7 @@ public class PlayerController : BaseEntity
     public void UnlockMovement()
     {
         animator.speed = 1f;
-        movementSpeed = 5f;
-
-        //reset animation condition
-        animator.SetBool("isAttackingSide", false);
-        animator.SetBool("isAttacking1", false);
-        animator.SetBool("isAttacking2", false);
-        animator.SetBool("isAttacking3", false);
-        animator.SetBool("isAttackingDown", false);
-        animator.SetBool("isAttackingUp", false);
+        movementSpeed = defaultMovementSpeed;
     }
 
     protected override void OnPerformingAction()
@@ -83,23 +74,23 @@ public class PlayerController : BaseEntity
         {
             //attack right animation
             spriteRenderer.flipX = false;
-            animator.SetBool("isAttackingSide", true);
+            animator.SetTrigger("isAttackingSide");
         }
         else if (mAngle >= 135 || mAngle <= -135)
         {
             //attack left animation
             spriteRenderer.flipX = true;
-            animator.SetBool("isAttackingSide", true);
+            animator.SetTrigger("isAttackingSide");
         }
         else if (mAngle < -45 && mAngle > -135)
         {
             //attack down animation
-            animator.SetBool("isAttackingDown", true);
+            animator.SetTrigger("isAttackingDown");
         }
         else if (mAngle > 45 && mAngle < 135)
         {
             //attack up animation
-            animator.SetBool("isAttackingUp", true);
+            animator.SetTrigger("isAttackingUp");
         }
     }
     protected override void OnTakenDamage(float amount) { }

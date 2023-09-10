@@ -24,15 +24,15 @@ public class PrimaryAttack : BaseEntityState
         {
             case 1:
                 attackDamage = 80;
-                playerController.animator.SetBool("isAttacking1", true);
+                playerController.animator.SetTrigger("isAttacking1");
                 break;
             case 2:
                 attackDamage = 120;
-                playerController.animator.SetBool("isAttacking2", true);
+                playerController.animator.SetTrigger("isAttacking2");
                 break;
             case 3:
                 attackDamage = 250;
-                playerController.animator.SetBool("isAttacking3", true);
+                playerController.animator.SetTrigger("isAttacking3");
                 break;
             default:
                 break;

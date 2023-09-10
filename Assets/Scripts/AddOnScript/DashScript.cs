@@ -36,7 +36,7 @@ public class DashScript : MonoBehaviour
         {
             isDashing = true;
             nextDash = currentTime + dashDuration;
-
+            pc.animator.SetBool("isMoving", false);
             if (rb.velocity == Vector2.zero)
             {
                 rb.velocity = pc.spriteRenderer.flipX ? new Vector2(-pc.movementSpeed, 0) : new Vector2(pc.movementSpeed, 0);
