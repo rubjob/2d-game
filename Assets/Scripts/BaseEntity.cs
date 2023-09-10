@@ -50,12 +50,12 @@ public abstract class BaseEntity : MonoBehaviour
         }
     }
 
-    protected void Attack(BindingState state)
+    protected void PerformAction(BindingState state)
     {
         SetState(state);
 
         if (GetCurrentState().EntityState.IsReadyToChange()) {
-            OnAttacking();
+            OnPerformingAction();
             animator.SetTrigger(GetCurrentState().AnimationTriggerName);
         }
 
@@ -81,7 +81,7 @@ public abstract class BaseEntity : MonoBehaviour
     }
 
     // Abstract method
-    protected abstract void OnAttacking();
+    protected abstract void OnPerformingAction();
     protected abstract void OnTakenDamage(float damage);
     protected abstract void OnDead();
 

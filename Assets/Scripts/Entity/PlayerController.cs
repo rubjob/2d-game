@@ -56,10 +56,10 @@ public class PlayerController : BaseEntity
         UpdateHitBox(mouseUtil.GetMouseAngle());
 
         if (Input.GetAxis("Fire1") == 1)
-            Attack(BindingState.PrimaryAttack);
+            PerformAction(BindingState.PrimaryAttack);
 
         else if (Input.GetAxis("Fire2") == 1)
-            Attack(BindingState.HeavyAttack);
+            PerformAction(BindingState.HeavyAttack);
 
         else if (Input.GetAxis("Jump") == 1 && Time.time > nextDash + 0.5f)
             Dash();
@@ -94,7 +94,7 @@ public class PlayerController : BaseEntity
         }
     }
 
-    protected override void OnAttacking()
+    protected override void OnPerformingAction()
     {
         float mAngle = mouseUtil.GetMouseAngle();
         if (mAngle <= 45 && mAngle >= -45) {

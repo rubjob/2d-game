@@ -9,7 +9,7 @@ public class DummyController : BaseEntity
         Setup();
     }
 
-    protected override void OnAttacking() { }
+    protected override void OnPerformingAction() { }
 
     protected override void OnTakenDamage(float amount)
     {
