@@ -1,61 +1,71 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PrimaryAttack : BasePlayerState
+public class PrimaryAttack : BaseEntityState
 {
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    PlayerController playerController;
-    private Animator anim;
-
-    int combo;
-
-
+    public PlayerController playerController;
+    public float knockbackStrength = 5f;
+    public float knockbackDelay = 0.15f;
+    
+    private int comboCount;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        playerController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerController>();
-        anim = GetComponent<Animator>();
-        combo = 0;
-    }
-    private void Update()
-    {
-        // Play animation
-        Vector2 velocity = player.GetComponent<Rigidbody2D>().velocity;
-        bool isMoving = velocity != Vector2.zero;
+        Setup();
+        comboCount = 0;
 
-        animator.SetBool("isMoving", isMoving);
-        if (isMoving && velocity.x != 0)
+        rb = playerController.GetComponent<Rigidbody2D>();
+    }
+
+    private void Update() { }
+
+    protected override void Action(GameObject[] targets)
+    {
+        switch (SuccessiveAttack())
         {
-            spriteRenderer.flipX = velocity.x < 0;
+            case 1:
+                attackDamage = 80;
+                playerController.animator.SetTrigger("isAttacking1");
+                break;
+            case 2:
+                attackDamage = 120;
+                playerController.animator.SetTrigger("isAttacking2");
+                break;
+            case 3:
+                attackDamage = 250;
+                playerController.animator.SetTrigger("isAttacking3");
+                break;
+            default:
+                break;
+        }
+
+        if (targets.Length > 0)
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                targets[i].GetComponent<HealthScript>().TakeDamage(attackDamage);
+
+                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
+                Vector2 direction = (kb.rb.position - rb.position).normalized;
+                kb.Knockback(direction, knockbackStrength, knockbackDelay);
+
+            }
         }
     }
-
-    protected override void Action(GameObject target)
+    private int SuccessiveAttack()
     {
-
-        if (combo == 0)
+        if (attackWindow < 1f && comboCount < 3)
         {
-            anim.SetTrigger("Attack");
-
+            comboCount += 1;
         }
-        if (target != null)
+        else
         {
-            target.GetComponent<BaseEntity>().takeDamage(attackDamage);
-
+            comboCount = 1;
         }
+        return comboCount;
     }
-    public void lockMovement()
-    {
-        playerController.movementSpeed = 0;
-        combo += 1;
-    }
-    public void unlockMovement()
-    {
-        playerController.movementSpeed = 5f;
-        combo -= 1;
-
-    }
-
 }

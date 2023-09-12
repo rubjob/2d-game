@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player_attack_side
+  m_Name: player_attack_down
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -23,11 +23,11 @@ AnimationClip:
     - time: 0
       value: {fileID: -387649980, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
     - time: 0.33333334
-      value: {fileID: -268932963, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+      value: {fileID: -240936450, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
     - time: 0.65
-      value: {fileID: -2086213112, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+      value: {fileID: -586152765, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
     - time: 0.98333335
-      value: {fileID: -2086213112, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+      value: {fileID: -586152765, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -51,15 +51,15 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: -387649980, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
-    - {fileID: -268932963, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
-    - {fileID: -2086213112, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
-    - {fileID: -2086213112, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+    - {fileID: -240936450, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+    - {fileID: -586152765, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
+    - {fileID: -586152765, guid: 25035e82eb0438f4f85302f98c01cb42, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0333333
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,7 +86,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.0333333
+  - time: 1
     functionName: UnlockMovement
     data: 
     objectReferenceParameter: {fileID: 0}

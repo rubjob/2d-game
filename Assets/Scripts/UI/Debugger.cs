@@ -20,9 +20,9 @@ public class Debugger : MonoBehaviour
         Player.takeDamage(Player.maxHealth);
     }
 
-    public void healPlayer(){
-        Player.heal(amount);
-    }
+    // public void healPlayer(){
+    //     Player.OnHeal(amount);
+    // }
 
     public void decreaseHealthbar(){
         healthBar.decreaseHealth(amount);

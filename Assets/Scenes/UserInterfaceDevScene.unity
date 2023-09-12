@@ -1706,7 +1706,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3737,6 +3737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1014942700}
   - component: {fileID: 1014942701}
+  - component: {fileID: 1014942702}
   m_Layer: 5
   m_Name: Skill E
   m_TagString: Untagged
@@ -3817,6 +3818,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1014942702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014942699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51215168189e744f96666e1b73a990f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1014942701}
+  cooldown: 10
+  key: 101
 --- !u!1 &1022657886
 GameObject:
   m_ObjectHideFlags: 0
@@ -5906,6 +5922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1963692138}
   - component: {fileID: 1963692139}
+  - component: {fileID: 1963692140}
   m_Layer: 5
   m_Name: Skill Q
   m_TagString: Untagged
@@ -5986,6 +6003,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1963692140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963692137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51215168189e744f96666e1b73a990f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1963692139}
+  cooldown: 3
+  key: 113
 --- !u!1 &2077837435
 GameObject:
   m_ObjectHideFlags: 0

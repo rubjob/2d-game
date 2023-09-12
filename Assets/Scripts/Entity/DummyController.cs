@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class DummyController : BaseEntity
 {
-    public Animator animator;
+    private void Start()
+    {
+        Setup();
+    }
+
+    protected override void OnPerformingAction() { }
 
     protected override void OnTakenDamage(float amount)
     {
