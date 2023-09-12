@@ -11,21 +11,21 @@ public class Debugger : MonoBehaviour
 
     public HealthBar healthBar;
 
-    public void decreasePlayerHealth() {
-        // Player.takeDamage(amount);
-        Player.takeDamage(amount);
-    }
+    // public void decreasePlayerHealth() {
+    //     // Player.takeDamage(amount);
+    //     Player.takeDamage(amount);
+    // }
 
-    public void killPlayer(){
-        Player.takeDamage(Player.maxHealth);
-    }
+    // public void killPlayer(){
+    //     Player.takeDamage(Player.maxHealth);
+    // }
 
     // public void healPlayer(){
     //     Player.OnHeal(amount);
     // }
 
-    public void decreaseHealthbar(){
-        healthBar.decreaseHealth(amount);
-    }
+    // public void decreaseHealthbar(){
+    //     healthBar.decreaseHealth(amount);
+    // }
 
 }

@@ -5,12 +5,6 @@ using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour {
-    [Header("Base Entity")]
-    public bool IsInvulnerable = false;
-    public float maxHealth = 100f;
-
-    protected float health;
-    //dev---------------------------------------------------
     [Header("Animation")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -63,36 +57,6 @@ public abstract class BaseEntity : MonoBehaviour {
     protected abstract void OnPerformingAction();
 
 
-    //----------------------------------------------------------------------------
-
-    // public BaseEntity() {
-    //     health = maxHealth;
-    //     Debug.Log("Base; Base : "+health + ", " + maxHealth);
-    // }
-
-    public float Health {
-        get { return health; }
-    }
-
-    public void takeDamage(float amount) {
-        if (!IsInvulnerable) {
-            health -= amount;
-        }
-
-        if (health <= 0f) {
-            OnDead();
-        } else {
-            OnTakenDamage(amount);
-        }
-
-    }
-
-    
-
-
-    protected abstract void OnTakenDamage(float damage);
-    protected abstract void OnHeal(float amount);
-    protected abstract void OnDead();
 
 
 

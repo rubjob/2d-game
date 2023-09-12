@@ -16,22 +16,11 @@ public class PlayerController : BaseEntity
 
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
-
-    // private BasePlayerState playerState;
-    public HealthBar healthBar;
-
     private void Start()
     {
         Setup();
 
         rb = GetComponent<Rigidbody2D>();
-
-        //---------------------------------------
-        Debug.Log("Player; start : "+maxHealth);
-        healthBar.setMaxHealth(maxHealth);
-        
-        health=maxHealth;
-        Debug.Log("Player; Player : "+health + ", " + maxHealth);
 
     }
 
@@ -105,25 +94,4 @@ public class PlayerController : BaseEntity
         }
     }
 
-//----------------??
-    protected override void OnTakenDamage(float amount)
-    {
-
-        Debug.Log("Player; Damage : "+ amount);
-        healthBar.decreaseHealth(amount); 
-    }
-
-    
-    protected override void OnHeal(float amount)
-    {
-        Debug.Log("Player; Heal: "+ amount);
-        healthBar.increaseHealth(amount);
-
-    }
-
-    protected override void OnDead()
-    {
-        healthBar.decreaseHealth(healthBar.slider.value); 
-
-    }
 }

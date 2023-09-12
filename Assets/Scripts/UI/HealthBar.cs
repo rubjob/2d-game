@@ -13,23 +13,28 @@ public class HealthBar : MonoBehaviour
 
     public TextMeshProUGUI textHealth;
 
-
-    public void setMaxHealth(float health){
-        slider.maxValue=health;
-        slider.value=health;
+    public void setMaxHealth(float maxHealth){
+        slider.maxValue=maxHealth;
+        slider.value=maxHealth;
 
         fill.color=gradient.Evaluate(1f);
         updateText();
     }
 
-    public void decreaseHealth(float amount){
-        slider.value-=amount;
-        fill.color=gradient.Evaluate(slider.normalizedValue);
-        updateText();
-    }
+    // public void decreaseHealth(float amount){
+    //     slider.value-=amount;
+    //     fill.color=gradient.Evaluate(slider.normalizedValue);
+    //     updateText();
+    // }
 
-    public void increaseHealth(float amount){
-        slider.value+=amount;
+    // public void increaseHealth(float amount){
+    //     slider.value+=amount;
+    //     fill.color=gradient.Evaluate(slider.normalizedValue);
+    //     updateText();
+    // }
+
+    public void setHealth(float health){
+        slider.value=health;
         fill.color=gradient.Evaluate(slider.normalizedValue);
         updateText();
     }

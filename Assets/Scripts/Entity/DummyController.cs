@@ -11,19 +11,4 @@ public class DummyController : BaseEntity
 
     protected override void OnPerformingAction() { }
 
-    protected override void OnTakenDamage(float amount)
-    {
-        Debug.Log("Damaged taken: " + amount);
-        animator.SetTrigger("isDamaged");
-    }
-
-    protected override void OnDead()
-    {
-        Debug.Log("IM DEAD ARRRRRRRRRRRRRRRRRRRRRR");
-    }
-
-    protected override void OnHeal(float amount)
-    {
-       
-    }
 }
