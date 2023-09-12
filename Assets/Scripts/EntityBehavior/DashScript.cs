@@ -43,6 +43,7 @@ public class DashScript : MonoBehaviour
             }
 
             rb.velocity *= dashSpeedMultipiler;
+            pc.animator.SetTrigger("Dash");
 
         }
     }

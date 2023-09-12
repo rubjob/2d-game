@@ -16,12 +16,14 @@ public class PlayerController : BaseEntity
 
     private Rigidbody2D rb;
     private Vector2 velocity = Vector2.zero;
+    private bool inAction;
 
     private void Start()
     {
         Setup();
 
         rb = GetComponent<Rigidbody2D>();
+        inAction = false;
     }
 
     private void FixedUpdate()
@@ -50,7 +52,7 @@ public class PlayerController : BaseEntity
             PerformAction(BindingState.PrimaryAttack);
         else if (Input.GetAxis("Fire2") == 1)
             PerformAction(BindingState.HeavyAttack);
-        else if (Input.GetAxis("Jump") == 1)
+        else if (Input.GetAxis("Jump") == 1 && !inAction)
             dash.Dash();
 
     }
@@ -59,12 +61,14 @@ public class PlayerController : BaseEntity
         float attackSpeed = GetCurrentState().EntityState.attackSpeed;
         animator.speed = (attackSpeed >= 1) ? attackSpeed : 1f;
         movementSpeed = 0;
+        inAction = true;
     }
 
     public void UnlockMovement()
     {
         animator.speed = 1f;
         movementSpeed = defaultMovementSpeed;
+        inAction = false;
     }
 
     protected override void OnPerformingAction()
