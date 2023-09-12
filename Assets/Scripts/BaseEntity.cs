@@ -1,52 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
 {
-    [Header("Base Entity")]
-    public bool IsInvulnerable = false;
-    public float maxHealth = 100f;
+    [Header("Animation")]
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
-    protected float health;
+    [Header("Entity States")]
+    public BindingState currentState;
+    public EntityStateBinding[] stateBindings;
+    private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
 
-    private void Start()
+    protected void Setup()
     {
-        health = maxHealth;
+        foreach (EntityStateBinding e in stateBindings)
+            states.Add(e.StateBinding, e);
     }
 
-    public float Health
+    // State
+    protected void SetState(BindingState state)
     {
-        get { return health; }
+        if (GetCurrentState().EntityState.IsReadyToChange())
+            currentState = state;
     }
 
-    public void takeDamage(float amount)
+    protected EntityStateBinding GetCurrentState()
     {
-        if (!IsInvulnerable)
-        {
-            health -= amount;
-        }
+        return states[currentState];
+    }
 
-        if (health <= 0f)
+    // Combat
+    protected void UpdateHitBox(float angle)
+    {
+        foreach (KeyValuePair<BindingState, EntityStateBinding> entry in states)
         {
-            OnDead();
-        }
-        else
-        {
-            OnTakenDamage(amount);
+            entry.Value.EntityState.hitbox.RotateTo(angle);
         }
     }
 
-    public void heal(float amount)
+    protected void PerformAction(BindingState state)
     {
-        if (!IsInvulnerable)
-        {
-            health += amount;
+        SetState(state);
+
+        if (GetCurrentState().EntityState.IsReadyToChange()) {
+            OnPerformingAction();
+            animator.SetTrigger(GetCurrentState().AnimationTriggerName);
         }
 
-        if (health > maxHealth) health = maxHealth;
+        GetCurrentState().EntityState.PerformAction();
     }
 
-    protected abstract void OnTakenDamage(float damage);
-    protected abstract void OnDead();
+    // Abstract method
+    protected abstract void OnPerformingAction();
 }

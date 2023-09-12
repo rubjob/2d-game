@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class DummyController : BaseEntity
 {
-    public Animator animator;
+    private void Start()
+    {
+        Setup();
+    }
 
-    protected override void OnTakenDamage(float amount)
+    protected override void OnPerformingAction() { }
+
+    public void OnTakenDamage(float amount)
     {
         Debug.Log("Damaged taken: " + amount);
         animator.SetTrigger("isDamaged");
     }
 
-    protected override void OnDead()
+    public void OnDead()
     {
         Debug.Log("IM DEAD ARRRRRRRRRRRRRRRRRRRRRR");
     }

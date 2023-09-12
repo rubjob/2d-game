@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ab0477a6f78f40f1af5a661fe933b9a
+guid: 31c546c30bea36a49bed9056eecfdedc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_1799_0
+      name: 3NAttack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 63
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -137,239 +137,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87fc697fcfcb7477e98b4e9a024e7013
-      internalID: -1605596766
+      spriteID: 2cdc901a33b53c04db820236ad967e9b
+      internalID: -1317168366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_1799_1
+      name: 3NAttack_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 64
-        width: 64
+        width: 86
         height: 64
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ac911cd3c5d943c29214370f50f48f6
-      internalID: -185022077
+      spriteID: 58a2b82f7d7efb24eaf79ad965cf797c
+      internalID: -1894532570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_1799_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d20544defc53546c0bf389e2345f0c41
-      internalID: 1539740325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0474968f8028146f99fda5b8e74636b5
-      internalID: -272385149
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_4
+      name: 3NAttack_2
       rect:
         serializedVersion: 2
         x: 256
         y: 64
-        width: 64
+        width: 94
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4547051, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf0c2807b40ab4a79b96a040960c3291
-      internalID: 1933535568
+      spriteID: 60eb64727d0764a48a1fa7f95501d5b6
+      internalID: 1255046364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_1799_5
+      name: 3NAttack_3
       rect:
         serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01e7637740eb945b8a85af3dea15fd7a
-      internalID: 1867441874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_6
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 63
         y: 0
-        width: 64
+        width: 86
         height: 64
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fca3b85e987343c99308f507bdecd15
-      internalID: -743728872
+      spriteID: 311e07183d13bbd4cb91f6973b30e191
+      internalID: 1267955835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_1799_7
+      name: 3NAttack_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 208
         y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 48
+        height: 78
+      alignment: 9
+      pivot: {x: 0.4953308, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eacc2fd21ec2644dfb1316a2bf130c1d
-      internalID: -1092221793
+      spriteID: 25e54eaa0a07e804e94106afb522c830
+      internalID: -1080997193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_1799_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be266e07403d3476dac14f8fc716f549
-      internalID: 537348390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_9
-      rect:
-        serializedVersion: 2
-        x: 193
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e12f15eabc194b4cb50ed905284f222
-      internalID: -1028652968
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_10
+      name: 3NAttack_5
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
+        width: 95
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.45282304, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38c7bf70c13344ef19d674db96c88d1c
-      internalID: -133281921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_1799_11
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c707c41a41ee4e0ebef853bf3bad450
-      internalID: 1407187960
+      spriteID: 5e64756b20a62b147a9f0ebafe3ebb7b
+      internalID: -980863857
       vertices: []
       indices: 
       edges: []
@@ -385,18 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IMG_1799_0: -1605596766
-      IMG_1799_1: -185022077
-      IMG_1799_10: -133281921
-      IMG_1799_11: 1407187960
-      IMG_1799_2: 1539740325
-      IMG_1799_3: -272385149
-      IMG_1799_4: 1933535568
-      IMG_1799_5: 1867441874
-      IMG_1799_6: -743728872
-      IMG_1799_7: -1092221793
-      IMG_1799_8: 537348390
-      IMG_1799_9: -1028652968
+      3NAttack_0: -1317168366
+      3NAttack_1: -1894532570
+      3NAttack_2: 1255046364
+      3NAttack_3: 1267955835
+      3NAttack_4: -1080997193
+      3NAttack_5: -980863857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
