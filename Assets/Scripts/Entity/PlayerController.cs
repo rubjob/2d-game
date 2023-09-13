@@ -59,7 +59,7 @@ public class PlayerController : BaseEntity
             PerformAction(BindingState.PrimaryAttack);
         else if (HeavyAttack.action.IsInProgress())
             PerformAction(BindingState.HeavyAttack);
-        else if (Dash.action.IsInProgress())
+        else if (Dash.action.IsInProgress() && !inAction)
             dash.Dash();
 
     }
