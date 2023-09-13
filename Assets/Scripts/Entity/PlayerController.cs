@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : BaseEntity
 {
     [Header("Player Controller")]
     public float defaultMovementSpeed = 5f;
     public float movementSpeed = 5f;
+
+    [Header("Input")]
+    public InputActionReference MovementInput;
+    public InputActionReference NormalAttack;
+    public InputActionReference HeavyAttack;
+    public InputActionReference Dash;
 
     [Header("Mouse Util")]
     public MouseUtil mouseUtil;
@@ -31,7 +38,7 @@ public class PlayerController : BaseEntity
         // Movement
         if (!dash.IsDashing)
         {
-            velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            velocity = MovementInput.action.ReadValue<Vector2>();
             velocity = velocity.normalized * movementSpeed;
             rb.velocity = velocity;
             velocity = GetComponent<Rigidbody2D>().velocity;
@@ -48,11 +55,11 @@ public class PlayerController : BaseEntity
         // Combat input
         UpdateHitBox(mouseUtil.GetMouseAngle());
 
-        if (Input.GetAxis("Fire1") == 1)
+        if (NormalAttack.action.IsInProgress())
             PerformAction(BindingState.PrimaryAttack);
-        else if (Input.GetAxis("Fire2") == 1)
+        else if (HeavyAttack.action.IsInProgress())
             PerformAction(BindingState.HeavyAttack);
-        else if (Input.GetAxis("Jump") == 1 && !inAction)
+        else if (Dash.action.IsInProgress())
             dash.Dash();
 
     }
