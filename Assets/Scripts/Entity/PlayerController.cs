@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public InputActionReference MovementInput;
     public InputActionReference NormalAttack;
     public InputActionReference HeavyAttack;
+    public InputActionReference QAttack;
     public InputActionReference Dash;
 
     [Header("Mouse Util")]
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
             baseEntity.PerformAction(BindingState.PrimaryAttack);
         else if (HeavyAttack.action.IsInProgress())
             baseEntity.PerformAction(BindingState.HeavyAttack);
+        else if (QAttack.action.IsInProgress())
+            baseEntity.PerformAction(BindingState.QAttack);
         else if (Dash.action.IsInProgress() && !inAction)
             dash.Dash();
 
