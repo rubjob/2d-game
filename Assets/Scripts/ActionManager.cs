@@ -13,7 +13,9 @@ public class ActionManager : MonoBehaviour {
     [Header("Entity States")]
     public BindingState currentState;
     public EntityStateBinding[] stateBindings;
+
     private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
+    private Dictionary<BindingState, float> cooldowns = new Dictionary<BindingState, float>();
 
     [Header("Mouse Util")]
     public MouseUtil MouseUtil;
@@ -26,6 +28,9 @@ public class ActionManager : MonoBehaviour {
         foreach (EntityStateBinding e in stateBindings)
             states.Add(e.StateBinding, e);
 
+        foreach (EntityStateBinding e in stateBindings)
+            cooldowns.Add(e.StateBinding, 0);
+
         StartCoroutine(DetectAction());
     }
 
@@ -37,7 +42,7 @@ public class ActionManager : MonoBehaviour {
     private IEnumerator DetectAction() {
         while (true) {
             foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
-                if (e.Value.InputBinding.action.IsInProgress()) {
+                if (e.Value.InputBinding.action.IsInProgress() && cooldowns[e.Key] <= Time.time) {
                     SetState(e.Key);
 
                     OnActionStarting?.Invoke();
@@ -48,7 +53,12 @@ public class ActionManager : MonoBehaviour {
                     // Play animation and wait for return
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
 
+                    // Set cooldown
+                    cooldowns[e.Key] = Time.time + GetCurrentState().EntityState.CooldownDuration;
+
+                    // Reset animation speed
                     animator.speed = 1f;
+
                     OnActionEnded?.Invoke();
 
                     // Padding between action

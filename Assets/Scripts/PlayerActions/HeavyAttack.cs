@@ -19,6 +19,7 @@ public class HeavyAttack : BaseEntityState {
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
+    public override float CooldownDuration => 0;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);

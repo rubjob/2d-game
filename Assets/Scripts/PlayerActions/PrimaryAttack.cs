@@ -24,6 +24,7 @@ public class PrimaryAttack : BaseEntityState {
     public override float AttackDamage => attackDamage[comboCount - 1];
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
+    public override float CooldownDuration => 0;
 
     private void Start()
     {

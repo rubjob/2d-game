@@ -11,6 +11,7 @@ public class QAttack : BaseEntityState {
     [SerializeField] private HitboxManager hitbox;
     [SerializeField] private float attackDamage = 20f;
     [SerializeField] private float attackSpeed = 1.5f;
+    [SerializeField] private float cooldownTime = 1.5f;
 
     [Header("Knockback")]
     public float knockbackStrength = 5f;
@@ -19,6 +20,7 @@ public class QAttack : BaseEntityState {
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
+    public override float CooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);

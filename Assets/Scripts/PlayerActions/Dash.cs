@@ -13,7 +13,7 @@ public class Dash : BaseEntityState
     [Header("Dash")]
     public float DashSpeedMultipiler = 5f;
     public float DashDuration = 0.7f;
-    public float DashCooldown = 0.5f;
+    [SerializeField] private float DashCooldown = 3f;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.SetBool("isMoving", false);
@@ -31,4 +31,5 @@ public class Dash : BaseEntityState
     public override float AttackDamage => throw new System.NotImplementedException();
     public override float AttackSpeed => throw new System.NotImplementedException();
     public override HitboxManager Hitbox => null;
+    public override float CooldownDuration => DashCooldown;
 }
