@@ -20,8 +20,11 @@ public class QAttack : BaseEntityState {
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
 
-    public override void OnPlayingAnimation() {
+    public override IEnumerator OnPlayingAnimation() {
+        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
         animator.SetTrigger("HeavyAttack");
+
+        yield return new WaitForSeconds(1f / AttackSpeed);
     }
 
     public override void OnDealingDamage() {

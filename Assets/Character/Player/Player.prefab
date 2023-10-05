@@ -370,6 +370,7 @@ Transform:
   - {fileID: 7869476029910133058}
   - {fileID: 2738074201350965839}
   - {fileID: 2512079579171595519}
+  - {fileID: 4287497149994260285}
   m_Father: {fileID: 953259770894349948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5269510746967378766
@@ -631,6 +632,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eedffb4ab29324cb20489953d1bf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6481033139033730946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4287497149994260285}
+  - component: {fileID: 6593363417168817168}
+  m_Layer: 0
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4287497149994260285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481033139033730946}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6859825942091251658}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6593363417168817168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481033139033730946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f5ee4d272f7234189c378f0dcfa83c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 6309759953608420159}
+  animator: {fileID: 4685414992071284197}
+  spriteRenderer: {fileID: 2516364384002201549}
+  rb: {fileID: 8650846361892597857}
+  DashSpeedMultipiler: 5
+  DashDuration: 0.35
+  DashCooldown: 0.5
 --- !u!1 &7368747041724914095
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +699,6 @@ GameObject:
   - component: {fileID: 6849628677050085124}
   - component: {fileID: 6309759953608420159}
   - component: {fileID: 7336547913919969989}
-  - component: {fileID: 3440082840182423174}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameController
@@ -834,18 +885,22 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2516364384002201549}
   currentState: 1
   stateBindings:
-  - StateBinding: 0
-    EntityState: {fileID: 3064554099979957020}
-    AnimationTriggerName: Attack
-    InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
   - StateBinding: 1
-    EntityState: {fileID: 4304287089066147463}
-    AnimationTriggerName: HeavyAttack
-    InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    EntityState: {fileID: 3064554099979957020}
+    InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    FocusPointer: 1
   - StateBinding: 2
+    EntityState: {fileID: 4304287089066147463}
+    InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    FocusPointer: 1
+  - StateBinding: 3
     EntityState: {fileID: 6201760617215487117}
-    AnimationTriggerName: HeavyAttack
     InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    FocusPointer: 1
+  - StateBinding: 0
+    EntityState: {fileID: 6593363417168817168}
+    InputBinding: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    FocusPointer: 0
   MouseUtil: {fileID: 5862926858994893956}
   OnActionStarting:
     m_PersistentCalls:
@@ -890,10 +945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMovementSpeed: 5
-  movementSpeed: 5
+  MovementSpeed: 5
   MovementInput: {fileID: -4194649784919457613, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  Dash: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  dash: {fileID: 3440082840182423174}
   animator: {fileID: 4685414992071284197}
   spriteRenderer: {fileID: 2516364384002201549}
 --- !u!114 &7336547913919969989
@@ -919,22 +972,6 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3440082840182423174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7368747041724914095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f5ee4d272f7234189c378f0dcfa83c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8650846361892597857}
-  dashSpeedMultipiler: 5
-  dashDuration: 0.7
-  dashCooldown: 0.5
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0

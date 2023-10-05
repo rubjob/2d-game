@@ -9,6 +9,6 @@ public class EntityStateBinding
 {
     public BindingState StateBinding;
     public BaseEntityState EntityState;
-    public string AnimationTriggerName;
     public InputActionReference InputBinding;
+    public bool FocusPointer;
 }

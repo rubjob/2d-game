@@ -19,7 +19,8 @@ public class ActionManager : MonoBehaviour {
     public MouseUtil MouseUtil;
 
     [Header("Events")]
-    public UnityEvent OnActionStarting, OnActionEnded;
+    public UnityEvent OnActionStarting;
+    public UnityEvent OnActionEnded;
 
     private void Start() {
         foreach (EntityStateBinding e in stateBindings)
@@ -41,13 +42,13 @@ public class ActionManager : MonoBehaviour {
 
                     OnActionStarting?.Invoke();
 
-                    // Play animation
-                    SetAnimationDirection();
-                    GetCurrentState().EntityState.OnPlayingAnimation();
+                    if (GetCurrentState().FocusPointer)
+                        SetAnimationDirection();
 
-                    // Call perform action and wait for function to return
-                    yield return new WaitForSeconds(1f / GetCurrentState().EntityState.AttackSpeed);
+                    // Play animation and wait for return
+                    yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
 
+                    animator.speed = 1f;
                     OnActionEnded?.Invoke();
 
                     // Padding between action
@@ -87,11 +88,11 @@ public class ActionManager : MonoBehaviour {
     }
 
     public void LockMovement() {
-        animator.speed = Mathf.Clamp(GetCurrentState().EntityState.AttackSpeed, 1, float.MaxValue);
+
     }
 
     public void UnlockMovement() {
-        animator.speed = 1f;
+
     }
 
     // State
@@ -106,8 +107,9 @@ public class ActionManager : MonoBehaviour {
     // Combat
     public void UpdateHitBox() {
         float angle = MouseUtil.GetMouseAngle();
-        foreach (KeyValuePair<BindingState, EntityStateBinding> entry in states) {
-            entry.Value.EntityState.Hitbox.RotateTo(angle);
+        foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
+            if (e.Value.EntityState.Hitbox != null)
+                e.Value.EntityState.Hitbox.RotateTo(angle);
         }
     }
 }

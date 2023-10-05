@@ -7,6 +7,6 @@ public abstract class BaseEntityState : MonoBehaviour {
     public abstract float AttackSpeed { get; }
     public abstract HitboxManager Hitbox { get; }
 
-    public abstract void OnPlayingAnimation();
+    public abstract IEnumerator OnPlayingAnimation();
     public abstract void OnDealingDamage();
 }

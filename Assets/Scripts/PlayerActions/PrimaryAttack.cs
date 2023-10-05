@@ -31,11 +31,14 @@ public class PrimaryAttack : BaseEntityState {
             attackWindow = 1f / attackSpeed * 2f;
     }
 
-    public override void OnPlayingAnimation() {
+    public override IEnumerator OnPlayingAnimation() {
         SuccessiveAttack();
 
+        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
         animator.SetTrigger(AnimationTriggerer);
         animator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(1f / AttackSpeed);
     }
 
     public override void OnDealingDamage() {
