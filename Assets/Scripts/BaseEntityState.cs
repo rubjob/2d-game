@@ -10,7 +10,6 @@ public class BaseEntityState : MonoBehaviour
     public HitboxManager hitbox;
     public int attackDamage = 20;
     public float attackSpeed = 1f;
-    public float attackWindow;
 
     private float attackDelay, lastAttackTime;
 
@@ -21,15 +20,9 @@ public class BaseEntityState : MonoBehaviour
         lastAttackTime = -attackDelay;
     }
 
-    public void PerformAction()
-    {
-        float currentTime = Time.time;
-        if (currentTime >= lastAttackTime + attackDelay)
-        {
-            attackWindow = currentTime - lastAttackTime;
-            lastAttackTime = currentTime;
-            Action?.Invoke(hitbox.Trigger.TriggeringObjects);
-        }
+    public IEnumerator PerformAction() {
+        Action?.Invoke(hitbox.Trigger.TriggeringObjects);
+        yield return new WaitForSeconds(attackDelay);
     }
 
     public bool IsReadyToChange()

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BaseEntity))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Controller")]
@@ -29,11 +28,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    private BaseEntity baseEntity;
+    private ActionManager actionManager;
 
     private void Start()
     {
-        baseEntity = GetComponent<BaseEntity>();
+        actionManager = GetComponent<ActionManager>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -59,21 +58,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // Combat input
-        baseEntity.UpdateHitBox(mouseUtil.GetMouseAngle());
+        actionManager.UpdateHitBox(mouseUtil.GetMouseAngle());
 
-        if (NormalAttack.action.IsInProgress())
-            baseEntity.PerformAction(BindingState.PrimaryAttack);
-        else if (HeavyAttack.action.IsInProgress())
-            baseEntity.PerformAction(BindingState.HeavyAttack);
-        else if (QAttack.action.IsInProgress())
-            baseEntity.PerformAction(BindingState.QAttack);
-        else if (Dash.action.IsInProgress() && !inAction)
+        if (Dash.action.IsInProgress() && !inAction)
             dash.Dash();
 
     }
     public void LockMovement()
     {
-        float attackSpeed = baseEntity.GetCurrentState().EntityState.attackSpeed;
+        float attackSpeed = actionManager.GetCurrentState().EntityState.attackSpeed;
         animator.speed = (attackSpeed >= 1) ? attackSpeed : 1f;
         movementSpeed = 0;
         inAction = true;

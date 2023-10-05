@@ -10,7 +10,10 @@ public class PrimaryAttack : MonoBehaviour
     public PlayerController playerController;
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
-    
+    public float attackWindow;
+
+    private float lastAttackTime = float.MinValue;
+
     private int comboCount;
     private Rigidbody2D rb;
 
@@ -18,10 +21,11 @@ public class PrimaryAttack : MonoBehaviour
 
     private void Start()
     {
-        comboCount = 0;
-
         baseEntityState = GetComponent<BaseEntityState>();
         rb = playerController.GetComponent<Rigidbody2D>();
+
+        attackWindow = 1f / baseEntityState.attackSpeed * 1.5f;
+        comboCount = 0;
     }
 
     public void Action(GameObject[] targets)
@@ -53,13 +57,14 @@ public class PrimaryAttack : MonoBehaviour
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
-
             }
         }
+
+        lastAttackTime = Time.time;
     }
     private int SuccessiveAttack()
     {
-        if (baseEntityState.attackWindow < 1f && comboCount < 3)
+        if (Time.time - lastAttackTime <= attackWindow && comboCount < 3)
         {
             comboCount += 1;
         }
