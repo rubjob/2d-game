@@ -107,7 +107,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2512079579171595519}
-  - component: {fileID: 4455369902291839332}
   - component: {fileID: 6201760617215487117}
   m_Layer: 0
   m_Name: QAttack
@@ -132,36 +131,6 @@ Transform:
   - {fileID: 1145034582408112407}
   m_Father: {fileID: 6859825942091251658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4455369902291839332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872771514942315439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ac8e31223f224498f3007b9e1198da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitbox: {fileID: 2394753610545798202}
-  attackDamage: 20
-  attackSpeed: 1.5
-  Action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6201760617215487117}
-        m_TargetAssemblyTypeName: QAttack, Assembly-CSharp
-        m_MethodName: Action
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6201760617215487117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6d4d488acd3d84db32226cb5c7c374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 6309759953608420159}
+  rb: {fileID: 8650846361892597857}
+  animator: {fileID: 4685414992071284197}
+  hitbox: {fileID: 2394753610545798202}
+  attackDamage: 20
+  attackSpeed: 1.2
   knockbackStrength: 25
   knockbackDelay: 0.15
 --- !u!1 &1470884872511915660
@@ -186,7 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2738074201350965839}
-  - component: {fileID: 8435418491584183716}
   - component: {fileID: 4304287089066147463}
   m_Layer: 0
   m_Name: HeavyAttack
@@ -211,36 +183,6 @@ Transform:
   - {fileID: 730193662022557377}
   m_Father: {fileID: 6859825942091251658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8435418491584183716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470884872511915660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ac8e31223f224498f3007b9e1198da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitbox: {fileID: 7266851720620905255}
-  attackDamage: 20
-  attackSpeed: 1.5
-  Action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4304287089066147463}
-        m_TargetAssemblyTypeName: HeavyAttack, Assembly-CSharp
-        m_MethodName: Action
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &4304287089066147463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7d6c8b841b8c74c9df2a75f35093fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 6309759953608420159}
+  rb: {fileID: 8650846361892597857}
+  animator: {fileID: 4685414992071284197}
+  hitbox: {fileID: 7266851720620905255}
+  attackDamage: 20
+  attackSpeed: 1.5
   knockbackStrength: 16
   knockbackDelay: 0.15
 --- !u!1 &1841500655943250080
@@ -888,24 +834,40 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2516364384002201549}
   currentState: 1
   stateBindings:
-  - StateBinding: 1
-    EntityState: {fileID: 7320055245563118464}
+  - StateBinding: 0
+    EntityState: {fileID: 3064554099979957020}
     AnimationTriggerName: Attack
     InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  - StateBinding: 2
-    EntityState: {fileID: 8435418491584183716}
+  - StateBinding: 1
+    EntityState: {fileID: 4304287089066147463}
     AnimationTriggerName: HeavyAttack
     InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  - StateBinding: 3
-    EntityState: {fileID: 4455369902291839332}
+  - StateBinding: 2
+    EntityState: {fileID: 6201760617215487117}
     AnimationTriggerName: HeavyAttack
     InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  OnPerformingAction:
+  MouseUtil: {fileID: 5862926858994893956}
+  OnActionStarting:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6309759953608420159}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnPerformingAction
+        m_MethodName: OnActionStarting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnActionEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6309759953608420159}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnActionEnded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -930,11 +892,7 @@ MonoBehaviour:
   defaultMovementSpeed: 5
   movementSpeed: 5
   MovementInput: {fileID: -4194649784919457613, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  NormalAttack: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  HeavyAttack: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  QAttack: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
   Dash: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
-  mouseUtil: {fileID: 5862926858994893956}
   dash: {fileID: 3440082840182423174}
   animator: {fileID: 4685414992071284197}
   spriteRenderer: {fileID: 2516364384002201549}
@@ -1076,7 +1034,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7869476029910133058}
-  - component: {fileID: 7320055245563118464}
   - component: {fileID: 3064554099979957020}
   m_Layer: 0
   m_Name: PrimaryAttack
@@ -1101,36 +1058,6 @@ Transform:
   - {fileID: 213421401159935923}
   m_Father: {fileID: 6859825942091251658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7320055245563118464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055032025481282825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ac8e31223f224498f3007b9e1198da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitbox: {fileID: 1572834372972004390}
-  attackDamage: 20
-  attackSpeed: 3
-  Action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3064554099979957020}
-        m_TargetAssemblyTypeName: PrimaryAttack, Assembly-CSharp
-        m_MethodName: Action
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3064554099979957020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,7 +1070,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d8c2bfa43d2254bbd7754037351931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 6309759953608420159}
-  knockbackStrength: 10
-  knockbackDelay: 0.15
+  rb: {fileID: 8650846361892597857}
+  animator: {fileID: 4685414992071284197}
+  hitbox: {fileID: 1572834372972004390}
+  attackDamage: 5000000078000000fa000000
+  attackSpeed: 3
   attackWindow: 0
+  knockbackStrength:
+  - 5
+  - 5
+  - 7
+  knockbackDelay: 0.15

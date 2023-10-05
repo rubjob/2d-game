@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BindingState
 {
-    PrimaryAttack = 1,
-    HeavyAttack = 2,
-    QAttack = 3
+    PrimaryAttack,
+    HeavyAttack,
+    QAttack,
 }

@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BaseEntityState))]
-public class HeavyAttack : MonoBehaviour
-{
-    public PlayerController playerController;
+public class HeavyAttack : BaseEntityState {
+    [Header("Dependency")]
+    public Rigidbody2D rb;
+    public Animator animator;
+
+    [Header("Attack")]
+    [SerializeField] private HitboxManager hitbox;
+    [SerializeField] private float attackDamage = 20f;
+    [SerializeField] private float attackSpeed = 1.5f;
+
+    [Header("Knockback")]
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
 
-    private Rigidbody2D rb;
-    private BaseEntityState baseEntityState;
+    public override float AttackDamage => attackDamage;
+    public override float AttackSpeed => attackSpeed;
+    public override HitboxManager Hitbox => hitbox;
 
-    private void Start()
-    {
-        baseEntityState = GetComponent<BaseEntityState>();
-        rb = playerController.GetComponent<Rigidbody2D>();
+    public override void OnPlayingAnimation() {
+        animator.SetTrigger("HeavyAttack");
     }
 
-    public void Action(GameObject[] targets)
-    {
-        if (targets.Length > 0)
-        {
-            for (int i = 0; i < targets.Length; i++)
-            {
-                targets[i].GetComponent<HealthScript>().TakeDamage(baseEntityState.attackDamage);
+    public override void OnDealingDamage() {
+        GameObject[] targets = hitbox.Trigger.TriggeringObjects;
+
+        if (targets.Length > 0) {
+            for (int i = 0; i < targets.Length; i++) {
+                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
