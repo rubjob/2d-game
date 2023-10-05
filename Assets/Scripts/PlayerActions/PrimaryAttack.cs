@@ -68,4 +68,8 @@ public class PrimaryAttack : BaseEntityState
         }
         return comboCount;
     }
+
+    public int getComboCount(int comboCount){
+        return comboCount;
+    }
 }
