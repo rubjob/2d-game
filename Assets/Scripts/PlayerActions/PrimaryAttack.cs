@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PrimaryAttack : BaseEntityState
+[RequireComponent(typeof(BaseEntityState))]
+public class PrimaryAttack : MonoBehaviour
 {
     public PlayerController playerController;
     public float knockbackStrength = 5f;
@@ -13,30 +14,30 @@ public class PrimaryAttack : BaseEntityState
     private int comboCount;
     private Rigidbody2D rb;
 
+    private BaseEntityState baseEntityState;
+
     private void Start()
     {
-        Setup();
         comboCount = 0;
 
+        baseEntityState = GetComponent<BaseEntityState>();
         rb = playerController.GetComponent<Rigidbody2D>();
     }
 
-    private void Update() { }
-
-    protected override void Action(GameObject[] targets)
+    public void Action(GameObject[] targets)
     {
         switch (SuccessiveAttack())
         {
             case 1:
-                attackDamage = 80;
+                baseEntityState.attackDamage = 80;
                 playerController.animator.SetTrigger("isAttacking1");
                 break;
             case 2:
-                attackDamage = 120;
+                baseEntityState.attackDamage = 120;
                 playerController.animator.SetTrigger("isAttacking2");
                 break;
             case 3:
-                attackDamage = 250;
+                baseEntityState.attackDamage = 250;
                 playerController.animator.SetTrigger("isAttacking3");
                 break;
             default:
@@ -47,7 +48,7 @@ public class PrimaryAttack : BaseEntityState
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                targets[i].GetComponent<HealthScript>().TakeDamage(attackDamage);
+                targets[i].GetComponent<HealthScript>().TakeDamage(baseEntityState.attackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
@@ -58,7 +59,7 @@ public class PrimaryAttack : BaseEntityState
     }
     private int SuccessiveAttack()
     {
-        if (attackWindow < 1f && comboCount < 3)
+        if (baseEntityState.attackWindow < 1f && comboCount < 3)
         {
             comboCount += 1;
         }

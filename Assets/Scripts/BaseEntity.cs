@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class BaseEntity : MonoBehaviour
-{
+public class BaseEntity : MonoBehaviour {
     [Header("Animation")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -15,45 +15,39 @@ public abstract class BaseEntity : MonoBehaviour
     public EntityStateBinding[] stateBindings;
     private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
 
-    protected void Setup()
-    {
+    [Header("Callback")]
+    public UnityEvent OnPerformingAction;
+
+    private void Start() {
         foreach (EntityStateBinding e in stateBindings)
             states.Add(e.StateBinding, e);
     }
 
     // State
-    protected void SetState(BindingState state)
-    {
+    public void SetState(BindingState state) {
         if (GetCurrentState().EntityState.IsReadyToChange())
             currentState = state;
     }
 
-    protected EntityStateBinding GetCurrentState()
-    {
+    public EntityStateBinding GetCurrentState() {
         return states[currentState];
     }
 
     // Combat
-    protected void UpdateHitBox(float angle)
-    {
-        foreach (KeyValuePair<BindingState, EntityStateBinding> entry in states)
-        {
+    public void UpdateHitBox(float angle) {
+        foreach (KeyValuePair<BindingState, EntityStateBinding> entry in states) {
             entry.Value.EntityState.hitbox.RotateTo(angle);
         }
     }
 
-    protected void PerformAction(BindingState state)
-    {
+    public void PerformAction(BindingState state) {
         SetState(state);
 
         if (GetCurrentState().EntityState.IsReadyToChange()) {
-            OnPerformingAction();
+            OnPerformingAction?.Invoke();
             animator.SetTrigger(GetCurrentState().AnimationTriggerName);
         }
 
         GetCurrentState().EntityState.PerformAction();
     }
-
-    // Abstract method
-    protected abstract void OnPerformingAction();
 }

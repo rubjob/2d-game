@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : BaseEntity
+[RequireComponent(typeof(BaseEntity))]
+public class PlayerController : MonoBehaviour
 {
     [Header("Player Controller")]
     public float defaultMovementSpeed = 5f;
@@ -25,10 +26,15 @@ public class PlayerController : BaseEntity
     private Vector2 velocity = Vector2.zero;
     private bool inAction;
 
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    private BaseEntity baseEntity;
+
     private void Start()
     {
-        Setup();
-
+        baseEntity = GetComponent<BaseEntity>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         inAction = false;
     }
@@ -51,21 +57,20 @@ public class PlayerController : BaseEntity
             }
         }
 
-
         // Combat input
-        UpdateHitBox(mouseUtil.GetMouseAngle());
+        baseEntity.UpdateHitBox(mouseUtil.GetMouseAngle());
 
         if (NormalAttack.action.IsInProgress())
-            PerformAction(BindingState.PrimaryAttack);
+            baseEntity.PerformAction(BindingState.PrimaryAttack);
         else if (HeavyAttack.action.IsInProgress())
-            PerformAction(BindingState.HeavyAttack);
+            baseEntity.PerformAction(BindingState.HeavyAttack);
         else if (Dash.action.IsInProgress() && !inAction)
             dash.Dash();
 
     }
     public void LockMovement()
     {
-        float attackSpeed = GetCurrentState().EntityState.attackSpeed;
+        float attackSpeed = baseEntity.GetCurrentState().EntityState.attackSpeed;
         animator.speed = (attackSpeed >= 1) ? attackSpeed : 1f;
         movementSpeed = 0;
         inAction = true;
@@ -78,7 +83,7 @@ public class PlayerController : BaseEntity
         inAction = false;
     }
 
-    protected override void OnPerformingAction()
+    public void OnPerformingAction()
     {
         float mAngle = mouseUtil.GetMouseAngle();
         if (mAngle <= 45 && mAngle >= -45)

@@ -6,7 +6,6 @@ public class DashScript : MonoBehaviour
 {
     public Rigidbody2D rb;
 
-
     public float dashSpeedMultipiler = 5f;
     public float dashDuration = 0.7f;
     public float dashCooldown = 0.5f;

@@ -14,8 +14,7 @@ public class HitboxTriggerer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<BaseEntity>() != null)
-        {
+        if (other.gameObject.GetComponent<HealthScript>() != null) {
             triggeringObjects.Add(other.gameObject);
         }
     }

@@ -3,23 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class BaseEntityState : MonoBehaviour
+public class BaseEntityState : MonoBehaviour
 {
-    [SerializeField] protected GameObject player;
     public HitboxManager hitbox;
     public int attackDamage = 20;
     public float attackSpeed = 1f;
-    private float attackDelay, lastAttackTime;
-    protected float attackWindow;
+    public float attackWindow;
 
-    protected void Setup()
-    {
+    private float attackDelay, lastAttackTime;
+
+    public UnityEvent<GameObject[]> Action;
+
+    private void Start() {
         attackDelay = 1f / attackSpeed;
         lastAttackTime = -attackDelay;
     }
 
-    protected abstract void Action(GameObject[] targets);
     public void PerformAction()
     {
         float currentTime = Time.time;
@@ -27,7 +28,7 @@ public abstract class BaseEntityState : MonoBehaviour
         {
             attackWindow = currentTime - lastAttackTime;
             lastAttackTime = currentTime;
-            Action(hitbox.Trigger.TriggeringObjects);
+            Action?.Invoke(hitbox.Trigger.TriggeringObjects);
         }
     }
 
