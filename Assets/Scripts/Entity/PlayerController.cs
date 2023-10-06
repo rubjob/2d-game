@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnActionStarting() {
         onPerformingAction = true;
-        rb.velocity = Vector2.zero;
     }
 
     public void OnActionEnded() {

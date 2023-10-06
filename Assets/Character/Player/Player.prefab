@@ -148,6 +148,7 @@ MonoBehaviour:
   hitbox: {fileID: 2394753610545798202}
   attackDamage: 20
   attackSpeed: 1.2
+  cooldownTime: 1.5
   knockbackStrength: 25
   knockbackDelay: 0.15
 --- !u!1 &1470884872511915660
@@ -681,7 +682,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2516364384002201549}
   rb: {fileID: 8650846361892597857}
   DashSpeedMultipiler: 5
-  DashDuration: 0.35
+  DashDuration: 0.15
   DashCooldown: 0.5
 --- !u!1 &7368747041724914095
 GameObject:
@@ -881,6 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f1e26da884a042915d15ee7c8ee5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 8650846361892597857}
   animator: {fileID: 4685414992071284197}
   spriteRenderer: {fileID: 2516364384002201549}
   currentState: 1
@@ -889,18 +891,22 @@ MonoBehaviour:
     EntityState: {fileID: 3064554099979957020}
     InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     FocusPointer: 1
+    StopOnActionStarting: 1
   - StateBinding: 2
     EntityState: {fileID: 4304287089066147463}
     InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     FocusPointer: 1
+    StopOnActionStarting: 1
   - StateBinding: 3
     EntityState: {fileID: 6201760617215487117}
     InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     FocusPointer: 1
+    StopOnActionStarting: 1
   - StateBinding: 0
     EntityState: {fileID: 6593363417168817168}
     InputBinding: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     FocusPointer: 0
+    StopOnActionStarting: 0
   MouseUtil: {fileID: 5862926858994893956}
   OnActionStarting:
     m_PersistentCalls:
@@ -944,7 +950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f3e7ac2fcbf4266a5a35982bd8cc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMovementSpeed: 5
   MovementSpeed: 5
   MovementInput: {fileID: -4194649784919457613, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
   animator: {fileID: 4685414992071284197}
