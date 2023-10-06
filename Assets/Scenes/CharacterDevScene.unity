@@ -416,7 +416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 253541209}
-  cooldown: 1
+  cooldown: 3
+  ulti_points: 1
   key: 113
 --- !u!114 &253541209
 MonoBehaviour:
@@ -783,7 +784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 431918281}
   - component: {fileID: 431918283}
-  - component: {fileID: 431918282}
+  - component: {fileID: 431918284}
   m_Layer: 5
   m_Name: Skill Ultimate
   m_TagString: Untagged
@@ -813,21 +814,6 @@ RectTransform:
   m_AnchoredPosition: {x: 48.4, y: -40.7}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &431918282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431918280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51215168189e744f96666e1b73a990f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 431918283}
-  cooldown: 15
-  key: 102
 --- !u!114 &431918283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +865,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &431918284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431918280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07763024bfe847748b9b200c37a5d24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 431918283}
+  ulti_points: 15
+  usingUlt: 0
+  key: 102
+  tmpkey: 323
+  skill_Q_slider: {fileID: 253541209}
+  skill_E_slider: {fileID: 1728940842}
 --- !u!1 &479718843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,6 +6057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1728940842}
   cooldown: 10
+  ulti_points: 2
   key: 101
 --- !u!114 &1728940842
 MonoBehaviour:
