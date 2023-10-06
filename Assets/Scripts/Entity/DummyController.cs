@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyController : BaseEntity
+public class DummyController : MonoBehaviour
 {
-    private void Start()
-    {
-        Setup();
-    }
+    private Animator animator;
 
-    protected override void OnPerformingAction() { }
+    private void Start() {
+        animator = GetComponent<Animator>();
+    }
 
     public void OnTakenDamage(float amount)
     {

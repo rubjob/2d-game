@@ -1,71 +1,67 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PrimaryAttack : BaseEntityState
-{
-    public PlayerController playerController;
-    public float knockbackStrength = 5f;
+public class PrimaryAttack : BaseEntityState {
+    [Header("Dependency")]
+    public Rigidbody2D rb;
+    public Animator animator;
+
+    [Header("Attack")]
+    [SerializeField] private HitboxManager hitbox;
+    [SerializeField] private int[] attackDamage = { 80, 120, 250 };
+    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float attackWindow = 0;
+    private float lastAttackTime = float.MinValue;
+    private int comboCount = 1;
+
+    [Header("Knockback")]
+    public float[] knockbackStrength = { 5f, 5f, 7f };
     public float knockbackDelay = 0.15f;
-    
-    private int comboCount;
-    private Rigidbody2D rb;
+
+    public override HitboxManager Hitbox => hitbox;
+    public override float AttackDamage => attackDamage[comboCount - 1];
+    public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
+    private string AnimationTriggerer => "isAttacking" + comboCount;
+    public override float CooldownDuration => 0;
 
     private void Start()
     {
-        Setup();
-        comboCount = 0;
-
-        rb = playerController.GetComponent<Rigidbody2D>();
+        if (attackWindow == 0f)
+            attackWindow = 1f / attackSpeed * 2f;
     }
 
-    private void Update() { }
+    public override IEnumerator OnPlayingAnimation() {
+        SuccessiveAttack();
 
-    protected override void Action(GameObject[] targets)
-    {
-        switch (SuccessiveAttack())
-        {
-            case 1:
-                attackDamage = 80;
-                playerController.animator.SetTrigger("isAttacking1");
-                break;
-            case 2:
-                attackDamage = 120;
-                playerController.animator.SetTrigger("isAttacking2");
-                break;
-            case 3:
-                attackDamage = 250;
-                playerController.animator.SetTrigger("isAttacking3");
-                break;
-            default:
-                break;
-        }
+        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.SetTrigger(AnimationTriggerer);
+        animator.SetTrigger("Attack");
 
-        if (targets.Length > 0)
-        {
-            for (int i = 0; i < targets.Length; i++)
-            {
-                targets[i].GetComponent<HealthScript>().TakeDamage(attackDamage);
+        yield return new WaitForSeconds(1f / AttackSpeed);
+    }
+
+    public override void OnDealingDamage() {
+        GameObject[] targets = hitbox.Trigger.TriggeringObjects;
+
+        if (targets.Length > 0) {
+            for (int i = 0; i < targets.Length; i++) {
+                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength, knockbackDelay);
-
+                kb.Knockback(direction, knockbackStrength[comboCount - 1], knockbackDelay);
             }
         }
+
+        lastAttackTime = Time.time;
     }
-    private int SuccessiveAttack()
-    {
-        if (attackWindow < 1f && comboCount < 3)
-        {
+
+    private void SuccessiveAttack() {
+        if (Time.time - lastAttackTime <= attackWindow && comboCount < 3)
             comboCount += 1;
-        }
         else
-        {
             comboCount = 1;
-        }
-        return comboCount;
     }
 }
