@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class ActionManager : MonoBehaviour {
     [Header("Animation")]
+    public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
@@ -46,6 +47,9 @@ public class ActionManager : MonoBehaviour {
                     SetState(e.Key);
 
                     OnActionStarting?.Invoke();
+
+                    if (GetCurrentState().StopOnActionStarting)
+                        rb.velocity = Vector2.zero;
 
                     if (GetCurrentState().FocusPointer)
                         SetAnimationDirection();

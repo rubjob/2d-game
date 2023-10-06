@@ -17,7 +17,9 @@ public class Dash : BaseEntityState
 
     public override IEnumerator OnPlayingAnimation() {
         animator.SetBool("isMoving", false);
-        rb.velocity = new Vector2(spriteRenderer.flipX ? -pc.MovementSpeed : pc.MovementSpeed, 0);
+        if (rb.velocity == Vector2.zero) {
+            rb.velocity = new Vector2(spriteRenderer.flipX ? -pc.MovementSpeed : pc.MovementSpeed, 0);
+        }
 
         rb.velocity *= DashSpeedMultipiler;
         animator.speed = 0.35f / DashDuration;

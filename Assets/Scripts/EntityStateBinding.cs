@@ -11,4 +11,5 @@ public class EntityStateBinding
     public BaseEntityState EntityState;
     public InputActionReference InputBinding;
     public bool FocusPointer;
+    public bool StopOnActionStarting;
 }
