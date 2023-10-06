@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeavyAttack : BaseEntityState {
+public class QAttack : BaseEntityState {
     [Header("Dependency")]
     public Rigidbody2D rb;
     public Animator animator;
@@ -11,6 +11,7 @@ public class HeavyAttack : BaseEntityState {
     [SerializeField] private HitboxManager hitbox;
     [SerializeField] private float attackDamage = 20f;
     [SerializeField] private float attackSpeed = 1.5f;
+    [SerializeField] private float cooldownTime = 1.5f;
 
     [Header("Knockback")]
     public float knockbackStrength = 5f;
@@ -19,7 +20,7 @@ public class HeavyAttack : BaseEntityState {
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
