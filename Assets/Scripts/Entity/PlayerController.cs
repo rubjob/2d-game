@@ -28,12 +28,4 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         EntityMover.MoveToDirection(MovementInput.action.ReadValue<Vector2>());
     }
-
-    public void OnActionStarting() {
-        EntityMover.IsBlockingMovement = true;
-    }
-
-    public void OnActionEnded() {
-        EntityMover.IsBlockingMovement = false;
-    }
 }
