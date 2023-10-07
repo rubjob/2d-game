@@ -162,8 +162,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6640943591227944668}
-  - component: {fileID: 18685790641260813}
-  m_Layer: 0
+  - component: {fileID: 6583326406008905190}
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1863653480994849837}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &18685790641260813
+--- !u!61 &6583326406008905190
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,10 +214,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -228,7 +228,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 3.5}
+  m_Size: {x: 1.25, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &4549004629233283614
 GameObject:
@@ -468,9 +468,10 @@ GameObject:
   - component: {fileID: 7890417994538519364}
   - component: {fileID: 8308716970301472918}
   - component: {fileID: 1960846021083133163}
+  - component: {fileID: 1889173269563595730}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: GameController
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,10 +550,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -563,7 +564,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1}
+  m_Size: {x: 1.1, y: 3.5}
   m_EdgeRadius: 0
 --- !u!95 &3476168666581877434
 Animator:
@@ -651,6 +652,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7168657525142851518}
+  StartKnockback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7890417994538519364}
+        m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
+        m_MethodName: set_IsBlockingMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  EndedKnockback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7890417994538519364}
+        m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
+        m_MethodName: set_IsBlockingMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7890417994538519364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7168657525142851518}
-  MovementSpeed: 3.5
+  MovementSpeed: 3
 --- !u!114 &8308716970301472918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,8 +733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   rb: {fileID: 7168657525142851518}
-  FollowingRange: 5
-  AttackingRange: 3
+  FollowingRange: 6
+  AttackingRange: 2.5
   OnMovement:
     m_PersistentCalls:
       m_Calls:
@@ -722,3 +753,19 @@ MonoBehaviour:
   OnAttacking:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1889173269563595730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545922844633434320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e20710f49f936f4abd70fffb13d9bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityMover: {fileID: 7890417994538519364}
+  Animator: {fileID: 3476168666581877434}
+  SpriteRenderer: {fileID: 1952808672719850988}
+  rb: {fileID: 7168657525142851518}
