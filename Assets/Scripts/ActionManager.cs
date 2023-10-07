@@ -35,8 +35,8 @@ public class ActionManager : MonoBehaviour {
         StartCoroutine(DetectAction());
     }
 
-    private void Update() {
-        UpdateHitBox();
+    private void FixedUpdate() {
+        // UpdateHitBox();
     }
 
     // Co-routine for detecting input and executing its action. This runs in parallel in background.
@@ -48,11 +48,16 @@ public class ActionManager : MonoBehaviour {
 
                     OnActionStarting?.Invoke();
 
+                    // Stop movement on starting action
                     if (GetCurrentState().StopOnActionStarting)
                         rb.velocity = Vector2.zero;
 
-                    if (GetCurrentState().FocusPointer)
-                        SetAnimationDirection();
+                    // Set animation direction
+                    if (GetCurrentState().FocusPointer) SetAttackingDirection();
+                    else SetLeftRightDirection();
+
+                    // Update hitbox
+                    UpdateHitBox();
 
                     // Play animation and wait for return
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
@@ -74,7 +79,12 @@ public class ActionManager : MonoBehaviour {
         }
     }
 
-    private void SetAnimationDirection() {
+    private void SetLeftRightDirection() {
+        float mAngle = MouseUtil.GetMouseAngle();
+        spriteRenderer.flipX = Mathf.Abs(mAngle) > 90f;
+    }
+
+    private void SetAttackingDirection() {
         float mAngle = MouseUtil.GetMouseAngle();
         if (mAngle <= 45 && mAngle >= -45) {
             //attack right animation
@@ -121,9 +131,11 @@ public class ActionManager : MonoBehaviour {
     // Combat
     public void UpdateHitBox() {
         float angle = MouseUtil.GetMouseAngle();
-        foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
-            if (e.Value.EntityState.Hitbox != null)
-                e.Value.EntityState.Hitbox.RotateTo(angle);
+        HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
+
+        if (hitbox) {
+            if (GetCurrentState().FocusPointer) hitbox.RotateTo(angle);
+            else hitbox.FlipX(Mathf.Abs(angle) > 90f);
         }
     }
 }
