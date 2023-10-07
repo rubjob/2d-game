@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PrimaryAttack : BaseEntityState {
     [Header("Dependency")]
@@ -25,6 +26,8 @@ public class PrimaryAttack : BaseEntityState {
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float CooldownDuration => 0;
+
+    public UltimateSkillSlider ultimateSkillSlider;
 
     private void Start()
     {
@@ -56,6 +59,8 @@ public class PrimaryAttack : BaseEntityState {
         }
 
         lastAttackTime = Time.time;
+        ultimateSkillSlider.setNumTargets(targets.Length);
+
     }
 
     private void SuccessiveAttack() {

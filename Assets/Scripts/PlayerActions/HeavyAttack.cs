@@ -21,6 +21,8 @@ public class HeavyAttack : BaseEntityState {
     public override HitboxManager Hitbox => hitbox;
     public override float CooldownDuration => 0;
 
+    public UltimateSkillSlider ultimateSkillSlider;
+
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
         animator.SetTrigger("HeavyAttack");
@@ -40,5 +42,6 @@ public class HeavyAttack : BaseEntityState {
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
             }
         }
+        ultimateSkillSlider.setNumTargets(targets.Length);
     }
 }

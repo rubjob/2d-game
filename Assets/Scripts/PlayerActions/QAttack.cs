@@ -41,5 +41,6 @@ public class QAttack : BaseEntityState {
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
             }
         }
+   
     }
 }

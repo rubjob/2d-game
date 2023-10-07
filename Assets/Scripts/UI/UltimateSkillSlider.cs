@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 public class UltimateSkillSlider : MonoBehaviour
 {
@@ -24,6 +26,9 @@ public class UltimateSkillSlider : MonoBehaviour
     private float skill_E_cooldown;
     private int skill_E_useCount;
 
+    // public UnityEvent<int> primary_atk,heavy_atk;
+    private int numTargets=0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,6 @@ public class UltimateSkillSlider : MonoBehaviour
 
         skill_E_cooldown=skill_E.cooldown;
         skill_Q_cooldown=skill_Q.cooldown;
-        Debug.Log(skill_E_cooldown+" "+skill_Q_cooldown);
     }
 
     // Update is called once per frame
@@ -46,16 +50,15 @@ public class UltimateSkillSlider : MonoBehaviour
 
         if(!usingUlt){
             //! Change when click tmpkey to when hit enemy in the future
-            if(Input.GetKeyDown(tmpkey) && slider.value!=slider.maxValue){
-                slider.value+=1;
+            if(numTargets>0 && slider.value!=slider.maxValue){
+                slider.value+=numTargets;
+                numTargets=0;
             } 
 
             if(Input.GetKeyDown(key) && slider.value==slider.maxValue){
                 usingUlt=true;
                 skill_E_useCount=skill_E.getUseSkillCount();
                 skill_Q_useCount=skill_Q.getUseSkillCount();
-                Debug.Log("E :- "+skill_E_useCount);
-                Debug.Log("Q :- "+skill_Q_useCount);
 
             }
 
@@ -66,7 +69,6 @@ public class UltimateSkillSlider : MonoBehaviour
                     skill_E.setCooldown(1f);
                     skill_Q.setCooldown(1f);
                     setnewCooldown=true;
-                    Debug.Log("set new");
                 }
 
                 if(skill_E.getUseSkillCount()!=skill_E_useCount){
@@ -76,10 +78,8 @@ public class UltimateSkillSlider : MonoBehaviour
                     if(slider.value<0) slider.value=0; 
                 }
                 if(skill_Q.getUseSkillCount()!=skill_Q_useCount){
-              
-
+            
                     slider.value=slider.value-(skill_Q.ulti_points)*(skill_Q.getUseSkillCount()-skill_Q_useCount);
-
                     skill_Q_useCount=skill_Q.getUseSkillCount();
                     if(slider.value<0) slider.value=0; 
                 }
@@ -92,8 +92,11 @@ public class UltimateSkillSlider : MonoBehaviour
                 setnewCooldown=false;
             }
         }
-
-
-        
     }
+
+    public void setNumTargets(int num){
+        numTargets=num;
+    }
+
+
 }
