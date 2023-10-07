@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dash : BaseEntityState
 {
     [Header("Dependency")]
-    public PlayerController pc;
+    public EntityMover EntityMover;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
@@ -18,7 +18,7 @@ public class Dash : BaseEntityState
     public override IEnumerator OnPlayingAnimation() {
         animator.SetBool("isMoving", false);
         if (rb.velocity == Vector2.zero) {
-            rb.velocity = new Vector2(spriteRenderer.flipX ? -pc.MovementSpeed : pc.MovementSpeed, 0);
+            rb.velocity = new Vector2(spriteRenderer.flipX ? -EntityMover.MovementSpeed : EntityMover.MovementSpeed, 0);
         }
 
         rb.velocity *= DashSpeedMultipiler;

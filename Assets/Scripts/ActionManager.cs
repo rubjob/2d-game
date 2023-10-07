@@ -35,8 +35,8 @@ public class ActionManager : MonoBehaviour {
         StartCoroutine(DetectAction());
     }
 
-    private void Update() {
-        UpdateHitBox();
+    private void FixedUpdate() {
+        // UpdateHitBox();
     }
 
     // Co-routine for detecting input and executing its action. This runs in parallel in background.
@@ -48,11 +48,17 @@ public class ActionManager : MonoBehaviour {
 
                     OnActionStarting?.Invoke();
 
+                    // Stop movement on starting action
                     if (GetCurrentState().StopOnActionStarting)
                         rb.velocity = Vector2.zero;
 
-                    if (GetCurrentState().FocusPointer)
-                        SetAnimationDirection();
+                    // Set animation direction
+                    switch (GetCurrentState().Focus) {
+                        case Focus.None: break;
+                        case Focus.Movement: break;
+                        case Focus.PointerBidirectional: FocusPointerBidirectional(); break;
+                        case Focus.Pointer: FocusPointer(); break;
+                    }
 
                     // Play animation and wait for return
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
@@ -74,8 +80,20 @@ public class ActionManager : MonoBehaviour {
         }
     }
 
-    private void SetAnimationDirection() {
+    private void FocusPointerBidirectional() {
+        HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
         float mAngle = MouseUtil.GetMouseAngle();
+
+        hitbox.FlipX(Mathf.Abs(mAngle) > 90f);
+        spriteRenderer.flipX = Mathf.Abs(mAngle) > 90f;
+    }
+
+    private void FocusPointer() {
+        HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
+        float mAngle = MouseUtil.GetMouseAngle();
+
+        hitbox.RotateTo(mAngle);
+        
         if (mAngle <= 45 && mAngle >= -45) {
             //attack right animation
             spriteRenderer.flipX = false;
@@ -101,13 +119,8 @@ public class ActionManager : MonoBehaviour {
         GetCurrentState().EntityState.OnDealingDamage();
     }
 
-    public void LockMovement() {
-
-    }
-
-    public void UnlockMovement() {
-
-    }
+    public void LockMovement() {}
+    public void UnlockMovement() {}
 
     // State
     public void SetState(BindingState state) {
@@ -116,14 +129,5 @@ public class ActionManager : MonoBehaviour {
 
     public EntityStateBinding GetCurrentState() {
         return states[currentState];
-    }
-
-    // Combat
-    public void UpdateHitBox() {
-        float angle = MouseUtil.GetMouseAngle();
-        foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
-            if (e.Value.EntityState.Hitbox != null)
-                e.Value.EntityState.Hitbox.RotateTo(angle);
-        }
     }
 }
