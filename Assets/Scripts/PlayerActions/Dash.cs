@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dash : BaseEntityState
 {
     [Header("Dependency")]
-    public PlayerController pc;
+    public EntityMover pc;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
