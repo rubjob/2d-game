@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2256256725374171660
 Transform:
   m_ObjectHideFlags: 0
@@ -735,6 +735,8 @@ MonoBehaviour:
   rb: {fileID: 7168657525142851518}
   FollowingRange: 6
   AttackingRange: 2.5
+  AttackCooldown: 1
+  AttackDuration: 0.75
   OnMovement:
     m_PersistentCalls:
       m_Calls:
@@ -752,7 +754,19 @@ MonoBehaviour:
         m_CallState: 2
   OnAttacking:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1889173269563595730}
+        m_TargetAssemblyTypeName: BasicEnemyController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1889173269563595730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +780,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityMover: {fileID: 7890417994538519364}
+  EnemyBehavior: {fileID: 1960846021083133163}
   Animator: {fileID: 3476168666581877434}
   SpriteRenderer: {fileID: 1952808672719850988}
   rb: {fileID: 7168657525142851518}
+  AttackDamage: 50

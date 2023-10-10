@@ -9,9 +9,13 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject TargetObject;
     public Rigidbody2D rb;
 
-    [Header("Range")]
+    [Header("Constant")]
     public float FollowingRange = 5f;
     public float AttackingRange = 3f;
+    public float AttackCooldown = 1f;
+    public float AttackDuration = 1f;
+
+    private float LastAttackTime = 0f;
 
     [Header("Events")]
     public UnityEvent<Vector2> OnMovement;
@@ -21,23 +25,35 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start() {
         targetRb = TargetObject?.GetComponent<Rigidbody2D>();
+
+        StartCoroutine(PerformBehavior());
     }
 
-    private void FixedUpdate() {
-        if (!targetRb) return;
+    private IEnumerator PerformBehavior() {
+        while (TargetObject) {
+            if (!targetRb) continue;
 
-        float distance = Vector2.Distance(rb.position, targetRb.position);
+            float distance = Vector2.Distance(rb.position, targetRb.position);
 
-        if (distance <= FollowingRange) {
-            if (distance <= AttackingRange) {
-                OnMovement?.Invoke(Vector2.zero);
-                OnAttacking?.Invoke();
+            if (distance <= FollowingRange) {
+                if (distance <= AttackingRange) {
+                    OnMovement?.Invoke(Vector2.zero);
+
+                    if (Time.time >= LastAttackTime + AttackCooldown) {
+                        OnAttacking?.Invoke();
+                        yield return new WaitForSeconds(AttackDuration);
+
+                        LastAttackTime = Time.time;
+                    }
+                } else {
+                    Vector2 direction = (targetRb.position - rb.position).normalized;
+                    OnMovement?.Invoke(direction);
+                }
             } else {
-                Vector2 direction = (targetRb.position - rb.position).normalized;
-                OnMovement?.Invoke(direction);
+                OnMovement?.Invoke(Vector2.zero);
             }
-        } else {
-            OnMovement?.Invoke(Vector2.zero);
+
+            yield return new WaitForFixedUpdate();
         }
     }
 }
