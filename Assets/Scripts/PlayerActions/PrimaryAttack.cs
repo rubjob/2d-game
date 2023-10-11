@@ -55,6 +55,9 @@ public class PrimaryAttack : BaseEntityState {
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength[comboCount - 1], knockbackDelay);
+
+                DamagePopup.Create(kb.rb.position,AttackDamage);
+
             }
         }
 

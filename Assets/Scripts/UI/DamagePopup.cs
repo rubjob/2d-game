@@ -7,7 +7,8 @@ public class DamagePopup : MonoBehaviour
 {
     private TextMeshPro textmesh;
 
-    public static DamagePopup Create(Vector3 position,int dmgAmount){
+    //Create a DamagePopup
+    public static DamagePopup Create(Vector3 position,float dmgAmount){
 
         Transform dmgPopupTransform = Instantiate(GameAssets.instance.prefabDmgPopup,position,Quaternion.identity);
 
@@ -21,7 +22,15 @@ public class DamagePopup : MonoBehaviour
     {
         textmesh=transform.GetComponent<TextMeshPro>();
     }
-    public void Setup(int dmgAmount){
+    public void Setup(float dmgAmount){
         textmesh.SetText(dmgAmount.ToString());
+    }
+
+
+    private void Update()
+    {
+        float moveYSpeed = 20f;
+        transform.position+=new Vector3(0,moveYSpeed)*Time.deltaTime;
+        
     }
 }
