@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,15 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Constant")]
     public float FollowingRange = 5f;
     public float AttackingRange = 3f;
-    public float AttackCooldown = 1f;
+    public float AttackDelay = 0.5f;
     public float AttackDuration = 1f;
+    public float AttackCooldown = 1f;
 
     private float LastAttackTime = 0f;
 
     [Header("Events")]
     public UnityEvent<Vector2> OnMovement;
-    public UnityEvent OnAttacking;
+    public UnityEvent OnAnimation, OnAttacking;
 
     private Rigidbody2D targetRb;
 
@@ -30,8 +32,13 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     private IEnumerator PerformBehavior() {
+        LastAttackTime = Time.time;
+
         while (TargetObject) {
-            if (!targetRb) continue;
+            if (!targetRb) {
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
 
             float distance = Vector2.Distance(rb.position, targetRb.position);
 
@@ -40,9 +47,12 @@ public class EnemyBehavior : MonoBehaviour
                     OnMovement?.Invoke(Vector2.zero);
 
                     if (Time.time >= LastAttackTime + AttackCooldown) {
-                        OnAttacking?.Invoke();
-                        yield return new WaitForSeconds(AttackDuration);
+                        yield return new WaitForSeconds(AttackDelay);
+                        
+                        OnAnimation?.Invoke();
 
+                        yield return new WaitForSeconds(AttackDuration);
+                        
                         LastAttackTime = Time.time;
                     }
                 } else {
@@ -55,5 +65,26 @@ public class EnemyBehavior : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+
+        OnMovement?.Invoke(Vector2.zero);
+    }
+
+    public void SignalAttack() {
+        if (Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
+            OnAttacking?.Invoke();
+    }
+
+    public void Interrupt(float duration) {
+        StopCoroutine("CoInterrupt");
+        StartCoroutine(CoInterrupt(duration));
+    }
+
+    private IEnumerator CoInterrupt(float duration) {
+        OnMovement?.Invoke(Vector2.zero);
+        StopCoroutine("PerformBehavior");
+
+        yield return new WaitForSeconds(duration);
+
+        StartCoroutine(PerformBehavior());
     }
 }

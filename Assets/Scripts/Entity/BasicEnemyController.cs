@@ -25,26 +25,26 @@ public class BasicEnemyController : MonoBehaviour
             SpriteRenderer.flipX = velocity.x < 0;
     }
 
-    public void OnAttack() {
+    public void OnAnimation() {
         Animator.SetTrigger("isAttacking1");
         Animator.SetTrigger("isAttackingSide");
         Animator.SetTrigger("Attack");
     }
 
+    public void OnAttack() {
+        HealthScript health = EnemyBehavior.TargetObject.GetComponent<HealthScript>();
+
+        if (!health) return;
+        health.TakeDamage(AttackDamage);
+    }
+
     public void LockMovement() {
         EntityMover.IsBlockingMovement = true;
-        Animator.speed = 1f / 0.5f;
+        Animator.speed = 1f / EnemyBehavior.AttackDuration;
     }
 
     public void UnlockMovement() {
         EntityMover.IsBlockingMovement = false;
         Animator.speed = 1f;
-    }
-
-    public void SignalAttack() {
-        HealthScript health = EnemyBehavior.TargetObject.GetComponent<HealthScript>();
-
-        if (!health) return;
-        health.TakeDamage(AttackDamage);
     }
 }

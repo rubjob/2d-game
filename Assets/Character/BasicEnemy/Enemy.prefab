@@ -709,13 +709,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 100
+  maxHealth: 10000
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
   OnTakenDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1960846021083133163}
+        m_TargetAssemblyTypeName: EnemyBehavior, Assembly-CSharp
+        m_MethodName: Interrupt
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -735,8 +747,9 @@ MonoBehaviour:
   rb: {fileID: 7168657525142851518}
   FollowingRange: 6
   AttackingRange: 2.5
-  AttackCooldown: 1
-  AttackDuration: 0.75
+  AttackDelay: 0.5
+  AttackDuration: 0.5
+  AttackCooldown: 0.75
   OnMovement:
     m_PersistentCalls:
       m_Calls:
@@ -744,6 +757,21 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
         m_MethodName: MoveToDirection
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1889173269563595730}
+        m_TargetAssemblyTypeName: BasicEnemyController, Assembly-CSharp
+        m_MethodName: OnAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
