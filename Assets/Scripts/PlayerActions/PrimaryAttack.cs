@@ -29,6 +29,8 @@ public class PrimaryAttack : BaseEntityState {
 
     public UltimateSkillSlider ultimateSkillSlider;
 
+    // public UnityEvent<int> ulti;
+
     private void Start()
     {
         if (attackWindow == 0f)
@@ -64,6 +66,7 @@ public class PrimaryAttack : BaseEntityState {
         lastAttackTime = Time.time;
         ultimateSkillSlider.setNumTargets(targets.Length);
 
+        // ulti?.Invoke(targets.Length);
     }
 
     private void SuccessiveAttack() {
