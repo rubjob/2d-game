@@ -70,7 +70,7 @@ AnimatorStateMachine:
     m_Position: {x: 740, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2792004755633808832}
-    m_Position: {x: -30, y: -400, z: 0}
+    m_Position: {x: -80, y: -530, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5224816249240308695}
     m_Position: {x: -200, y: -340, z: 0}
@@ -91,7 +91,7 @@ AnimatorStateMachine:
     m_Position: {x: 190, y: -400, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5333992007311589684}
-    m_Position: {x: -290, y: 480, z: 0}
+    m_Position: {x: -390, y: 530, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5160318788626163369}
     m_Position: {x: -400, y: -220, z: 0}
@@ -106,13 +106,13 @@ AnimatorStateMachine:
     m_Position: {x: 20, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 386647432692353523}
-    m_Position: {x: 30, y: 650, z: 0}
+    m_Position: {x: 200, y: 820, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7761016435743692275}
     m_Position: {x: -810, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 365045656281117937}
-    m_Position: {x: -700, y: 560, z: 0}
+    m_Position: {x: -610, y: 880, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3497558702569044960}
@@ -903,73 +903,73 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HeavyAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking1
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttacking3
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttackingSide
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttackingUp
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttackingDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Dash
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: QAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1975,7 +1975,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
