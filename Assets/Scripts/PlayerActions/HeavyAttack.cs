@@ -9,7 +9,7 @@ public class HeavyAttack : BaseEntityState {
 
     [Header("Attack")]
     [SerializeField] private HitboxManager hitbox;
-    [SerializeField] private float attackDamage = 20f;
+    [SerializeField] private float attackDamage = 300f;
     [SerializeField] private float attackSpeed = 1.5f;
 
     [Header("Knockback")]
