@@ -7,14 +7,18 @@ public class HealthScript : MonoBehaviour
 {
     public bool isInvulnerable = false;
     public float maxHealth = 100f;
+    public HealthBar healthBar;
+
     public UnityEvent<float> OnHeal, OnTakenDamage;
     public UnityEvent OnDead;
 
     private float health;
 
+
     void Start()
     {
         health = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     /*
@@ -29,6 +33,9 @@ public class HealthScript : MonoBehaviour
 
         health = Mathf.Clamp(health, 0, maxHealth);
 
+        healthBar.setHealth(health);
+
+        if (health <= 0f) OnDead?.Invoke();
         if (health <= 0f) {
             Destroy(gameObject);
             OnDead?.Invoke();

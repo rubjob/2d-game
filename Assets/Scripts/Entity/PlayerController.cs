@@ -28,4 +28,5 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         EntityMover.MoveToDirection(MovementInput.action.ReadValue<Vector2>());
     }
+
 }

@@ -10,14 +10,4 @@ public class DummyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void OnTakenDamage(float amount)
-    {
-        Debug.Log("Damaged taken: " + amount);
-        animator.SetTrigger("isDamaged");
-    }
-
-    public void OnDead()
-    {
-        Debug.Log("IM DEAD ARRRRRRRRRRRRRRRRRRRRRR");
-    }
 }

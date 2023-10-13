@@ -3220,8 +3220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bb27a1c27ca73409335e619e3b5c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvulnerable: 1
-  maxHealth: 100
+  isInvulnerable: 0
+  maxHealth: 10000
+  healthBar: {fileID: 0}
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -3623,6 +3624,10 @@ PrefabInstance:
     - target: {fileID: 953259770894349948, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: healthBar
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7368747041724914095, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: m_Name

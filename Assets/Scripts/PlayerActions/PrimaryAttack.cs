@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PrimaryAttack : BaseEntityState {
     [Header("Dependency")]
@@ -25,6 +26,10 @@ public class PrimaryAttack : BaseEntityState {
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float CooldownDuration => 0;
+
+    public UltimateSkillSlider ultimateSkillSlider;
+
+    // public UnityEvent<int> ulti;
 
     private void Start()
     {
@@ -52,10 +57,16 @@ public class PrimaryAttack : BaseEntityState {
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength[comboCount - 1], knockbackDelay);
+
+                DamagePopup.Create(kb.rb.position,AttackDamage);
+
             }
         }
 
         lastAttackTime = Time.time;
+        ultimateSkillSlider.setNumTargets(targets.Length);
+
+        // ulti?.Invoke(targets.Length);
     }
 
     private void SuccessiveAttack() {
@@ -63,5 +74,9 @@ public class PrimaryAttack : BaseEntityState {
             comboCount += 1;
         else
             comboCount = 1;
+    }
+
+    public int getComboCount(int comboCount){
+        return comboCount;
     }
 }
