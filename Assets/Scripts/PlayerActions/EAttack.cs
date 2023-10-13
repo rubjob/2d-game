@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QAttack : BaseEntityState
+public class EAttack : BaseEntityState
 {
     [Header("Dependency")]
     public Rigidbody2D rb;
@@ -23,31 +23,24 @@ public class QAttack : BaseEntityState
     public override HitboxManager Hitbox => hitbox;
     public override float CooldownDuration => cooldownTime;
 
-    public override IEnumerator OnPlayingAnimation()
-    {
+    public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
-        animator.SetTrigger("QAttack");
+        animator.SetTrigger("EAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
     }
 
-    public override void OnDealingDamage()
-    {
+    public override void OnDealingDamage() {
         GameObject[] targets = hitbox.Trigger.TriggeringObjects;
 
-        if (targets.Length > 0)
-        {
-            for (int i = 0; i < targets.Length; i++)
-            {
+        if (targets.Length > 0) {
+            for (int i = 0; i < targets.Length; i++) {
                 targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
-
-                DamagePopup.Create(kb.rb.position,AttackDamage);
             }
         }
-   
     }
 }
