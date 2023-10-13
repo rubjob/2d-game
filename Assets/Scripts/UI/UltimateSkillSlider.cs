@@ -20,6 +20,7 @@ public class UltimateSkillSlider : MonoBehaviour
     public Slider skill_Q_slider;
     private float skill_Q_cooldown;
     private int skill_Q_useCount;
+
     [Header("Skill E")]
     private SkillSlider skill_E;
     public Slider skill_E_slider;
@@ -99,9 +100,7 @@ public class UltimateSkillSlider : MonoBehaviour
         }
     }
 
-    public void setNumTargets(int num){
+    public void SetNumTargets(int num){
         numTargets=num;
     }
-
-
 }

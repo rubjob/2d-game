@@ -21,15 +21,14 @@ public class PrimaryAttack : BaseEntityState {
     public float[] knockbackStrength = { 5f, 5f, 7f };
     public float knockbackDelay = 0.15f;
 
+    [Header("Events")]
+    public UnityEvent<int> OnTargetHit;
+
     public override HitboxManager Hitbox => hitbox;
     public override float AttackDamage => attackDamage[comboCount - 1];
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float CooldownDuration => 0;
-
-    public UltimateSkillSlider ultimateSkillSlider;
-
-    // public UnityEvent<int> ulti;
 
     private void Start()
     {
@@ -63,10 +62,9 @@ public class PrimaryAttack : BaseEntityState {
             }
         }
 
-        lastAttackTime = Time.time;
-        ultimateSkillSlider.setNumTargets(targets.Length);
+        OnTargetHit?.Invoke(targets.Length);
 
-        // ulti?.Invoke(targets.Length);
+        lastAttackTime = Time.time;
     }
 
     private void SuccessiveAttack() {

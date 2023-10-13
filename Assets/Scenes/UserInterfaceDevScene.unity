@@ -5494,6 +5494,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: ulti.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -5510,17 +5514,61 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 512273118}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetNumTargets
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: ulti.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UltimateSkillSlider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: ulti.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3064554099979957020, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: ultimateSkillSlider
       value: 
       objectReference: {fileID: 512273118}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 512273118}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetNumTargets
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UltimateSkillSlider, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304287089066147463, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnTargetHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: healthBar
       value: 
