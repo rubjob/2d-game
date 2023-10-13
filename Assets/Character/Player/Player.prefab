@@ -203,6 +203,7 @@ MonoBehaviour:
   attackSpeed: 1.5
   knockbackStrength: 16
   knockbackDelay: 0.15
+  ultimateSkillSlider: {fileID: 0}
 --- !u!1 &1694008894375411172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1067,21 @@ MonoBehaviour:
   OnTakenDamage:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -1288,6 +1304,7 @@ MonoBehaviour:
   - 5
   - 7
   knockbackDelay: 0.15
+  ultimateSkillSlider: {fileID: 0}
 --- !u!1 &9045498317170896346
 GameObject:
   m_ObjectHideFlags: 0

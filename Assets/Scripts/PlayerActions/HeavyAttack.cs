@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HeavyAttack : BaseEntityState {
     [Header("Dependency")]
@@ -16,12 +17,13 @@ public class HeavyAttack : BaseEntityState {
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
 
+    [Header("Events")]
+    public UnityEvent<int> OnTargetHit;
+
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
     public override float CooldownDuration => 0;
-
-    public UltimateSkillSlider ultimateSkillSlider;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
@@ -44,6 +46,7 @@ public class HeavyAttack : BaseEntityState {
                 DamagePopup.Create(kb.rb.position,AttackDamage);
             }
         }
-        ultimateSkillSlider.setNumTargets(targets.Length);
+
+        OnTargetHit?.Invoke(targets.Length);
     }
 }
