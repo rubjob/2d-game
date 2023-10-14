@@ -849,10 +849,11 @@ GameObject:
   - component: {fileID: 4685414992071284197}
   - component: {fileID: 2516364384002201549}
   - component: {fileID: 5951810038676432971}
-  - component: {fileID: 6662189500358283037}
   - component: {fileID: 7336547913919969989}
-  - component: {fileID: 6849628677050085124}
   - component: {fileID: 3500898761804908293}
+  - component: {fileID: 6662189500358283037}
+  - component: {fileID: 6849628677050085124}
+  - component: {fileID: 2776460158805735464}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameController
@@ -1037,23 +1038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8650846361892597857}
   MovementSpeed: 5
---- !u!114 &6662189500358283037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7368747041724914095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50df0ba6938099441b65a9c9288fbdfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8650846361892597857}
-  animator: {fileID: 4685414992071284197}
-  spriteRenderer: {fileID: 2516364384002201549}
-  EntityMover: {fileID: 5951810038676432971}
-  MovementInput: {fileID: -4194649784919457613, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!114 &7336547913919969989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1076,38 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3500898761804908293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368747041724914095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd4a3855be7f7e46b1939375b58eb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 2516364384002201549}
+  BlinkMaterial: {fileID: 2100000, guid: a89310c9fcfabf54ab8878bd41e8de1e, type: 2}
+  BlinkDuration: 0.1
+--- !u!114 &6662189500358283037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368747041724914095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50df0ba6938099441b65a9c9288fbdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8650846361892597857}
+  animator: {fileID: 4685414992071284197}
+  spriteRenderer: {fileID: 2516364384002201549}
+  EntityMover: {fileID: 5951810038676432971}
+  MovementInput: {fileID: -4194649784919457613, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!114 &6849628677050085124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,24 +1128,18 @@ MonoBehaviour:
   - StateBinding: 1
     EntityState: {fileID: 3064554099979957020}
     StopOnActionStarting: 1
-    Focus: 1
   - StateBinding: 2
     EntityState: {fileID: 4304287089066147463}
     StopOnActionStarting: 1
-    Focus: 1
   - StateBinding: 3
     EntityState: {fileID: 6201760617215487117}
     StopOnActionStarting: 1
-    Focus: 2
   - StateBinding: 0
     EntityState: {fileID: 6593363417168817168}
     StopOnActionStarting: 0
-    Focus: 3
   - StateBinding: 4
     EntityState: {fileID: 1437140121978563596}
     StopOnActionStarting: 1
-    Focus: 1
-  MouseUtil: {fileID: 5862926858994893956}
   OnActionStarting:
     m_PersistentCalls:
       m_Calls:
@@ -1137,6 +1147,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
         m_MethodName: set_IsBlockingMovement
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2776460158805735464}
+        m_TargetAssemblyTypeName: StateFocusManager, Assembly-CSharp
+        m_MethodName: SetStateFocus
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1160,7 +1182,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3500898761804908293
+--- !u!114 &2776460158805735464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1169,12 +1191,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7368747041724914095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd4a3855be7f7e46b1939375b58eb19, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2f1b32f2ace4d40838957304569ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseUtil: {fileID: 5862926858994893956}
   SpriteRenderer: {fileID: 2516364384002201549}
-  BlinkMaterial: {fileID: 2100000, guid: a89310c9fcfabf54ab8878bd41e8de1e, type: 2}
-  BlinkDuration: 0.1
+  Animator: {fileID: 4685414992071284197}
+  ActionManager: {fileID: 6849628677050085124}
+  FocusBindings:
+  - StateBinding: 1
+    Focus: 1
+  - StateBinding: 2
+    Focus: 1
+  - StateBinding: 0
+    Focus: 3
+  - StateBinding: 3
+    Focus: 2
+  - StateBinding: 4
+    Focus: 1
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0
