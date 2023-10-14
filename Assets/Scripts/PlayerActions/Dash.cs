@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Dash : BaseEntityState
 {
@@ -14,6 +15,11 @@ public class Dash : BaseEntityState
     public float DashSpeedMultipiler = 5f;
     public float DashDuration = 0.7f;
     [SerializeField] private float DashCooldown = 3f;
+
+    [Header("Bindings")]
+    public InputActionReference InputBinding;
+
+    public override bool StateSignal => InputBinding.action.IsInProgress();
 
     public override IEnumerator OnPlayingAnimation() {
         animator.SetBool("isMoving", false);

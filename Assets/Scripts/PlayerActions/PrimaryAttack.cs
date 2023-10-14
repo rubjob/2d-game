@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PrimaryAttack : BaseEntityState {
     [Header("Dependency")]
@@ -24,11 +25,15 @@ public class PrimaryAttack : BaseEntityState {
     [Header("Events")]
     public UnityEvent<int> OnTargetHit;
 
+    [Header("Bindings")]
+    public InputActionReference InputBinding;
+
     public override HitboxManager Hitbox => hitbox;
     public override float AttackDamage => attackDamage[comboCount - 1];
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
-    private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float CooldownDuration => 0;
+    public override bool StateSignal => InputBinding.action.IsInProgress();
+    private string AnimationTriggerer => "isAttacking" + comboCount;
 
     private void Start()
     {

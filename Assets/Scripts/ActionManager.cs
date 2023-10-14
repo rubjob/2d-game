@@ -43,7 +43,7 @@ public class ActionManager : MonoBehaviour {
     private IEnumerator DetectAction() {
         while (true) {
             foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
-                if (e.Value.InputBinding.action.IsInProgress() && cooldowns[e.Key] <= Time.time) {
+                if (e.Value.EntityState.StateSignal && cooldowns[e.Key] <= Time.time) {
                     SetState(e.Key);
 
                     OnActionStarting?.Invoke();

@@ -151,6 +151,7 @@ MonoBehaviour:
   cooldownTime: 1.5
   knockbackStrength: 5
   knockbackDelay: 0.15
+  InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!1 &1470884872511915660
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +207,7 @@ MonoBehaviour:
   OnTargetHit:
     m_PersistentCalls:
       m_Calls: []
+  InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!1 &1694008894375411172
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +523,7 @@ MonoBehaviour:
   cooldownTime: 1.5
   knockbackStrength: 10
   knockbackDelay: 0.15
+  InputBinding: {fileID: 3966714920870815789, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!1 &5269510746967378766
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +834,7 @@ MonoBehaviour:
   DashSpeedMultipiler: 5
   DashDuration: 0.15
   DashCooldown: 0.5
+  InputBinding: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!1 &7368747041724914095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,27 +1111,22 @@ MonoBehaviour:
   stateBindings:
   - StateBinding: 1
     EntityState: {fileID: 3064554099979957020}
-    InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
   - StateBinding: 2
     EntityState: {fileID: 4304287089066147463}
-    InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
   - StateBinding: 3
     EntityState: {fileID: 6201760617215487117}
-    InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 2
   - StateBinding: 0
     EntityState: {fileID: 6593363417168817168}
-    InputBinding: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 0
     Focus: 3
   - StateBinding: 4
     EntityState: {fileID: 1437140121978563596}
-    InputBinding: {fileID: 3966714920870815789, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
   MouseUtil: {fileID: 5862926858994893956}
@@ -1325,6 +1324,7 @@ MonoBehaviour:
   OnTargetHit:
     m_PersistentCalls:
       m_Calls: []
+  InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
 --- !u!1 &9045498317170896346
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EAttack : BaseEntityState
 {
@@ -18,10 +19,14 @@ public class EAttack : BaseEntityState
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
 
+    [Header("Bindings")]
+    public InputActionReference InputBinding;
+
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
     public override float CooldownDuration => cooldownTime;
+    public override bool StateSignal => InputBinding.action.IsInProgress();
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
