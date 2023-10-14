@@ -22,17 +22,17 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1672932195, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 0.21666667
+    - time: 0.15
       value: {fileID: -37162293, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 0.43333334
+    - time: 0.3
       value: {fileID: -460736610, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 0.65
+    - time: 0.51666665
       value: {fileID: -1051727791, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 0.8666667
+    - time: 0.68333334
       value: {fileID: -1246399339, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 1.0833334
+    - time: 0.78333336
       value: {fileID: 445336280, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 1.2666667
+    - time: 1
       value: {fileID: 445336280, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
     attribute: m_Sprite
     path: 
@@ -68,7 +68,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2833333
+    m_StopTime: 1.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -102,7 +102,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.2666667
+  - time: 1
     functionName: UnlockMovement
     data: 
     objectReferenceParameter: {fileID: 0}
