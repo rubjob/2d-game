@@ -153,6 +153,9 @@ MonoBehaviour:
   - 5
   - 7
   knockbackDelay: 0.15
+  OnTargetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4115481255624246688
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +472,7 @@ GameObject:
   - component: {fileID: 8308716970301472918}
   - component: {fileID: 1960846021083133163}
   - component: {fileID: 1889173269563595730}
+  - component: {fileID: 2188370889694459060}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -728,6 +732,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2188370889694459060}
+        m_TargetAssemblyTypeName: BlinkScript, Assembly-CSharp
+        m_MethodName: Blink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -813,3 +832,18 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 1952808672719850988}
   rb: {fileID: 7168657525142851518}
   AttackDamage: 50
+--- !u!114 &2188370889694459060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545922844633434320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd4a3855be7f7e46b1939375b58eb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 1952808672719850988}
+  BlinkMaterial: {fileID: 2100000, guid: a89310c9fcfabf54ab8878bd41e8de1e, type: 2}
+  BlinkDuration: 0.1

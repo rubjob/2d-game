@@ -203,7 +203,9 @@ MonoBehaviour:
   attackSpeed: 1.5
   knockbackStrength: 16
   knockbackDelay: 0.15
-  ultimateSkillSlider: {fileID: 0}
+  OnTargetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1694008894375411172
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +848,7 @@ GameObject:
   - component: {fileID: 6662189500358283037}
   - component: {fileID: 7336547913919969989}
   - component: {fileID: 6849628677050085124}
+  - component: {fileID: 3500898761804908293}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameController
@@ -1066,22 +1069,22 @@ MonoBehaviour:
       m_Calls: []
   OnTakenDamage:
     m_PersistentCalls:
-      m_Calls: []
-  OnHealthChange:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 3500898761804908293}
+        m_TargetAssemblyTypeName: BlinkScript, Assembly-CSharp
+        m_MethodName: Blink
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -1158,6 +1161,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3500898761804908293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368747041724914095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd4a3855be7f7e46b1939375b58eb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 2516364384002201549}
+  BlinkMaterial: {fileID: 2100000, guid: a89310c9fcfabf54ab8878bd41e8de1e, type: 2}
+  BlinkDuration: 0.1
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1322,9 @@ MonoBehaviour:
   - 5
   - 7
   knockbackDelay: 0.15
-  ultimateSkillSlider: {fileID: 0}
+  OnTargetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9045498317170896346
 GameObject:
   m_ObjectHideFlags: 0
