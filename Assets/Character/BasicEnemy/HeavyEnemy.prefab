@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 2640601803356116499}
   - component: {fileID: 5084962934469921529}
   - component: {fileID: 2314022695686577470}
+  - component: {fileID: 1224084010886812889}
   m_Layer: 6
   m_Name: HeavyEnemy
   m_TagString: Untagged
@@ -499,17 +500,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   rb: {fileID: 2512313549301058190}
-  FollowingRange: 6
+  FollowingRange: 10
   AttackingRange: 3
-  AttackDelay: 0.5
+  AttackDelay: 0.25
   AttackDuration: 0.75
-  AttackCooldown: 1
+  AttackCooldown: 1.5
   OnMovement:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8248006230454864170}
         m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
         m_MethodName: MoveToDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1224084010886812889}
+        m_TargetAssemblyTypeName: EnemyDash, Assembly-CSharp
+        m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -568,3 +581,51 @@ MonoBehaviour:
   rb: {fileID: 2512313549301058190}
   AttackDamage: 50
   DashCooldown: 2.5
+--- !u!114 &1224084010886812889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262395052506338620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438884aade5c07e43a96458e7031a079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 7535245087147122461}
+  EntityMover: {fileID: 8248006230454864170}
+  Rb: {fileID: 2512313549301058190}
+  DashDuration: 0.25
+  DashSpeedMultiplier: 10
+  DashCooldown: 5
+  OnDashStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8248006230454864170}
+        m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
+        m_MethodName: set_IsBlockingMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnDashEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8248006230454864170}
+        m_TargetAssemblyTypeName: EntityMover, Assembly-CSharp
+        m_MethodName: set_IsBlockingMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
