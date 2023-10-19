@@ -43,7 +43,7 @@ public class HeavyAttack : BaseEntityState {
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
 
-                DamagePopup.Create(kb.rb.position,AttackDamage);
+                DamagePopup.Create(kb.rb.position,AttackDamage,true);
             }
         }
 

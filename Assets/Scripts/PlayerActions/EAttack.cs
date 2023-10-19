@@ -40,6 +40,8 @@ public class EAttack : BaseEntityState
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
+                DamagePopup.Create(kb.rb.position,AttackDamage,true);
+
             }
         }
     }

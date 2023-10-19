@@ -7,7 +7,7 @@ public class testing : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        DamagePopup.Create(Vector3.zero,300);
+        // DamagePopup.Create(Vector3.zero,300);
     
     }
 
