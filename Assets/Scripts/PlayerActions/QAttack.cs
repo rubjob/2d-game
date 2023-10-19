@@ -25,7 +25,7 @@ public class QAttack : BaseEntityState
 
     public override IEnumerator OnPlayingAnimation()
     {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("QAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);

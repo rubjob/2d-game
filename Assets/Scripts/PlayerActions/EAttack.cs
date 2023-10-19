@@ -24,7 +24,7 @@ public class EAttack : BaseEntityState
     public override float CooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("EAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
@@ -32,6 +32,8 @@ public class EAttack : BaseEntityState
 
     public override void OnDealingDamage() {
         GameObject[] targets = hitbox.Trigger.TriggeringObjects;
+
+        Debug.Log(targets.Length);
 
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {

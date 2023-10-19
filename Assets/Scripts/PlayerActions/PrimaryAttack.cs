@@ -39,7 +39,7 @@ public class PrimaryAttack : BaseEntityState {
     public override IEnumerator OnPlayingAnimation() {
         SuccessiveAttack();
 
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger(AnimationTriggerer);
         animator.SetTrigger("Attack");
 
