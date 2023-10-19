@@ -17,7 +17,10 @@ public class ActionManager : MonoBehaviour {
     public EntityStateBinding[] stateBindings;
 
     private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
+    public Dictionary<BindingState, EntityStateBinding> SkillStates { get => states; }
+
     private Dictionary<BindingState, float> cooldowns = new Dictionary<BindingState, float>();
+    public Dictionary<BindingState, float> SkillCooldowns { get => cooldowns; }
 
     [Header("Mouse Util")]
     public MouseUtil MouseUtil;
@@ -34,10 +37,6 @@ public class ActionManager : MonoBehaviour {
             cooldowns.Add(e.StateBinding, 0);
 
         StartCoroutine(DetectAction());
-    }
-
-    private void FixedUpdate() {
-        // UpdateHitBox();
     }
 
     // Co-routine for detecting input and executing its action. This runs in parallel in background.

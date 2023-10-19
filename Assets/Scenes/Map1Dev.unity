@@ -812,6 +812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51215168189e744f96666e1b73a990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActionManager: {fileID: 1679765401}
+  SkillBinding: 3
   slider: {fileID: 473362927}
   cooldown: 3
   ulti_points: 1
@@ -2691,6 +2693,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bb27a1c27ca73409335e619e3b5c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1679765401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6849628677050085124, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+  m_PrefabInstance: {fileID: 7951332055613980112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679765397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7f1e26da884a042915d15ee7c8ee5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710541756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,6 +2967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51215168189e744f96666e1b73a990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActionManager: {fileID: 1679765401}
+  SkillBinding: 4
   slider: {fileID: 2028162168}
   cooldown: 10
   ulti_points: 2
@@ -3433,6 +3448,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 409803103}
     - target: {fileID: 7368747041724914095, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: m_Name
       value: Player
