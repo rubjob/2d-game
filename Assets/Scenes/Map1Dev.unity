@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f63a37b4c26c6a408cfbeadc8410559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: CharacterDevScene
+  sceneToLoad: Map0Dev
 --- !u!61 &956980559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1010,7 +1010,7 @@ Transform:
   m_GameObject: {fileID: 2031109025}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0.23, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1192,6 +1192,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2516364384002201549, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516364384002201549, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1982655347
+      objectReference: {fileID: 0}
     - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: healthBar
       value: 
@@ -1209,8 +1217,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 1076781746}
   - {fileID: 1710541758}
   - {fileID: 7951332055613980112}
+  - {fileID: 519420032}
   - {fileID: 2053120966}
