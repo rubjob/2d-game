@@ -20,13 +20,16 @@ public class SkillSlider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
-        setCooldown(cooldown);
+        /*cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
+        setCooldown(cooldown);*/
     }
 
     /// Update is called every frame, if the MonoBehaviour is enabled.
     private void Update()
     {
+        cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
+        slider.maxValue = cooldown;
+
         float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);
         slider.value = cooldown - time;
 

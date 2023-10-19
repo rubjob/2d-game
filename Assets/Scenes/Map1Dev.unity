@@ -817,7 +817,6 @@ MonoBehaviour:
   slider: {fileID: 473362927}
   cooldown: 3
   ulti_points: 1
-  key: 113
 --- !u!224 &473362929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1003,7 +1002,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.566886, y: -4.4748397, z: -10}
+  m_LocalPosition: {x: -10.560322, y: -4.4748197, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2802,7 +2801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -299.96918, y: 139.84216}
+  m_AnchoredPosition: {x: -348.7, y: -182.7}
   m_SizeDelta: {x: 248.0617, y: 97.1157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1935090397
@@ -2972,7 +2971,6 @@ MonoBehaviour:
   slider: {fileID: 2028162168}
   cooldown: 10
   ulti_points: 2
-  key: 101
 --- !u!224 &2028162170
 RectTransform:
   m_ObjectHideFlags: 0
