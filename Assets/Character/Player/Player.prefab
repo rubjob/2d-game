@@ -1318,6 +1318,7 @@ MonoBehaviour:
   attackDamage: 140000001e00000032000000
   attackSpeed: 4
   attackWindow: 0.5
+  attackCooldown: 0.25
   knockbackStrength:
   - 3
   - 3

@@ -14,6 +14,7 @@ public class PrimaryAttack : BaseEntityState {
     [SerializeField] private int[] attackDamage = { 80, 120, 250 };
     [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private float attackWindow = 0;
+    [SerializeField] private float attackCooldown = 1.5f;
     private float lastAttackTime = float.MinValue;
     private int comboCount = 1;
 
@@ -28,7 +29,7 @@ public class PrimaryAttack : BaseEntityState {
     public override float AttackDamage => attackDamage[comboCount - 1];
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => attackCooldown;
 
     private void Start()
     {
