@@ -12,6 +12,7 @@ public class HeavyAttack : BaseEntityState {
     [SerializeField] private HitboxManager hitbox;
     [SerializeField] private float attackDamage = 300f;
     [SerializeField] private float attackSpeed = 1.5f;
+    [SerializeField] private float attackCooldown = 1.5f;
 
     [Header("Knockback")]
     public float knockbackStrength = 5f;
@@ -23,10 +24,10 @@ public class HeavyAttack : BaseEntityState {
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => attackCooldown;
 
     public override IEnumerator OnPlayingAnimation() {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("HeavyAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);

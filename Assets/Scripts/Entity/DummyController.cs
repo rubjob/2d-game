@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class DummyController : MonoBehaviour
 {
-    private Animator animator;
+    [Header("Dependecy")]
+    public Rigidbody2D Rb;
+
+    [Header("Constant")]
+    public float BackToOriginAfter = 3f;
+
+    private Vector2 initialPosition;
 
     private void Start() {
-        animator = GetComponent<Animator>();
+        initialPosition = Rb.position;
+    }
+
+    public void OnTakingDamage() {
+        StopAllCoroutines();
+        StartCoroutine(CoOnTakingDamage());
+    }
+
+    private IEnumerator CoOnTakingDamage() {
+        yield return new WaitForSeconds(BackToOriginAfter);
+
+        Rb.position = initialPosition;
     }
 
 }

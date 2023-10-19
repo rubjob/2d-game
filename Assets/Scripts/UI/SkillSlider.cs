@@ -6,23 +6,34 @@ using UnityEngine.UI;
 
 public class SkillSlider : MonoBehaviour
 {
+    [Header("Dependency")]
+    public ActionManager ActionManager;
+    public BindingState SkillBinding;
     public Slider slider;
     public float cooldown;
     public int ulti_points;
-    private bool onCooldown=false;
+    private int useSkillCount = 0;
+    /*private bool onCooldown=false;
     private float useSkillat;
-    private int useSkillCount=0;
-    public KeyCode key;
+    public KeyCode key;*/
+
     // Start is called before the first frame update
     void Start()
     {
-       setCooldown(cooldown);
+        /*cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
+        setCooldown(cooldown);*/
     }
 
     /// Update is called every frame, if the MonoBehaviour is enabled.
     private void Update()
     {
-        if(Input.GetKeyDown(key) && !onCooldown){
+        cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
+        slider.maxValue = cooldown;
+
+        float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);
+        slider.value = cooldown - time;
+
+        /*if(Input.GetKeyDown(key) && !onCooldown){
             onCooldown=true;
             useSkillat=Time.time;
 
@@ -38,7 +49,7 @@ public class SkillSlider : MonoBehaviour
                 
             }
             
-        }
+        }*/
     }
 
     public void setCooldown(float newCooldown){
