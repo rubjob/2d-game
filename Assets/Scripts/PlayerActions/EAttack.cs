@@ -1,33 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class HeavyAttack : BaseEntityState {
+public class EAttack : BaseEntityState
+{
     [Header("Dependency")]
     public Rigidbody2D rb;
     public Animator animator;
 
     [Header("Attack")]
     [SerializeField] private HitboxManager hitbox;
-    [SerializeField] private float attackDamage = 300f;
+    [SerializeField] private float attackDamage = 20f;
     [SerializeField] private float attackSpeed = 1.5f;
+    [SerializeField] private float cooldownTime = 1.5f;
 
     [Header("Knockback")]
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
 
-    [Header("Events")]
-    public UnityEvent<int> OnTargetHit;
-
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
-        animator.SetTrigger("HeavyAttack");
+        animator.SetTrigger("EAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
     }
@@ -42,11 +40,7 @@ public class HeavyAttack : BaseEntityState {
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
                 Vector2 direction = (kb.rb.position - rb.position).normalized;
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
-
-                DamagePopup.Create(kb.rb.position,AttackDamage);
             }
         }
-
-        OnTargetHit?.Invoke(targets.Length);
     }
 }

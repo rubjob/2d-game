@@ -1,0 +1,424 @@
+fileFormatVersion: 2
+guid: a19390a1845461e49ad76a8932c6c721
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5163693, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8936cd212a392458a484f63029d79a
+      internalID: 1063787694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8106880c14a99a84fbe95e5449985939
+      internalID: 1335701958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 565
+        width: 79
+        height: 75
+      alignment: 9
+      pivot: {x: 0.44407248, y: 0.582146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2f9012e6d7cbe498f6966869242cc3
+      internalID: -1352185577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 513
+        width: 70
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065a5c92f8c96a54fa3a4c7cf87a6774
+      internalID: 1130345619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 423
+        width: 122
+        height: 89
+      alignment: 9
+      pivot: {x: 0.36057195, y: 0.6467391}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5190338b2b83fb649be301729c2475e7
+      internalID: 894473263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 409
+        width: 129
+        height: 103
+      alignment: 9
+      pivot: {x: 0.37900418, y: 0.69281834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abac5df2e32502c44a23cef4dc74c614
+      internalID: -2060229931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_27
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 218
+        width: 153
+        height: 165
+      alignment: 9
+      pivot: {x: 0.41965404, y: 0.42621}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994ff5597f50dcd47a840eceb5989761
+      internalID: 1881298194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_30
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 217
+        width: 150
+        height: 166
+      alignment: 9
+      pivot: {x: 0.39637676, y: 0.43447453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1990c32fb118d65479e3acf225844ca7
+      internalID: -425563625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_41
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 89
+        width: 126
+        height: 102
+      alignment: 9
+      pivot: {x: 0.37343708, y: 0.70178074}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5838bdd97463d4887dd1f4157bbb4a
+      internalID: -43136062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_44
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 26
+        width: 128
+        height: 150
+      alignment: 9
+      pivot: {x: 0.373156, y: 0.47010854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b24fbcc753a7811469d06ce73c1228c4
+      internalID: -136890953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC_SwordQ_Sprite_52
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5283754, y: 0.50884783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195dd83273a293048a3699963d910357
+      internalID: 47877393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MC_SwordQ_Sprite_0: 1063787694
+      MC_SwordQ_Sprite_1: 1335701958
+      MC_SwordQ_Sprite_10: 2044328840
+      MC_SwordQ_Sprite_11: -311961235
+      MC_SwordQ_Sprite_12: -2060229931
+      MC_SwordQ_Sprite_13: -14686082
+      MC_SwordQ_Sprite_14: -1012901868
+      MC_SwordQ_Sprite_15: -1296722939
+      MC_SwordQ_Sprite_16: 1974471729
+      MC_SwordQ_Sprite_17: 470083776
+      MC_SwordQ_Sprite_18: 1224052388
+      MC_SwordQ_Sprite_19: -1288312917
+      MC_SwordQ_Sprite_2: -1352185577
+      MC_SwordQ_Sprite_20: 237888586
+      MC_SwordQ_Sprite_21: 683653984
+      MC_SwordQ_Sprite_22: 1715172932
+      MC_SwordQ_Sprite_23: -890081533
+      MC_SwordQ_Sprite_24: 1581537039
+      MC_SwordQ_Sprite_25: 1440838170
+      MC_SwordQ_Sprite_26: -1435344246
+      MC_SwordQ_Sprite_27: 1881298194
+      MC_SwordQ_Sprite_28: -473666358
+      MC_SwordQ_Sprite_29: 1721986062
+      MC_SwordQ_Sprite_3: 1148619713
+      MC_SwordQ_Sprite_30: -425563625
+      MC_SwordQ_Sprite_31: 909654123
+      MC_SwordQ_Sprite_32: 1524111953
+      MC_SwordQ_Sprite_33: -1762667592
+      MC_SwordQ_Sprite_34: 294245745
+      MC_SwordQ_Sprite_35: -505253230
+      MC_SwordQ_Sprite_36: 2002017479
+      MC_SwordQ_Sprite_37: 746439117
+      MC_SwordQ_Sprite_38: 909942520
+      MC_SwordQ_Sprite_39: -1863091327
+      MC_SwordQ_Sprite_4: 1130345619
+      MC_SwordQ_Sprite_40: -1729003585
+      MC_SwordQ_Sprite_41: -43136062
+      MC_SwordQ_Sprite_42: 139897741
+      MC_SwordQ_Sprite_43: 665403398
+      MC_SwordQ_Sprite_44: -136890953
+      MC_SwordQ_Sprite_45: 76695450
+      MC_SwordQ_Sprite_46: 752642119
+      MC_SwordQ_Sprite_47: 320576829
+      MC_SwordQ_Sprite_48: 1938906604
+      MC_SwordQ_Sprite_49: 438625702
+      MC_SwordQ_Sprite_5: 46800269
+      MC_SwordQ_Sprite_50: 1026935170
+      MC_SwordQ_Sprite_51: -1072564692
+      MC_SwordQ_Sprite_52: 47877393
+      MC_SwordQ_Sprite_6: 1514866478
+      MC_SwordQ_Sprite_7: 1549202332
+      MC_SwordQ_Sprite_8: 1394896326
+      MC_SwordQ_Sprite_9: 894473263
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

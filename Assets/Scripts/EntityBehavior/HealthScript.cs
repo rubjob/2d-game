@@ -7,56 +7,34 @@ public class HealthScript : MonoBehaviour
 {
     public bool isInvulnerable = false;
     public float maxHealth = 100f;
-    public HealthBar healthBar;
 
-    public UnityEvent<float> OnHeal, OnTakenDamage;
+    public UnityEvent<float> OnHeal, OnTakenDamage, OnHealthChange;
     public UnityEvent OnDead;
 
     private float health;
 
-
     void Start()
     {
         health = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
     }
 
     /*
      * Method
      */
-    public void TakeDamage(float amount)
-    {
-        /*if (!isInvulnerable)
-            health -= amount;
-
-        if (health <= 0f)
-            OnDead?.Invoke();
-        else
-            OnTakenDamage?.Invoke(amount);*/
-        AdjustHealth(-amount);
-    }
-
-    public void Heal(float amount)
-    {
-        /*if (!isInvulnerable)
-            health += amount;
-
-        OnHeal?.Invoke(amount);
-
-        if (health > maxHealth) health = maxHealth;*/
-        AdjustHealth(amount);
-    }
-
+    public void TakeDamage(float amount) => AdjustHealth(-amount);
+    public void Heal(float amount) => AdjustHealth(amount);
     private void AdjustHealth(float amount)
     {
         if (!isInvulnerable)
             health += amount;
 
         health = Mathf.Clamp(health, 0, maxHealth);
+        OnHealthChange?.Invoke(health);
 
-        healthBar.setHealth(health);
-
-        if (health <= 0f) OnDead?.Invoke();
+        if (health <= 0f) {
+            Destroy(gameObject);
+            OnDead?.Invoke();
+        }
         else if (amount > 0) OnHeal?.Invoke(amount);
         else if (amount < 0) OnTakenDamage?.Invoke(-amount);
     }

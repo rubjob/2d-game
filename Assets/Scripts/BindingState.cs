@@ -8,4 +8,5 @@ public enum BindingState
     PrimaryAttack,
     HeavyAttack,
     QAttack,
+    EAttack,
 }

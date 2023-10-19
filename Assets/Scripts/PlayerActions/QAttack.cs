@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QAttack : BaseEntityState {
+public class QAttack : BaseEntityState
+{
     [Header("Dependency")]
     public Rigidbody2D rb;
     public Animator animator;
@@ -22,18 +23,22 @@ public class QAttack : BaseEntityState {
     public override HitboxManager Hitbox => hitbox;
     public override float CooldownDuration => cooldownTime;
 
-    public override IEnumerator OnPlayingAnimation() {
+    public override IEnumerator OnPlayingAnimation()
+    {
         animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
-        animator.SetTrigger("HeavyAttack");
+        animator.SetTrigger("QAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
     }
 
-    public override void OnDealingDamage() {
+    public override void OnDealingDamage()
+    {
         GameObject[] targets = hitbox.Trigger.TriggeringObjects;
 
-        if (targets.Length > 0) {
-            for (int i = 0; i < targets.Length; i++) {
+        if (targets.Length > 0)
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
                 targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
                 KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
