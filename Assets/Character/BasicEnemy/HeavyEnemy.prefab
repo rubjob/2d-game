@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2512313549301058190}
-  MovementSpeed: 3
+  MovementSpeed: 4
 --- !u!114 &6687524573893871880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 100
+  maxHealth: 150
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -500,11 +500,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   rb: {fileID: 2512313549301058190}
-  FollowingRange: 10
+  FollowingRange: 8
   AttackingRange: 3
-  AttackDelay: 0.25
+  AttackDelay: 0.4
   AttackDuration: 0.75
-  AttackCooldown: 1.5
+  AttackCooldown: 1
   OnMovement:
     m_PersistentCalls:
       m_Calls:
@@ -579,7 +579,7 @@ MonoBehaviour:
   Animator: {fileID: 7535245087147122461}
   SpriteRenderer: {fileID: 4549779667133766106}
   rb: {fileID: 2512313549301058190}
-  AttackDamage: 50
+  AttackDamage: 60
   DashCooldown: 2.5
 --- !u!114 &1224084010886812889
 MonoBehaviour:
@@ -594,11 +594,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 7535245087147122461}
+  SpriteRenderer: {fileID: 4549779667133766106}
   EntityMover: {fileID: 8248006230454864170}
   Rb: {fileID: 2512313549301058190}
   DashDuration: 0.25
   DashSpeedMultiplier: 10
-  DashCooldown: 5
+  DashCooldown: 3
   OnDashStart:
     m_PersistentCalls:
       m_Calls:

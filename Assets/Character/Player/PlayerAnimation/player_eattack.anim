@@ -30,7 +30,7 @@ AnimationClip:
       value: {fileID: -1051727791, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
     - time: 0.68333334
       value: {fileID: -1246399339, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
-    - time: 0.78333336
+    - time: 0.85
       value: {fileID: 445336280, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
     - time: 1
       value: {fileID: 445336280, guid: 3faebebfc48a09d4c9d02f24a6db3495, type: 3}
@@ -96,6 +96,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.43333334
+    functionName: SignalAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8333333
     functionName: SignalAttack
     data: 
     objectReferenceParameter: {fileID: 0}

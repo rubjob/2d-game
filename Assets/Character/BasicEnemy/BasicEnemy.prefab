@@ -484,11 +484,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   rb: {fileID: 7168657525142851518}
-  FollowingRange: 6
+  FollowingRange: 12
   AttackingRange: 2.5
   AttackDelay: 0.25
-  AttackDuration: 0.25
-  AttackCooldown: 0.5
+  AttackDuration: 0.6
+  AttackCooldown: 1
   OnMovement:
     m_PersistentCalls:
       m_Calls:
@@ -551,7 +551,7 @@ MonoBehaviour:
   Animator: {fileID: 3476168666581877434}
   SpriteRenderer: {fileID: 1952808672719850988}
   rb: {fileID: 7168657525142851518}
-  AttackDamage: 50
+  AttackDamage: 30
 --- !u!114 &2188370889694459060
 MonoBehaviour:
   m_ObjectHideFlags: 0

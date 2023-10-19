@@ -7,6 +7,7 @@ public class EnemyDash : MonoBehaviour
 {
     [Header("Dependecy")]
     public Animator Animator;
+    public SpriteRenderer SpriteRenderer;
     public EntityMover EntityMover;
     public Rigidbody2D Rb;
 
@@ -24,17 +25,16 @@ public class EnemyDash : MonoBehaviour
         if (direction == Vector2.zero) return;
 
         if (Time.time >= LastDash + DashCooldown) {
-            Debug.Log(LastDash + DashCooldown + ", " + Time.time);
             StopAllCoroutines();
             StartCoroutine(CoDash(direction));
         }
     }
 
     private IEnumerator CoDash(Vector2 direction) {
+        SpriteRenderer.flipX = direction.x < 0;
+
         LastDash = Time.time;
         OnDashStart?.Invoke();
-
-        Debug.Log(direction.normalized * DashSpeedMultiplier);
 
         Animator.SetBool("isMoving", false);
 

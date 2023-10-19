@@ -146,9 +146,9 @@ MonoBehaviour:
   rb: {fileID: 8650846361892597857}
   animator: {fileID: 4685414992071284197}
   hitbox: {fileID: 2394753610545798202}
-  attackDamage: 20
-  attackSpeed: 1.2
-  cooldownTime: 1.5
+  attackDamage: 50
+  attackSpeed: 0.8
+  cooldownTime: 5
   knockbackStrength: 5
   knockbackDelay: 0.15
 --- !u!1 &1470884872511915660
@@ -199,9 +199,10 @@ MonoBehaviour:
   rb: {fileID: 8650846361892597857}
   animator: {fileID: 4685414992071284197}
   hitbox: {fileID: 7266851720620905255}
-  attackDamage: 20
-  attackSpeed: 1.5
-  knockbackStrength: 16
+  attackDamage: 60
+  attackSpeed: 0.85
+  attackCooldown: 1.5
+  knockbackStrength: 18
   knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
@@ -830,7 +831,7 @@ MonoBehaviour:
   rb: {fileID: 8650846361892597857}
   DashSpeedMultipiler: 5
   DashDuration: 0.15
-  DashCooldown: 0.5
+  DashCooldown: 1
 --- !u!1 &7368747041724914095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1085,19 @@ MonoBehaviour:
         m_CallState: 2
   OnHealthChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: SetHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -1314,13 +1327,14 @@ MonoBehaviour:
   rb: {fileID: 8650846361892597857}
   animator: {fileID: 4685414992071284197}
   hitbox: {fileID: 1572834372972004390}
-  attackDamage: 5000000078000000fa000000
-  attackSpeed: 3
-  attackWindow: 0
+  attackDamage: 140000001e00000032000000
+  attackSpeed: 4
+  attackWindow: 0.5
+  attackCooldown: 0
   knockbackStrength:
-  - 5
-  - 5
-  - 7
+  - 3
+  - 3
+  - 6
   knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
