@@ -12,16 +12,19 @@ public class DummyController : MonoBehaviour
 
     private Vector2 initialPosition;
 
-    private void Start() {
+    private void Start()
+    {
         initialPosition = Rb.position;
     }
 
-    public void OnTakingDamage() {
+    public void OnTakingDamage()
+    {
         StopAllCoroutines();
         StartCoroutine(CoOnTakingDamage());
     }
 
-    private IEnumerator CoOnTakingDamage() {
+    private IEnumerator CoOnTakingDamage()
+    {
         yield return new WaitForSeconds(BackToOriginAfter);
 
         Rb.position = initialPosition;
