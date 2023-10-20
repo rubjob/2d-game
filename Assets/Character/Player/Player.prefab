@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2512079579171595519}
   - component: {fileID: 6201760617215487117}
+  - component: {fileID: 2667523198626870076}
   m_Layer: 0
   m_Name: QAttack
   m_TagString: Player
@@ -149,11 +150,37 @@ MonoBehaviour:
   attackDamage: 50
   attackSpeed: 0.8
   cooldownTime: 5
-  knockbackStrength: 5
-  knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2667523198626870076}
+        m_TargetAssemblyTypeName: KnockbackScript, Assembly-CSharp
+        m_MethodName: Knockback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2667523198626870076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872771514942315439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff6ffaaf4e8a3749a8783fde981f1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackStrength:
+  - 5
+  knockbackDelay:
+  - 0.15
 --- !u!1 &1470884872511915660
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +192,7 @@ GameObject:
   - component: {fileID: 2738074201350965839}
   - component: {fileID: 4304287089066147463}
   - component: {fileID: 1613336587823764218}
+  - component: {fileID: 8111421734785821221}
   m_Layer: 0
   m_Name: HeavyAttack
   m_TagString: Player
@@ -206,14 +234,24 @@ MonoBehaviour:
   attackDamage: 60
   attackSpeed: 0.85
   attackCooldown: 1.5
-  knockbackStrength: 18
-  knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1613336587823764218}
         m_TargetAssemblyTypeName: StaggerScript, Assembly-CSharp
         m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8111421734785821221}
+        m_TargetAssemblyTypeName: KnockbackScript, Assembly-CSharp
+        m_MethodName: Knockback
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -236,6 +274,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackStaggerStrength: 2
+--- !u!114 &8111421734785821221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470884872511915660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff6ffaaf4e8a3749a8783fde981f1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackStrength:
+  - 18
+  knockbackDelay:
+  - 0.15
 --- !u!1 &1694008894375411172
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6272508652766791969}
   - component: {fileID: 1437140121978563596}
+  - component: {fileID: 2950365117701456563}
   m_Layer: 0
   m_Name: EAttack
   m_TagString: Player
@@ -549,11 +604,37 @@ MonoBehaviour:
   attackDamage: 20
   attackSpeed: 2
   cooldownTime: 1.5
-  knockbackStrength: 10
-  knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2950365117701456563}
+        m_TargetAssemblyTypeName: KnockbackScript, Assembly-CSharp
+        m_MethodName: Knockback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2950365117701456563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207332849782367823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff6ffaaf4e8a3749a8783fde981f1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackStrength:
+  - 10
+  knockbackDelay:
+  - 0.15
 --- !u!1 &5269510746967378766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1403,7 @@ GameObject:
   - component: {fileID: 7869476029910133058}
   - component: {fileID: 3064554099979957020}
   - component: {fileID: 4025922912551401601}
+  - component: {fileID: 2356943437918958519}
   m_Layer: 0
   m_Name: PrimaryAttack
   m_TagString: Player
@@ -1359,22 +1441,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8650846361892597857}
   animator: {fileID: 4685414992071284197}
+  KnockbackScript: {fileID: 2356943437918958519}
   hitbox: {fileID: 1572834372972004390}
   attackDamage: 140000001e00000032000000
   attackSpeed: 4
   attackWindow: 0.5
   attackCooldown: 0
-  knockbackStrength:
-  - 3
-  - 3
-  - 6
-  knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4025922912551401601}
         m_TargetAssemblyTypeName: StaggerScript, Assembly-CSharp
         m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2356943437918958519}
+        m_TargetAssemblyTypeName: KnockbackScript, Assembly-CSharp
+        m_MethodName: Knockback
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1397,6 +1487,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackStaggerStrength: 1
+--- !u!114 &2356943437918958519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055032025481282825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff6ffaaf4e8a3749a8783fde981f1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackStrength:
+  - 3
+  - 3
+  - 6
+  knockbackDelay:
+  - 0.15
+  - 0.15
+  - 0.15
 --- !u!1 &9045498317170896346
 GameObject:
   m_ObjectHideFlags: 0
