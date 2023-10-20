@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EAttack : BaseEntityState
 {
@@ -17,6 +18,9 @@ public class EAttack : BaseEntityState
     [Header("Knockback")]
     public float knockbackStrength = 5f;
     public float knockbackDelay = 0.15f;
+
+    [Header("Events")]
+    public UnityEvent<GameObject> OnTargetHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -44,6 +48,8 @@ public class EAttack : BaseEntityState
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
 
                 DamagePopup.Create(kb.rb.position, AttackDamage);
+
+                OnTargetHit?.Invoke(targets[i]);
             }
         }
     }

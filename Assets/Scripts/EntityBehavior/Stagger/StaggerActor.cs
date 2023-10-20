@@ -14,10 +14,8 @@ public class StaggerActor : MonoBehaviour
     public UnityEvent OnStagger;
 
     public void AddStaggerLevel(int level) {
-        Debug.Log(level);
-
         Level += level;
-        
+
         if (Level >= MaxStaggerLevel) {
             Level = 0;
             OnStagger?.Invoke();

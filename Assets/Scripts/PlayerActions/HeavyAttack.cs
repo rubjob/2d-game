@@ -19,7 +19,7 @@ public class HeavyAttack : BaseEntityState {
     public float knockbackDelay = 0.15f;
 
     [Header("Events")]
-    public UnityEvent<int> OnTargetHit;
+    public UnityEvent<GameObject> OnTargetHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -45,9 +45,9 @@ public class HeavyAttack : BaseEntityState {
                 kb.Knockback(direction, knockbackStrength, knockbackDelay);
 
                 DamagePopup.Create(kb.rb.position,AttackDamage);
+
+                OnTargetHit?.Invoke(targets[i]);
             }
         }
-
-        OnTargetHit?.Invoke(targets.Length);
     }
 }

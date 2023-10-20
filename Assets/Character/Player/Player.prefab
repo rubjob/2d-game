@@ -151,6 +151,9 @@ MonoBehaviour:
   cooldownTime: 5
   knockbackStrength: 5
   knockbackDelay: 0.15
+  OnTargetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1470884872511915660
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2738074201350965839}
   - component: {fileID: 4304287089066147463}
+  - component: {fileID: 1613336587823764218}
   m_Layer: 0
   m_Name: HeavyAttack
   m_TagString: Player
@@ -206,7 +210,32 @@ MonoBehaviour:
   knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1613336587823764218}
+        m_TargetAssemblyTypeName: StaggerScript, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1613336587823764218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470884872511915660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28ce0b57d941794396e5c0d239f8216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackStaggerStrength: 2
 --- !u!1 &1694008894375411172
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +551,9 @@ MonoBehaviour:
   cooldownTime: 1.5
   knockbackStrength: 10
   knockbackDelay: 0.15
+  OnTargetHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5269510746967378766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7869476029910133058}
   - component: {fileID: 3064554099979957020}
+  - component: {fileID: 4025922912551401601}
   m_Layer: 0
   m_Name: PrimaryAttack
   m_TagString: Player
@@ -1338,7 +1371,32 @@ MonoBehaviour:
   knockbackDelay: 0.15
   OnTargetHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4025922912551401601}
+        m_TargetAssemblyTypeName: StaggerScript, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4025922912551401601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055032025481282825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28ce0b57d941794396e5c0d239f8216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackStaggerStrength: 1
 --- !u!1 &9045498317170896346
 GameObject:
   m_ObjectHideFlags: 0
