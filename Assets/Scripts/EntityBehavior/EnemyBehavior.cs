@@ -26,6 +26,9 @@ public class EnemyBehavior : MonoBehaviour
     private Rigidbody2D targetRb;
 
     private void Start() {
+        if (!TargetObject)
+            TargetObject = GameObject.FindGameObjectWithTag("Player");
+
         targetRb = TargetObject?.GetComponent<Rigidbody2D>();
 
         StartCoroutine(PerformBehavior());

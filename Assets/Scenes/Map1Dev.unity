@@ -321,10 +321,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
-      propertyPath: TargetObject
-      value: 
-      objectReference: {fileID: 1679765397}
     - target: {fileID: 6545922844633434320, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -1126,10 +1122,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
-      propertyPath: TargetObject
-      value: 
-      objectReference: {fileID: 1679765397}
     - target: {fileID: 6545922844633434320, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_Name
       value: BasicEnemy (2)
@@ -2147,10 +2139,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
-      propertyPath: TargetObject
-      value: 
-      objectReference: {fileID: 1679765397}
     - target: {fileID: 6545922844633434320, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_Name
       value: BasicEnemy (1)
@@ -2243,10 +2231,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5084962934469921529, guid: e5b261a6fcf8de9448997c9d5e6e26dc, type: 3}
-      propertyPath: TargetObject
-      value: 
-      objectReference: {fileID: 1679765397}
     - target: {fileID: 6437422053215540579, guid: e5b261a6fcf8de9448997c9d5e6e26dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.96
@@ -2680,17 +2664,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677726975}
   m_CullTransparentMesh: 1
---- !u!1 &1679765397 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7368747041724914095, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
-  m_PrefabInstance: {fileID: 7951332055613980112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1679765398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
   m_PrefabInstance: {fileID: 7951332055613980112}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679765397}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51bb27a1c27ca73409335e619e3b5c5e, type: 3}
@@ -2701,7 +2680,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6849628677050085124, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
   m_PrefabInstance: {fileID: 7951332055613980112}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679765397}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7f1e26da884a042915d15ee7c8ee5d, type: 3}
