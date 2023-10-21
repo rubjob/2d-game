@@ -37,8 +37,9 @@ public class EnemyBehavior : MonoBehaviour
     private IEnumerator PerformBehavior() {
         LastAttackTime = Time.time;
 
-        while (TargetObject) {
-            if (!targetRb) {
+        while (true) {
+            if (!TargetObject || !targetRb) {
+                OnMovement?.Invoke(Vector2.zero);
                 yield return new WaitForFixedUpdate();
                 continue;
             }
@@ -68,8 +69,6 @@ public class EnemyBehavior : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-
-        OnMovement?.Invoke(Vector2.zero);
     }
 
     public void SignalAttack() {
