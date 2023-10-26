@@ -29,4 +29,7 @@ public class PlayerController : MonoBehaviour
         EntityMover.MoveToDirection(MovementInput.action.ReadValue<Vector2>());
     }
 
+
+    
+
 }

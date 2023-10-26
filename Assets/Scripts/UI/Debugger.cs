@@ -7,7 +7,7 @@ public class Debugger : MonoBehaviour
 {
 
     public float amount;
-    public PlayerController Player;
+    // public PlayerController Player;
 
     public HealthBar healthBar;
 

@@ -11,13 +11,13 @@ public class DamagePopup : MonoBehaviour
     private float disappearSpeed=3f;
 
     //Create a DamagePopup
-    public static DamagePopup Create(Vector3 position,float dmgAmount){
+    public static DamagePopup Create(Vector3 position,float dmgAmount, bool isCritHit){
         position.x+=1;
 
         Transform dmgPopupTransform = Instantiate(GameAssets.instance.prefabDmgPopup,position,Quaternion.identity);
 
         DamagePopup dmgPopup = dmgPopupTransform.GetComponent<DamagePopup>();
-        dmgPopup.Setup(dmgAmount);
+        dmgPopup.Setup(dmgAmount,isCritHit);
     
         return dmgPopup;
     }
@@ -26,9 +26,18 @@ public class DamagePopup : MonoBehaviour
     {
         textmesh=transform.GetComponent<TextMeshPro>();
     }
-    public void Setup(float dmgAmount){
+    public void Setup(float dmgAmount,bool isCritHit){
         textmesh.SetText(dmgAmount.ToString());
+        if(isCritHit){
+            textmesh.fontSize=25;
+            // textColor.UtilsClass.GetColorFromString
+        }
+        else{
+            textmesh.fontSize=15;
+        }
         textColor=textmesh.color;
+
+
     }
 
 

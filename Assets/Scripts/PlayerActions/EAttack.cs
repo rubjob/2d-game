@@ -42,7 +42,7 @@ public class EAttack : BaseEntityState
                 Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
                 Vector2 direction = (targetRb.position - rb.position).normalized;
 
-                DamagePopup.Create(targetRb.position, AttackDamage);
+                DamagePopup.Create(targetRb.position, AttackDamage, true);
 
                 OnTargetHit?.Invoke(targets[i], direction);
             }
