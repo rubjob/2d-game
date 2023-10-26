@@ -189,12 +189,13 @@ GameObject:
   - component: {fileID: 7535245087147122461}
   - component: {fileID: 4549779667133766106}
   - component: {fileID: 2137175528607146190}
-  - component: {fileID: 8248006230454864170}
   - component: {fileID: 6687524573893871880}
   - component: {fileID: 2640601803356116499}
+  - component: {fileID: 8248006230454864170}
   - component: {fileID: 5084962934469921529}
   - component: {fileID: 2314022695686577470}
   - component: {fileID: 1224084010886812889}
+  - component: {fileID: 7634573898247321283}
   m_Layer: 6
   m_Name: HeavyEnemy
   m_TagString: Untagged
@@ -407,20 +408,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8248006230454864170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8262395052506338620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f3e7ac2fcbf4266a5a35982bd8cc44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2512313549301058190}
-  MovementSpeed: 4
 --- !u!114 &6687524573893871880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,18 +443,6 @@ MonoBehaviour:
   OnTakenDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5084962934469921529}
-        m_TargetAssemblyTypeName: EnemyBehavior, Assembly-CSharp
-        m_MethodName: Interrupt
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.5
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6687524573893871880}
         m_TargetAssemblyTypeName: BlinkScript, Assembly-CSharp
         m_MethodName: Blink
@@ -486,6 +461,20 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8248006230454864170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262395052506338620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f3e7ac2fcbf4266a5a35982bd8cc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2512313549301058190}
+  MovementSpeed: 4
 --- !u!114 &5084962934469921529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +616,34 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7634573898247321283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262395052506338620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352e35a01ea70474bb11de5bbd3a3cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxStaggerLevel: 5
+  OnStagger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5084962934469921529}
+        m_TargetAssemblyTypeName: EnemyBehavior, Assembly-CSharp
+        m_MethodName: Interrupt
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

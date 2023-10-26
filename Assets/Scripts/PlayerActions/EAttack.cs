@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EAttack : BaseEntityState
 {
@@ -14,9 +15,8 @@ public class EAttack : BaseEntityState
     [SerializeField] private float attackSpeed = 1.5f;
     [SerializeField] private float cooldownTime = 1.5f;
 
-    [Header("Knockback")]
-    public float knockbackStrength = 5f;
-    public float knockbackDelay = 0.15f;
+    [Header("Events")]
+    public UnityEvent<GameObject, Vector2> OnTargetHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -24,7 +24,7 @@ public class EAttack : BaseEntityState
     public override float CooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("EAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
@@ -33,15 +33,18 @@ public class EAttack : BaseEntityState
     public override void OnDealingDamage() {
         GameObject[] targets = hitbox.Trigger.TriggeringObjects;
 
+        Debug.Log(targets.Length);
+
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {
                 targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
-                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
-                Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength, knockbackDelay);
-                DamagePopup.Create(kb.rb.position,AttackDamage,true);
+                Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
+                Vector2 direction = (targetRb.position - rb.position).normalized;
 
+                DamagePopup.Create(targetRb.position, AttackDamage);
+
+                OnTargetHit?.Invoke(targets[i], direction);
             }
         }
     }

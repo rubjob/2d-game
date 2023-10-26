@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class KnockbackScript : MonoBehaviour
+public class KnockbackActor : MonoBehaviour
 {
     [Header("Dependency")]
     public Rigidbody2D rb;

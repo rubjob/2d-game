@@ -14,12 +14,8 @@ public class HeavyAttack : BaseEntityState {
     [SerializeField] private float attackSpeed = 1.5f;
     [SerializeField] private float attackCooldown = 1.5f;
 
-    [Header("Knockback")]
-    public float knockbackStrength = 5f;
-    public float knockbackDelay = 0.15f;
-
     [Header("Events")]
-    public UnityEvent<int> OnTargetHit;
+    public UnityEvent<GameObject, Vector2> OnTargetHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -40,14 +36,13 @@ public class HeavyAttack : BaseEntityState {
             for (int i = 0; i < targets.Length; i++) {
                 targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
 
-                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
-                Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength, knockbackDelay);
+                Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
+                Vector2 direction = (targetRb.position - rb.position).normalized;
 
-                DamagePopup.Create(kb.rb.position,AttackDamage,true);
+                DamagePopup.Create(targetRb.position,AttackDamage);
+
+                OnTargetHit?.Invoke(targets[i], direction);
             }
         }
-
-        OnTargetHit?.Invoke(targets.Length);
     }
 }

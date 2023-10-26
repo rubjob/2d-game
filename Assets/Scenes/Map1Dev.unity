@@ -2287,6 +2287,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7634573898247321283, guid: e5b261a6fcf8de9448997c9d5e6e26dc, type: 3}
+      propertyPath: OnStagger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8262395052506338620, guid: e5b261a6fcf8de9448997c9d5e6e26dc, type: 3}
       propertyPath: m_Name
       value: HeavyEnemy
