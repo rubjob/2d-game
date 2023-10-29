@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 442942410582932007}
-  SkillBinding: 3
+  SkillBinding: 4
   slider: {fileID: 5173488509340352292}
   cooldown: 3
   ulti_points: 1
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 442942410582932007}
-  SkillBinding: 4
+  SkillBinding: 5
   slider: {fileID: 4120166970638967867}
   cooldown: 10
   ulti_points: 2
@@ -806,14 +806,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07763024bfe847748b9b200c37a5d24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UltimateState: {fileID: 1017985992443019591}
   slider: {fileID: 8153529343617764984}
-  ulti_points: 15
-  usingUlt: 0
-  key: 102
-  tmpkey: 323
-  skill_Q_slider: {fileID: 5173488509340352292}
-  skill_E_slider: {fileID: 4120166970638967867}
-  fill: {fileID: 9111183570882373841}
+  img: {fileID: 6089244812680039963}
 --- !u!1 &5297553035498879959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,6 +1874,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7f1e26da884a042915d15ee7c8ee5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1017985992443019591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6272386074585453668, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+  m_PrefabInstance: {fileID: 6425336200011584803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2a9535b0af5964f9791461833c6ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4394323907708137446 stripped

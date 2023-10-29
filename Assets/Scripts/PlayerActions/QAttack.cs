@@ -17,6 +17,7 @@ public class QAttack : BaseEntityState
 
     [Header("Events")]
     public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -48,6 +49,8 @@ public class QAttack : BaseEntityState
 
                 OnTargetHit?.Invoke(targets[i], direction);
             }
+
+            OnTargetsHit?.Invoke(targets.Length);
         }
     }
 }
