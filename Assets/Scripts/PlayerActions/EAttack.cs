@@ -17,6 +17,7 @@ public class EAttack : BaseEntityState
 
     [Header("Events")]
     public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -33,8 +34,6 @@ public class EAttack : BaseEntityState
     public override void OnDealingDamage() {
         GameObject[] targets = hitbox.Trigger.TriggeringObjects;
 
-        Debug.Log(targets.Length);
-
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {
                 targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
@@ -46,6 +45,8 @@ public class EAttack : BaseEntityState
 
                 OnTargetHit?.Invoke(targets[i], direction);
             }
+
+            OnTargetsHit?.Invoke(targets.Length);
         }
     }
 }

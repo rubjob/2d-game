@@ -40,6 +40,14 @@ namespace Player
             Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
         }
 
+        public void ReduceUltimatePoint(int pt) {
+            if (!IsUsingUltimate) return;
+
+            CurrentUltimatePoint = Mathf.Clamp(CurrentUltimatePoint - pt, 0, MaxUltimatePoint);
+
+            Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
+        }
+
         private IEnumerator CoUltimating() {
             IsUsingUltimate = true;
 

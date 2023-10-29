@@ -165,6 +165,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTargetsHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6272386074585453668}
+        m_TargetAssemblyTypeName: Player.Ultimate, Assembly-CSharp
+        m_MethodName: ReduceUltimatePoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2667523198626870076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +642,21 @@ MonoBehaviour:
       - m_Target: {fileID: 2950365117701456563}
         m_TargetAssemblyTypeName: KnockbackScript, Assembly-CSharp
         m_MethodName: Knockback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTargetsHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6272386074585453668}
+        m_TargetAssemblyTypeName: Player.Ultimate, Assembly-CSharp
+        m_MethodName: ReduceUltimatePoint
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
