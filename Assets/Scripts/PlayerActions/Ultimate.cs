@@ -14,8 +14,8 @@ namespace Player
         public float AnimationDuration = 1f;
         public int MaxUltimatePoint = 7;
 
-        private int CurrentUltimatePoint = 0;
-        private bool IsUsingUltimate = false;
+        public int CurrentUltimatePoint { private set; get; } = 0;
+        public bool IsUsingUltimate { private set; get; } = false;
 
         public override float AttackDamage => throw new System.NotImplementedException();
         public override float AttackSpeed => 1f / AnimationDuration;
