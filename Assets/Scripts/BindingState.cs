@@ -10,4 +10,5 @@ public enum BindingState
     HeavyAttack,
     QAttack,
     EAttack,
+    Ultimate,
 }

@@ -21,6 +21,7 @@ public class PrimaryAttack : BaseEntityState {
 
     [Header("Events")]
     public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override HitboxManager Hitbox => hitbox;
     public override float AttackDamage => attackDamage[comboCount - 1];
@@ -59,6 +60,8 @@ public class PrimaryAttack : BaseEntityState {
                 KnockbackScript.Index = comboCount - 1;
                 OnTargetHit?.Invoke(targets[i], direction);
             }
+
+            OnTargetsHit?.Invoke(targets.Length);
         }
 
         lastAttackTime = Time.time;
