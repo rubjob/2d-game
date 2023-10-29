@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 442942410582932007}
-  SkillBinding: 3
+  SkillBinding: 4
   slider: {fileID: 5173488509340352292}
   cooldown: 3
   ulti_points: 1
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 442942410582932007}
-  SkillBinding: 4
+  SkillBinding: 5
   slider: {fileID: 4120166970638967867}
   cooldown: 10
   ulti_points: 2
