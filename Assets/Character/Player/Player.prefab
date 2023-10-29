@@ -550,6 +550,7 @@ Transform:
   - {fileID: 2512079579171595519}
   - {fileID: 6272508652766791969}
   - {fileID: 4287497149994260285}
+  - {fileID: 6196187936051987606}
   m_Father: {fileID: 953259770894349948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4207332849782367823
@@ -804,6 +805,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 8877011960748041129}
+--- !u!1 &6195467535641295047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6196187936051987606}
+  - component: {fileID: 1956345754744465568}
+  m_Layer: 0
+  m_Name: Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6196187936051987606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195467535641295047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6859825942091251658}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1956345754744465568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195467535641295047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4ffba02575ef048a5ed9e4e78833e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthScript: {fileID: 7336547913919969989}
+  HealCooldown: 30
+  AnimationDuration: 1
+  HealAmount: 25
+  CurrentPotion: 3
+  MaxPotion: 3
 --- !u!1 &6380857255000852544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,31 +1282,36 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2516364384002201549}
   currentState: 1
   stateBindings:
-  - StateBinding: 1
+  - StateBinding: 2
     EntityState: {fileID: 3064554099979957020}
     InputBinding: {fileID: -8627430772373657071, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
-  - StateBinding: 2
+  - StateBinding: 3
     EntityState: {fileID: 4304287089066147463}
     InputBinding: {fileID: 4915692282273521398, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
-  - StateBinding: 3
+  - StateBinding: 4
     EntityState: {fileID: 6201760617215487117}
     InputBinding: {fileID: 8852505734470654882, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 2
-  - StateBinding: 0
+  - StateBinding: 1
     EntityState: {fileID: 6593363417168817168}
     InputBinding: {fileID: 3668041833074957923, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 0
     Focus: 3
-  - StateBinding: 4
+  - StateBinding: 5
     EntityState: {fileID: 1437140121978563596}
     InputBinding: {fileID: 3966714920870815789, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     StopOnActionStarting: 1
     Focus: 1
+  - StateBinding: 0
+    EntityState: {fileID: 1956345754744465568}
+    InputBinding: {fileID: 8613189201630087236, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
+    StopOnActionStarting: 1
+    Focus: 0
   MouseUtil: {fileID: 5862926858994893956}
   OnActionStarting:
     m_PersistentCalls:
