@@ -85,7 +85,7 @@ public class ActionManager : MonoBehaviour {
 
     public float GetSkillCooldown(BindingState state) {
         return ((IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
-                        ByPassedCooldown : GetCurrentState().EntityState.CooldownDuration);
+                        ByPassedCooldown : states[state].EntityState.CooldownDuration);
     }
 
     private void FocusPointerBidirectional() {
