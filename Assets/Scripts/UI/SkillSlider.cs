@@ -27,7 +27,7 @@ public class SkillSlider : MonoBehaviour
     /// Update is called every frame, if the MonoBehaviour is enabled.
     private void Update()
     {
-        cooldown = ActionManager.SkillStates[SkillBinding].EntityState.CooldownDuration;
+        cooldown = ActionManager.GetSkillCooldown(SkillBinding);
         slider.maxValue = cooldown;
 
         float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);

@@ -29,7 +29,7 @@ public class ActionManager : MonoBehaviour {
     public UnityEvent OnActionStarting;
     public UnityEvent OnActionEnded;
 
-    private bool IsByPassingCooldown = false;
+    public bool IsUsingUltimate { private set; get; } = false;
     private float ByPassedCooldown = 1f;
 
     private void Start() {
@@ -67,8 +67,7 @@ public class ActionManager : MonoBehaviour {
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
 
                     // Set cooldown
-                    cooldowns[e.Key] = Time.time + ((IsByPassingCooldown) ?
-                        ByPassedCooldown : GetCurrentState().EntityState.CooldownDuration);
+                    cooldowns[e.Key] = Time.time + GetSkillCooldown(e.Key);
 
                     // Reset animation speed
                     animator.speed = 1f;
@@ -82,6 +81,11 @@ public class ActionManager : MonoBehaviour {
 
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public float GetSkillCooldown(BindingState state) {
+        return ((IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
+                        ByPassedCooldown : GetCurrentState().EntityState.CooldownDuration);
     }
 
     private void FocusPointerBidirectional() {
@@ -137,7 +141,7 @@ public class ActionManager : MonoBehaviour {
 
     // Cooldown bypass
     public void SetCooldownByPass(bool val, float byPassedCooldown = 1f) {
-        this.IsByPassingCooldown = val;
+        this.IsUsingUltimate = val;
         this.ByPassedCooldown = byPassedCooldown;
     }
 }
