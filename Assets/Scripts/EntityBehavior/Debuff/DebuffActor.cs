@@ -9,8 +9,7 @@ namespace EntityBehavior {
         [Header("Dependency")]
         public HealthScript HealthScript;
 
-        [Header("Debuff")]
-        public Debuff Debuff;
+        private Debuff Debuff;
 
         public void ApplyDebuff(Debuff Debuff) {
             this.Debuff = Debuff;
