@@ -267,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.560322, y: -4.4748297, z: -10}
+  m_LocalPosition: {x: -10.5580635, y: -3.2647798, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -927,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 1076781744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.779999, y: -4.470001, z: -10}
+  m_LocalPosition: {x: -18.71, y: -3.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1609,15 +1609,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2924111818084342401, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 191.3625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2924111818084342401, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 421.08215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2924111818084342401, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5663348
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2924111818084342401, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1654,6 +1654,14 @@ PrefabInstance:
     - target: {fileID: 3447722258608184279, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057844581804139359, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057844581804139359, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.26
       objectReference: {fileID: 0}
     - target: {fileID: 6318468867188364192, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_AnchorMax.x

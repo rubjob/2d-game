@@ -31,8 +31,8 @@ public class BasicEnemyController : MonoBehaviour
         Animator.SetTrigger("Attack");
     }
 
-    public void OnAttack() {
-        HealthScript health = EnemyBehavior.TargetObject.GetComponent<HealthScript>();
+    public void OnAttack(GameObject TargetObject) {
+        HealthScript health = TargetObject.GetComponent<HealthScript>();
 
         if (!health) return;
         health.TakeDamage(AttackDamage);
