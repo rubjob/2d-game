@@ -36,7 +36,10 @@ public class EAttack : BaseEntityState
 
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {
-                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
+                HealthScript HealthScript;
+                if ((HealthScript = targets[i].GetComponent<HealthScript>()) == null) continue;
+
+                HealthScript.TakeDamage(AttackDamage);
 
                 Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
                 Vector2 direction = (targetRb.position - rb.position).normalized;

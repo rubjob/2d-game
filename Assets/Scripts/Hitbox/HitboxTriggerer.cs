@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HitboxTriggerer : MonoBehaviour
 {
-    private HashSet<GameObject> triggeringObjects = new HashSet<GameObject>();
+    private readonly HashSet<GameObject> triggeringObjects = new();
 
     public GameObject[] TriggeringObjects
     {
@@ -14,9 +14,7 @@ public class HitboxTriggerer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<HealthScript>() != null) {
-            triggeringObjects.Add(other.gameObject);
-        }
+        triggeringObjects.Add(other.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
