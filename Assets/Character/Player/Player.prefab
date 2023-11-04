@@ -1108,6 +1108,7 @@ GameObject:
   - component: {fileID: 7336547913919969989}
   - component: {fileID: 6849628677050085124}
   - component: {fileID: 3500898761804908293}
+  - component: {fileID: 1761650519782824351}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1457,6 +1458,20 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 2516364384002201549}
   BlinkMaterial: {fileID: 2100000, guid: a89310c9fcfabf54ab8878bd41e8de1e, type: 2}
   BlinkDuration: 0.1
+--- !u!114 &1761650519782824351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368747041724914095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18de607806b3fb4683e5348d15734e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthScript: {fileID: 7336547913919969989}
+  Debuff: {fileID: 0}
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0
