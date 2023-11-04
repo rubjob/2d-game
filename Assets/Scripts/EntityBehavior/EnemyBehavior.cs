@@ -21,7 +21,8 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent<Vector2> OnMovement;
-    public UnityEvent OnAnimation, OnAttacking;
+    public UnityEvent OnAnimation;
+    public UnityEvent<GameObject> OnAttacking;
 
     private Rigidbody2D targetRb;
 
@@ -73,7 +74,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void SignalAttack() {
         if (Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
-            OnAttacking?.Invoke();
+            OnAttacking?.Invoke(TargetObject);
     }
 
     public void Interrupt(float duration) {
