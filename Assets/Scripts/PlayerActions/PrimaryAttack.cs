@@ -58,7 +58,7 @@ public class PrimaryAttack : BaseEntityState {
                 Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
                 Vector2 direction = (targetRb.position - rb.position).normalized;
 
-                DamagePopup.Create(targetRb.position, AttackDamage, true);
+                DamagePopup.Create(targetRb.position, AttackDamage, false);
 
                 KnockbackScript.Index = comboCount - 1;
                 OnTargetHit?.Invoke(targets[i], direction);

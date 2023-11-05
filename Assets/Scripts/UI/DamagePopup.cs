@@ -6,7 +6,8 @@ using TMPro;
 public class DamagePopup : MonoBehaviour
 {
     private TextMeshPro textmesh;
-    private float disappearTimer=0.5f;
+    private const float MAX_DISAPPEAR_TIMER = 1f;
+    private float disappearTimer;
     private Color textColor;
     private float disappearSpeed=3f;
     private Color normal;
@@ -29,25 +30,23 @@ public class DamagePopup : MonoBehaviour
     private void Awake()
     {
         textmesh=transform.GetComponent<TextMeshPro>();
-        normal = new Color(255, 101, 5, 255);
-        heavy = new Color(255, 0, 5, 255);
+        normal = new Color(255, 101, 5);
+        heavy = new Color(255, 0, 5);
     }
     public void Setup(float dmgAmount,bool isCritHit){
         textmesh.SetText(dmgAmount.ToString());
         if(isCritHit){
             textmesh.fontSize=25;
             textColor = heavy;
-            Debug.Log("heavy");
         }
         else{
-            textmesh.fontSize=15;
+            textmesh.fontSize=8;
             textColor = normal;
-            Debug.Log("normal");
 
         }
         // textColor=textmesh.color;
         textmesh.color=textColor;
-
+        disappearTimer=MAX_DISAPPEAR_TIMER;
     }
 
 
@@ -55,7 +54,17 @@ public class DamagePopup : MonoBehaviour
     {
         float moveYSpeed = 10f;
         transform.position+=new Vector3(0,moveYSpeed)*Time.deltaTime;
-        
+
+        if(disappearTimer>MAX_DISAPPEAR_TIMER/2){
+            float increaseScalaAmount=1f;
+            transform.localScale += Vector3.one*increaseScalaAmount*Time.deltaTime;
+        }
+        else{
+            float decreaseScalaAmount=1f;
+            transform.localScale -= Vector3.one*decreaseScalaAmount*Time.deltaTime;
+
+        }
+
         disappearTimer-=Time.deltaTime;
         if(disappearTimer<0){//Start to disappear when disappearTimer<0 with disappearSpeed
             textColor.a-=disappearSpeed*Time.deltaTime;
