@@ -9,6 +9,10 @@ public class DamagePopup : MonoBehaviour
     private float disappearTimer=0.5f;
     private Color textColor;
     private float disappearSpeed=3f;
+    private Color normal;
+    private Color heavy;
+
+
 
     //Create a DamagePopup
     public static DamagePopup Create(Vector3 position,float dmgAmount, bool isCritHit){
@@ -25,18 +29,24 @@ public class DamagePopup : MonoBehaviour
     private void Awake()
     {
         textmesh=transform.GetComponent<TextMeshPro>();
+        normal = new Color(255, 101, 5, 255);
+        heavy = new Color(255, 0, 5, 255);
     }
     public void Setup(float dmgAmount,bool isCritHit){
         textmesh.SetText(dmgAmount.ToString());
         if(isCritHit){
             textmesh.fontSize=25;
-            // textColor.UtilsClass.GetColorFromString
+            textColor = heavy;
+            Debug.Log("heavy");
         }
         else{
             textmesh.fontSize=15;
-        }
-        textColor=textmesh.color;
+            textColor = normal;
+            Debug.Log("normal");
 
+        }
+        // textColor=textmesh.color;
+        textmesh.color=textColor;
 
     }
 
