@@ -10,27 +10,29 @@ namespace EntityBehavior {
         public HealthScript HealthScript;
 
         private Debuff Debuff;
+        private Coroutine coDebuffEffect;
+
+        private float EndDebuff = 0f;
 
         public void ApplyDebuff(Debuff Debuff) {
             this.Debuff = Debuff;
+            EndDebuff = Time.time + Debuff.Duration;
 
-            StopAllCoroutines();
-            StartCoroutine(CoDebuffEffect());
-            StartCoroutine(CoDebuffDuration());
+            if (coDebuffEffect == null) {
+                coDebuffEffect = StartCoroutine(CoDebuffEffect());
+            }
         }
 
         private IEnumerator CoDebuffEffect() {
             yield return new WaitForFixedUpdate();
 
-            while (Debuff != null) {
+            while (Time.time <= EndDebuff) {
                 HealthScript.TakeDamage(Debuff.Damage);
                 yield return new WaitForSeconds(Debuff.TriggerEvery);
             }
-        }
 
-        private IEnumerator CoDebuffDuration() {
-            yield return new WaitForSeconds(Debuff.Duration);
             Debuff = null;
+            coDebuffEffect = null;
         }
     }
 }
