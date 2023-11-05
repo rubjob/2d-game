@@ -12,6 +12,7 @@ public class DamagePopup : MonoBehaviour
     private float disappearSpeed=3f;
     private Color normal;
     private Color heavy;
+    private Vector3 moveVector;
 
 
 
@@ -47,13 +48,15 @@ public class DamagePopup : MonoBehaviour
         // textColor=textmesh.color;
         textmesh.color=textColor;
         disappearTimer=MAX_DISAPPEAR_TIMER;
+
+        moveVector = new Vector3(.2f,.5f)*60f;
     }
 
 
     private void Update()
     {
-        float moveYSpeed = 10f;
-        transform.position+=new Vector3(0,moveYSpeed)*Time.deltaTime;
+        transform.position+=moveVector*Time.deltaTime;
+        moveVector-=moveVector*8f*Time.deltaTime;
 
         if(disappearTimer>MAX_DISAPPEAR_TIMER/2){
             float increaseScalaAmount=1f;
