@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class QAttack : BaseEntityState
 {
@@ -14,9 +15,9 @@ public class QAttack : BaseEntityState
     [SerializeField] private float attackSpeed = 1.5f;
     [SerializeField] private float cooldownTime = 1.5f;
 
-    [Header("Knockback")]
-    public float knockbackStrength = 5f;
-    public float knockbackDelay = 0.15f;
+    [Header("Events")]
+    public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
@@ -25,7 +26,7 @@ public class QAttack : BaseEntityState
 
     public override IEnumerator OnPlayingAnimation()
     {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("QAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
@@ -37,17 +38,21 @@ public class QAttack : BaseEntityState
 
         if (targets.Length > 0)
         {
-            for (int i = 0; i < targets.Length; i++)
-            {
-                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
+            for (int i = 0; i < targets.Length; i++) {
+                HealthScript HealthScript;
+                if ((HealthScript = targets[i].GetComponent<HealthScript>()) == null) continue;
 
-                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
-                Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength, knockbackDelay);
+                HealthScript.TakeDamage(AttackDamage);
 
-                DamagePopup.Create(kb.rb.position,AttackDamage,true);
+                Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
+                Vector2 direction = (targetRb.position - rb.position).normalized;
+
+                DamagePopup.Create(targetRb.position,AttackDamage, true);
+
+                OnTargetHit?.Invoke(targets[i], direction);
             }
+
+            OnTargetsHit?.Invoke(targets.Length);
         }
-   
     }
 }

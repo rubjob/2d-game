@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,8 +16,11 @@ public class ActionManager : MonoBehaviour {
     public BindingState currentState;
     public EntityStateBinding[] stateBindings;
 
-    private Dictionary<BindingState, EntityStateBinding> states = new Dictionary<BindingState, EntityStateBinding>();
-    private Dictionary<BindingState, float> cooldowns = new Dictionary<BindingState, float>();
+    private Dictionary<BindingState, EntityStateBinding> states = new();
+    public Dictionary<BindingState, EntityStateBinding> SkillStates { get => states; }
+
+    private Dictionary<BindingState, float> cooldowns = new();
+    public Dictionary<BindingState, float> SkillCooldowns { get => cooldowns; }
 
     [Header("Mouse Util")]
     public MouseUtil MouseUtil;
@@ -24,6 +28,9 @@ public class ActionManager : MonoBehaviour {
     [Header("Events")]
     public UnityEvent OnActionStarting;
     public UnityEvent OnActionEnded;
+
+    public bool IsUsingUltimate { private set; get; } = false;
+    private float ByPassedCooldown = 1f;
 
     private void Start() {
         foreach (EntityStateBinding e in stateBindings)
@@ -33,10 +40,6 @@ public class ActionManager : MonoBehaviour {
             cooldowns.Add(e.StateBinding, 0);
 
         StartCoroutine(DetectAction());
-    }
-
-    private void FixedUpdate() {
-        // UpdateHitBox();
     }
 
     // Co-routine for detecting input and executing its action. This runs in parallel in background.
@@ -64,7 +67,7 @@ public class ActionManager : MonoBehaviour {
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
 
                     // Set cooldown
-                    cooldowns[e.Key] = Time.time + GetCurrentState().EntityState.CooldownDuration;
+                    cooldowns[e.Key] = Time.time + GetSkillCooldown(e.Key);
 
                     // Reset animation speed
                     animator.speed = 1f;
@@ -80,6 +83,11 @@ public class ActionManager : MonoBehaviour {
         }
     }
 
+    public float GetSkillCooldown(BindingState state) {
+        return ((IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
+                        ByPassedCooldown : states[state].EntityState.CooldownDuration);
+    }
+
     private void FocusPointerBidirectional() {
         HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
         float mAngle = MouseUtil.GetMouseAngle();
@@ -93,7 +101,7 @@ public class ActionManager : MonoBehaviour {
         float mAngle = MouseUtil.GetMouseAngle();
 
         hitbox.RotateTo(mAngle);
-        
+
         if (mAngle <= 45 && mAngle >= -45) {
             //attack right animation
             spriteRenderer.flipX = false;
@@ -119,8 +127,8 @@ public class ActionManager : MonoBehaviour {
         GetCurrentState().EntityState.OnDealingDamage();
     }
 
-    public void LockMovement() {}
-    public void UnlockMovement() {}
+    public void LockMovement() { }
+    public void UnlockMovement() { }
 
     // State
     public void SetState(BindingState state) {
@@ -129,5 +137,11 @@ public class ActionManager : MonoBehaviour {
 
     public EntityStateBinding GetCurrentState() {
         return states[currentState];
+    }
+
+    // Cooldown bypass
+    public void SetCooldownByPass(bool val, float byPassedCooldown = 1f) {
+        this.IsUsingUltimate = val;
+        this.ByPassedCooldown = byPassedCooldown;
     }
 }

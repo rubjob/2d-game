@@ -12,21 +12,19 @@ public class HeavyAttack : BaseEntityState {
     [SerializeField] private HitboxManager hitbox;
     [SerializeField] private float attackDamage = 300f;
     [SerializeField] private float attackSpeed = 1.5f;
-
-    [Header("Knockback")]
-    public float knockbackStrength = 5f;
-    public float knockbackDelay = 0.15f;
+    [SerializeField] private float attackCooldown = 1.5f;
 
     [Header("Events")]
-    public UnityEvent<int> OnTargetHit;
+    public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override float AttackDamage => attackDamage;
     public override float AttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => attackCooldown;
 
     public override IEnumerator OnPlayingAnimation() {
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger("HeavyAttack");
 
         yield return new WaitForSeconds(1f / AttackSpeed);
@@ -37,16 +35,20 @@ public class HeavyAttack : BaseEntityState {
 
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {
-                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
+                HealthScript HealthScript;
+                if ((HealthScript = targets[i].GetComponent<HealthScript>()) == null) continue;
 
-                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
-                Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength, knockbackDelay);
+                HealthScript.TakeDamage(AttackDamage);
 
-                DamagePopup.Create(kb.rb.position,AttackDamage,true);
+                Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
+                Vector2 direction = (targetRb.position - rb.position).normalized;
+
+                DamagePopup.Create(targetRb.position,AttackDamage, true);
+
+                OnTargetHit?.Invoke(targets[i], direction);
             }
-        }
 
-        OnTargetHit?.Invoke(targets.Length);
+            OnTargetsHit?.Invoke(targets.Length);
+        }
     }
 }

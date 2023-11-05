@@ -8,27 +8,26 @@ public class PrimaryAttack : BaseEntityState {
     [Header("Dependency")]
     public Rigidbody2D rb;
     public Animator animator;
+    public KnockbackScript KnockbackScript;
 
     [Header("Attack")]
     [SerializeField] private HitboxManager hitbox;
     [SerializeField] private int[] attackDamage = { 80, 120, 250 };
     [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private float attackWindow = 0;
+    [SerializeField] private float attackCooldown = 1.5f;
     private float lastAttackTime = float.MinValue;
     private int comboCount = 1;
 
-    [Header("Knockback")]
-    public float[] knockbackStrength = { 5f, 5f, 7f };
-    public float knockbackDelay = 0.15f;
-
     [Header("Events")]
-    public UnityEvent<int> OnTargetHit;
+    public UnityEvent<GameObject, Vector2> OnTargetHit;
+    public UnityEvent<int> OnTargetsHit;
 
     public override HitboxManager Hitbox => hitbox;
     public override float AttackDamage => attackDamage[comboCount - 1];
     public override float AttackSpeed => (comboCount == 3) ? attackSpeed / 1.5f : attackSpeed;
     private string AnimationTriggerer => "isAttacking" + comboCount;
-    public override float CooldownDuration => 0;
+    public override float CooldownDuration => attackCooldown;
 
     private void Start()
     {
@@ -39,7 +38,7 @@ public class PrimaryAttack : BaseEntityState {
     public override IEnumerator OnPlayingAnimation() {
         SuccessiveAttack();
 
-        animator.speed = Mathf.Clamp(AttackSpeed, 1, float.MaxValue);
+        animator.speed = AttackSpeed;
         animator.SetTrigger(AnimationTriggerer);
         animator.SetTrigger("Attack");
 
@@ -51,18 +50,22 @@ public class PrimaryAttack : BaseEntityState {
 
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {
-                targets[i].GetComponent<HealthScript>().TakeDamage(AttackDamage);
+                HealthScript HealthScript;
+                if ((HealthScript = targets[i].GetComponent<HealthScript>()) == null) continue;
 
-                KnockbackScript kb = targets[i].GetComponent<KnockbackScript>();
-                Vector2 direction = (kb.rb.position - rb.position).normalized;
-                kb.Knockback(direction, knockbackStrength[comboCount - 1], knockbackDelay);
+                HealthScript.TakeDamage(AttackDamage);
 
-                DamagePopup.Create(kb.rb.position,AttackDamage,false);
+                Rigidbody2D targetRb = targets[i].GetComponent<Rigidbody2D>();
+                Vector2 direction = (targetRb.position - rb.position).normalized;
 
+                DamagePopup.Create(targetRb.position, AttackDamage, true);
+
+                KnockbackScript.Index = comboCount - 1;
+                OnTargetHit?.Invoke(targets[i], direction);
             }
-        }
 
-        OnTargetHit?.Invoke(targets.Length);
+            OnTargetsHit?.Invoke(targets.Length);
+        }
 
         lastAttackTime = Time.time;
     }

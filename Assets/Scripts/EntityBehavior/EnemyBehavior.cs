@@ -21,11 +21,15 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent<Vector2> OnMovement;
-    public UnityEvent OnAnimation, OnAttacking;
+    public UnityEvent OnAnimation;
+    public UnityEvent<GameObject> OnAttacking;
 
     private Rigidbody2D targetRb;
 
     private void Start() {
+        if (!TargetObject)
+            TargetObject = GameObject.FindGameObjectWithTag("Player");
+
         targetRb = TargetObject?.GetComponent<Rigidbody2D>();
 
         StartCoroutine(PerformBehavior());
@@ -34,8 +38,9 @@ public class EnemyBehavior : MonoBehaviour
     private IEnumerator PerformBehavior() {
         LastAttackTime = Time.time;
 
-        while (TargetObject) {
-            if (!targetRb) {
+        while (true) {
+            if (!TargetObject || !targetRb) {
+                OnMovement?.Invoke(Vector2.zero);
                 yield return new WaitForFixedUpdate();
                 continue;
             }
@@ -65,13 +70,11 @@ public class EnemyBehavior : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-
-        OnMovement?.Invoke(Vector2.zero);
     }
 
     public void SignalAttack() {
         if (Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
-            OnAttacking?.Invoke();
+            OnAttacking?.Invoke(TargetObject);
     }
 
     public void Interrupt(float duration) {

@@ -328,6 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93ac59912e2a484f9f9c7cd9fba49b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rb: {fileID: 8668597462182679634}
+  BackToOriginAfter: 5
 --- !u!114 &5733952829326211397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,8 +352,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6461867472328072006}
         m_TargetAssemblyTypeName: DummyController, Assembly-CSharp
-        m_MethodName: OnTakenDamage
-        m_Mode: 0
+        m_MethodName: OnTakingDamage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

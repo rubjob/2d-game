@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class HitboxManager : MonoBehaviour
 {
-    [SerializeField] private HitboxTriggerer trigger;
-    public HitboxTriggerer Trigger
-    {
-        get { return trigger; }
-    }
+    public HitboxTriggerer Trigger;
 
     private BoxCollider2D boxCollider;
     private Vector2 originalOffset;
 
     private void Start() {
-        boxCollider = trigger.GetComponent<BoxCollider2D>();
+        boxCollider = Trigger.GetComponent<BoxCollider2D>();
         originalOffset = boxCollider.offset;
     }
 
