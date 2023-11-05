@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     public float AttackDelay = 0.5f;
     public float AttackDuration = 1f;
     public float AttackCooldown = 1f;
+    public bool ByPassAttackRange = false;
 
     private float LastAttackTime = 0f;
 
@@ -73,7 +74,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public void SignalAttack() {
-        if (Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
+        if (ByPassAttackRange || Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
             OnAttacking?.Invoke(TargetObject);
     }
 
