@@ -51,7 +51,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.25}
+  m_Offset: {x: 0.078660965, y: -1.8202901}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1}
+  m_Size: {x: 0.778038, y: 0.3313837}
   m_EdgeRadius: 0
 --- !u!1 &5137259348725849767
 GameObject:
@@ -278,7 +278,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.050023675, y: -1.3673418}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -289,7 +289,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 3.5}
+  m_Size: {x: 1.2000473, y: 1.4323125}
   m_EdgeRadius: 0
 --- !u!95 &3476168666581877434
 Animator:
@@ -301,7 +301,7 @@ Animator:
   m_GameObject: {fileID: 6545922844633434320}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b2a099897662143999a80212d5b56878, type: 2}
+  m_Controller: {fileID: 9100000, guid: 63db30485e1edd0419f73c5047fb2a71, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -353,8 +353,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1714804323, guid: 2230c316bf1314246b4d76b90685c884, type: 3}
-  m_Color: {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
+  m_Sprite: {fileID: 319122769, guid: e90770998e883f84c9d634ec264c033f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   AttackDelay: 0.25
   AttackDuration: 0.6
   AttackCooldown: 1
+  ByPassAttackRange: 0
   OnMovement:
     m_PersistentCalls:
       m_Calls:
