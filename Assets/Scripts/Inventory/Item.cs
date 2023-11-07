@@ -22,6 +22,8 @@ namespace Inventory {
     public class Item : ScriptableObject {
         public string Name;
         public string Description;
-        public ItemEffect[] Boosts;
+        public uint MaxItemStack;
+        public float Cooldown;
+        public ItemEffect[] Effects;
     }
 }
