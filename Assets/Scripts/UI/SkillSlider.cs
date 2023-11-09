@@ -14,13 +14,21 @@ public class SkillSlider : MonoBehaviour
     public int ulti_points;
     private int useSkillCount = 0;
 
+
+    // private void Start()
+    // {
+
+    //     setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
+        
+    // }
+
     private void Update()
     {
-        cooldown = ActionManager.GetSkillCooldown(SkillBinding);
-        slider.maxValue = cooldown;
-
+        
+        setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
         float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);
         slider.value = cooldown - time;
+        Debug.Log(slider.value);
     }
 
     public void setCooldown(float newCooldown){
