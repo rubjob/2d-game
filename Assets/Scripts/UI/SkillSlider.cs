@@ -15,17 +15,17 @@ public class SkillSlider : MonoBehaviour
     private int useSkillCount = 0;
 
 
-    private void Start()
-    {
+    // private void Start()
+    // {
 
-        setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
+    //     setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
         
-    }
+    // }
 
     private void Update()
     {
         
-
+        setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
         float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);
         slider.value = cooldown - time;
         Debug.Log(slider.value);
