@@ -4656,10 +4656,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 1899928891}
-  SkillBinding: 0
+  SkillBinding: 5
   slider: {fileID: 1094518266}
-  cooldown: 3
-  ulti_points: 1
+  cooldown: 10
+  ulti_points: 2
 --- !u!1 &1146879999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,7 +4967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 1899928891}
-  SkillBinding: 0
+  SkillBinding: 4
   slider: {fileID: 1381535874}
   cooldown: 3
   ulti_points: 1
@@ -6410,7 +6410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 1899928891}
-  SkillBinding: 0
+  SkillBinding: 4
   slider: {fileID: 2052571768}
   cooldown: 5
   ulti_points: 2
@@ -6496,7 +6496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionManager: {fileID: 1899928891}
-  SkillBinding: 0
+  SkillBinding: 5
   slider: {fileID: 2072911836}
   cooldown: 10
   ulti_points: 2
