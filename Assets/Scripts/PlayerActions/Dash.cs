@@ -9,15 +9,18 @@ public class Dash : BaseEntityState
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
+    public Collider2D c;
 
     [Header("Dash")]
     public float DashSpeedMultipiler = 5f;
     public float DashDuration = 0.7f;
     [SerializeField] private float DashCooldown = 3f;
 
-    public override IEnumerator OnPlayingAnimation() {
+    public override IEnumerator OnPlayingAnimation()
+    {
         animator.SetBool("isMoving", false);
-        if (rb.velocity == Vector2.zero) {
+        if (rb.velocity == Vector2.zero)
+        {
             rb.velocity = new Vector2(spriteRenderer.flipX ? -EntityMover.MovementSpeed : EntityMover.MovementSpeed, 0);
         }
 
@@ -28,10 +31,12 @@ public class Dash : BaseEntityState
         yield return new WaitForSeconds(DashDuration);
     }
 
-    public override void OnDealingDamage() {}
+
+    public override void OnDealingDamage() { }
 
     public override float AttackDamage => throw new System.NotImplementedException();
     public override float AttackSpeed => throw new System.NotImplementedException();
     public override HitboxManager Hitbox => null;
     public override float CooldownDuration => DashCooldown;
 }
+

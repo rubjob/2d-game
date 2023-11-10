@@ -3260,11 +3260,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1863653480994849837, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.907463
+      value: 18.23
       objectReference: {fileID: 0}
     - target: {fileID: 1863653480994849837, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.721823
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 1863653480994849837, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3297,6 +3297,22 @@ PrefabInstance:
     - target: {fileID: 1863653480994849837, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
+      propertyPath: AttackDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
+      propertyPath: AttackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
+      propertyPath: AttackDuration
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960846021083133163, guid: b9ebdc56019f823468d923ed82913200, type: 3}
+      propertyPath: AttackingRange
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 6545922844633434320, guid: b9ebdc56019f823468d923ed82913200, type: 3}
       propertyPath: m_Name
@@ -3939,6 +3955,10 @@ PrefabInstance:
     - target: {fileID: 5269510746967378766, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849628677050085124, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: healthBar
