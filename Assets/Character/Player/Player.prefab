@@ -410,6 +410,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eedffb4ab29324cb20489953d1bf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnObjectTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectTriggering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1841500655943250080
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +506,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eedffb4ab29324cb20489953d1bf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnObjectTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectTriggering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1978663850698813790
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5663614201451611816}
   - component: {fileID: 7556689279682379113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +793,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1039,6 +1051,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eedffb4ab29324cb20489953d1bf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnObjectTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectTriggering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6481033139033730946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1105,7 @@ MonoBehaviour:
   animator: {fileID: 4685414992071284197}
   spriteRenderer: {fileID: 2516364384002201549}
   rb: {fileID: 8650846361892597857}
+  c: {fileID: 0}
   DashSpeedMultipiler: 5
   DashDuration: 0.15
   DashCooldown: 1
@@ -1109,7 +1128,7 @@ GameObject:
   - component: {fileID: 6849628677050085124}
   - component: {fileID: 3500898761804908293}
   - component: {fileID: 1761650519782824351}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1561,6 +1580,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eedffb4ab29324cb20489953d1bf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnObjectTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectTriggering:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8055032025481282825
 GameObject:
   m_ObjectHideFlags: 0
