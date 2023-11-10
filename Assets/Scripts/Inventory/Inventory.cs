@@ -12,6 +12,8 @@ namespace Inventory {
     public class Inventory : MonoBehaviour {
         public readonly static int MaxActiveSlots = 4;
 
+        public Item Item;
+
         [Header("Keybindings")]
         public InputActionReference UseItemKey;
 
@@ -19,22 +21,47 @@ namespace Inventory {
         private int[] ActiveSlots = new int[MaxActiveSlots];
         private int SelectedSlot = 0;
 
-        private readonly Dictionary<int, float> ItemLastUsed = new();
+        private readonly Dictionary<int, float> NextUseTime = new();
+
+        private void Start() {
+            for (int i = 0; i < ActiveSlots.Length; i++) ActiveSlots[i] = -1;
+
+            ItemStack itemSt = new ItemStack();
+
+            itemSt.Item = Item;
+            itemSt.Count = 1;
+
+            Backpacks.Add(itemSt);
+            ActiveSlots[0] = 0;
+            NextUseTime[0] = 0;
+        }
 
         private void Update() {
-            if (UseItemKey.action.IsInProgress() &&
-                ItemLastUsed[GetItemStackIndex()] + GetItemStackInActiveSlots().Item.Cooldown < Time.time) {
+            if (UseItemKey.action.IsInProgress()) UseItem();
+        }
 
-                ItemLastUsed[GetItemStackIndex()] = Time.time;
+        private void UseItem() {
+            if (GetItemStackInActiveSlots() != null && NextUseTime[GetItemStackIndex()] < Time.time) {
+                NextUseTime[GetItemStackIndex()] = Time.time + GetItemStackInActiveSlots().Item.Cooldown;
 
                 foreach (ItemEffect e in GetItemStackInActiveSlots().Item.Effects) {
                     Debug.Log(e.Type + ": " + e.Amount);
+                }
+
+                ItemStack currentItem = GetItemStackInActiveSlots();
+                currentItem.Count--;
+
+                if (currentItem.Count == 0) {
+                    ActiveSlots[GetItemStackIndex()] = -1;
+                    NextUseTime.Remove(GetItemStackIndex());
+                    Backpacks.Remove(currentItem);
                 }
             }
         }
 
         public ItemStack GetItemStackInActiveSlots() {
-            return Backpacks[ActiveSlots[SelectedSlot]];
+            int index = GetItemStackIndex();
+            return (index == -1) ? null : Backpacks[index];
         }
 
         public int GetItemStackIndex() {
