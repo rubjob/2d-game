@@ -6,13 +6,13 @@ namespace EntityBehavior
 {
     public class DebuffScript : MonoBehaviour
     {
-        public Debuff ApplyingDebuff;
+        public Status ApplyingStatus;
 
         public void ApplyDebuff(GameObject Target) {
-            DebuffActor Actor;
-            if ((Actor = Target.GetComponent<DebuffActor>()) == null) return;
+            StatusActor Actor;
+            if ((Actor = Target.GetComponent<StatusActor>()) == null) return;
 
-            Actor.ApplyDebuff(ApplyingDebuff);
+            Actor.ApplyStatus(ApplyingStatus);
         }
     }
 }
