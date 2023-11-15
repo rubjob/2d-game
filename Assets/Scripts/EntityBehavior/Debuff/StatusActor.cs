@@ -9,38 +9,44 @@ namespace EntityBehavior {
         [Header("Dependency")]
         public HealthScript HealthScript;
 
-        private Status Status;
-        private Coroutine coDebuffEffect;
-
-        private float EndStatus = 0f;
+        private readonly List<Status> StatusList = new();
+        private readonly Dictionary<String, float> StatusEndTime = new();
+        private readonly Dictionary<String, Coroutine> StatusCoroutine = new();
 
         public void ApplyStatus(Status Status) {
-            this.Status = Status;
-            EndStatus = Time.time + Status.Duration;
+            StatusEndTime[Status.Name] = Time.time + Status.Duration;
 
-            if (coDebuffEffect == null) {
-                coDebuffEffect = StartCoroutine(CoDebuffEffect());
+            Predicate<Status> Finder = new(delegate (Status s) {
+                return s.Name == Status.Name;
+            });
+
+            if (StatusList.Find(Finder) == null) {
+                StatusList.Add(Status);
+                StatusCoroutine[Status.Name] = StartCoroutine(CoStatusEffect(Status));
             }
         }
 
-        private IEnumerator CoDebuffEffect() {
+        private IEnumerator CoStatusEffect(Status s) {
             yield return new WaitForFixedUpdate();
 
-            while (Time.time <= EndStatus) {
-                HealthScript.TakeDamage(Status.Damage);
-                yield return new WaitForSeconds(Status.TriggerEvery);
+            while (Time.time <= StatusEndTime[s.Name]) {
+                HealthScript.TakeDamage(s.Damage);
+
+                if (s.Type == StatusApplyingType.Instant) break;
+
+                yield return new WaitForSeconds(s.TriggerEvery);
             }
 
-            Status = null;
-            coDebuffEffect = null;
+            StatusList.Remove(s);
+            StatusCoroutine.Remove(s.Name);
         }
 
-        public Status GetDebuff() {
-            return Status;
+        public Status[] GetDebuff() {
+            return StatusList.ToArray();
         }
 
-        public float GetStatusDuration() {
-            return EndStatus - Time.time;
+        public float GetStatusDuration(Status s) {
+            return StatusEndTime[s.Name] - Time.time;
         }
     }
 }

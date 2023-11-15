@@ -11,6 +11,7 @@ namespace EntityBehavior
         Continuous,
     }
 
+    [CreateAssetMenu(menuName = "Status Effect")]
     public class Status : ScriptableObject
     {
         [Header("Generic Information")]
@@ -26,6 +27,7 @@ namespace EntityBehavior
         public float AttackSpeedBoost;
         public float AttackDamageBoost;
         public float HealthBoost;
+        public float MaxHealthBoost;
         public float SpeedBoost;
 
         [Header("Debuff")]
