@@ -13,15 +13,6 @@ public class SkillSlider : MonoBehaviour
     public float cooldown;
     public int ulti_points;
     private int useSkillCount = 0;
-
-
-    // private void Start()
-    // {
-
-    //     setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
-        
-    // }
-
     private void Update()
     {
         
@@ -35,9 +26,5 @@ public class SkillSlider : MonoBehaviour
         cooldown=newCooldown;
         slider.maxValue=cooldown;
         slider.value=cooldown;
-    }
-
-    public int getUseSkillCount(){
-        return useSkillCount;
     }
 }

@@ -60,6 +60,8 @@ public class PrimaryAttack : BaseEntityState {
 
                 DamagePopup.Create(targetRb.position, AttackDamage, false);
 
+                PlayerStatus.Create(targetRb.position);
+
                 KnockbackScript.Index = comboCount - 1;
                 OnTargetHit?.Invoke(targets[i], direction);
             }

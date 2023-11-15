@@ -14,5 +14,7 @@ public class GameAssets : MonoBehaviour
     }
 
     public Transform prefabDmgPopup;
+    public Transform prefabPlayerStatus;
+
 
 }
