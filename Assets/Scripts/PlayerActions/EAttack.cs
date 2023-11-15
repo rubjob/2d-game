@@ -32,7 +32,7 @@ public class EAttack : BaseEntityState
     }
 
     public override void OnDealingDamage() {
-        GameObject[] targets = hitbox.Trigger.TriggeringObjects;
+        GameObject[] targets = hitbox.GetCollidedObjects();
 
         if (targets.Length > 0) {
             for (int i = 0; i < targets.Length; i++) {

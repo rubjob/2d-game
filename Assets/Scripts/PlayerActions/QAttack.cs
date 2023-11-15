@@ -32,9 +32,8 @@ public class QAttack : BaseEntityState
         yield return new WaitForSeconds(1f / AttackSpeed);
     }
 
-    public override void OnDealingDamage()
-    {
-        GameObject[] targets = hitbox.Trigger.TriggeringObjects;
+    public override void OnDealingDamage() {
+        GameObject[] targets = hitbox.GetCollidedObjects();
 
         if (targets.Length > 0)
         {

@@ -6,7 +6,8 @@ using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActionManager : MonoBehaviour {
+public class ActionManager : MonoBehaviour
+{
     [Header("Animation")]
     public Rigidbody2D rb;
     public Animator animator;
@@ -32,7 +33,8 @@ public class ActionManager : MonoBehaviour {
     public bool IsUsingUltimate { private set; get; } = false;
     private float ByPassedCooldown = 1f;
 
-    private void Start() {
+    private void Start()
+    {
         foreach (EntityStateBinding e in stateBindings)
             states.Add(e.StateBinding, e);
 
@@ -43,10 +45,14 @@ public class ActionManager : MonoBehaviour {
     }
 
     // Co-routine for detecting input and executing its action. This runs in parallel in background.
-    private IEnumerator DetectAction() {
-        while (true) {
-            foreach (KeyValuePair<BindingState, EntityStateBinding> e in states) {
-                if (e.Value.InputBinding.action.IsInProgress() && cooldowns[e.Key] <= Time.time) {
+    private IEnumerator DetectAction()
+    {
+        while (true)
+        {
+            foreach (KeyValuePair<BindingState, EntityStateBinding> e in states)
+            {
+                if (e.Value.InputBinding.action.IsInProgress() && cooldowns[e.Key] <= Time.time)
+                {
                     SetState(e.Key);
 
                     OnActionStarting?.Invoke();
@@ -56,7 +62,8 @@ public class ActionManager : MonoBehaviour {
                         rb.velocity = Vector2.zero;
 
                     // Set animation direction
-                    switch (GetCurrentState().Focus) {
+                    switch (GetCurrentState().Focus)
+                    {
                         case Focus.None: break;
                         case Focus.Movement: break;
                         case Focus.PointerBidirectional: FocusPointerBidirectional(); break;
@@ -83,12 +90,14 @@ public class ActionManager : MonoBehaviour {
         }
     }
 
-    public float GetSkillCooldown(BindingState state) {
+    public float GetSkillCooldown(BindingState state)
+    {
         return ((IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
                         ByPassedCooldown : states[state].EntityState.CooldownDuration);
     }
 
-    private void FocusPointerBidirectional() {
+    private void FocusPointerBidirectional()
+    {
         HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
         float mAngle = MouseUtil.GetMouseAngle();
 
@@ -96,34 +105,40 @@ public class ActionManager : MonoBehaviour {
         spriteRenderer.flipX = Mathf.Abs(mAngle) > 90f;
     }
 
-    private void FocusPointer() {
+    private void FocusPointer()
+    {
         HitboxManager hitbox = GetCurrentState().EntityState.Hitbox;
         float mAngle = MouseUtil.GetMouseAngle();
 
         hitbox.RotateTo(mAngle);
 
-        if (mAngle <= 45 && mAngle >= -45) {
+        if (mAngle <= 45 && mAngle >= -45)
+        {
             //attack right animation
             spriteRenderer.flipX = false;
             animator.SetTrigger("isAttackingSide");
         }
-        else if (mAngle >= 135 || mAngle <= -135) {
+        else if (mAngle >= 135 || mAngle <= -135)
+        {
             //attack left animation
             spriteRenderer.flipX = true;
             animator.SetTrigger("isAttackingSide");
         }
-        else if (mAngle < -45 && mAngle > -135) {
+        else if (mAngle < -45 && mAngle > -135)
+        {
             //attack down animation
             animator.SetTrigger("isAttackingDown");
         }
-        else if (mAngle > 45 && mAngle < 135) {
+        else if (mAngle > 45 && mAngle < 135)
+        {
             //attack up animation
             animator.SetTrigger("isAttackingUp");
         }
     }
 
     // Animation triggered function
-    public void SignalAttack() {
+    public void SignalAttack()
+    {
         GetCurrentState().EntityState.OnDealingDamage();
     }
 
@@ -131,17 +146,30 @@ public class ActionManager : MonoBehaviour {
     public void UnlockMovement() { }
 
     // State
-    public void SetState(BindingState state) {
+    public void SetState(BindingState state)
+    {
         currentState = state;
     }
 
-    public EntityStateBinding GetCurrentState() {
+    public EntityStateBinding GetCurrentState()
+    {
         return states[currentState];
     }
 
     // Cooldown bypass
-    public void SetCooldownByPass(bool val, float byPassedCooldown = 1f) {
+    public void SetCooldownByPass(bool val, float byPassedCooldown = 1f)
+    {
         this.IsUsingUltimate = val;
         this.ByPassedCooldown = byPassedCooldown;
+    }
+    public void TriggerIFrame()
+    {
+        Physics2D.IgnoreLayerCollision(3, 6, true);
+        GetComponent<HealthScript>().isInvulnerable = true;
+    }
+    public void RemoveIFrame()
+    {
+        Physics2D.IgnoreLayerCollision(3, 6, false);
+        GetComponent<HealthScript>().isInvulnerable = false;
     }
 }
