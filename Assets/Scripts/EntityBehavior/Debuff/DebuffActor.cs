@@ -34,5 +34,13 @@ namespace EntityBehavior {
             Debuff = null;
             coDebuffEffect = null;
         }
+
+        public Debuff GetDebuff() {
+            return Debuff;
+        }
+
+        public float GetDebuffDuration() {
+            return EndDebuff - Time.time;
+        }
     }
 }
