@@ -6,16 +6,18 @@ using UnityEngine.Events;
 public class HealthScript : MonoBehaviour
 {
     public bool isInvulnerable = false;
-    public float maxHealth = 100f;
+    public float MaxHealth = 100f;
+    public float BaseMaxHealth = 100f;
 
     public UnityEvent<float> OnHeal, OnTakenDamage, OnHealthChange;
     public UnityEvent OnDead;
 
-    private float health;
+    public float Health { get; private set; }
 
     void Start()
     {
-        health = maxHealth;
+        MaxHealth = BaseMaxHealth;
+        Health = MaxHealth;
     }
 
     /*
@@ -26,12 +28,12 @@ public class HealthScript : MonoBehaviour
     private void AdjustHealth(float amount)
     {
         if (!isInvulnerable)
-            health += amount;
+            Health += amount;
 
-        health = Mathf.Clamp(health, 0, maxHealth);
-        OnHealthChange?.Invoke(health);
+        Health = Mathf.Clamp(Health, 0, MaxHealth);
+        OnHealthChange?.Invoke(Health);
 
-        if (health <= 0f) {
+        if (Health <= 0f) {
             Destroy(gameObject);
             OnDead?.Invoke();
         }
@@ -39,10 +41,8 @@ public class HealthScript : MonoBehaviour
         else if (amount < 0) OnTakenDamage?.Invoke(-amount);
     }
 
-    /*
-     * Getter and Setter
-     */
-    public float Health {
-        get => health;
+    public void SetAdditionalMaxHealth(float Amount) {
+        MaxHealth = BaseMaxHealth + Amount; // Assume that max health buff CANNOT be stacked
+        Health = Mathf.Clamp(0, Health, MaxHealth);
     }
 }

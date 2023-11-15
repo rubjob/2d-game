@@ -29,6 +29,9 @@ namespace EntityBehavior {
         private IEnumerator CoStatusEffect(Status s) {
             yield return new WaitForFixedUpdate();
 
+            HealthScript.SetAdditionalMaxHealth(s.MaxHealthBoost);
+            HealthScript.Heal(s.HealthBoost);
+
             while (Time.time <= StatusEndTime[s.Name]) {
                 HealthScript.TakeDamage(s.Damage);
 
@@ -36,6 +39,8 @@ namespace EntityBehavior {
 
                 yield return new WaitForSeconds(s.TriggerEvery);
             }
+
+            HealthScript.SetAdditionalMaxHealth(0);
 
             StatusList.Remove(s);
             StatusCoroutine.Remove(s.Name);

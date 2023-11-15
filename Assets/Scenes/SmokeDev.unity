@@ -4430,10 +4430,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5690362614435329978, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
-      propertyPath: ApplyingStatus
-      value: 
-      objectReference: {fileID: 11400000, guid: 8de39b8e30e6a544cbeffab5cd976926, type: 2}
     - target: {fileID: 8122017270275017281, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
       propertyPath: m_Name
       value: Smoke
