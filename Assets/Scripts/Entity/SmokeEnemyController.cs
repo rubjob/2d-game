@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemyController : MonoBehaviour
+public class SmokeEnemyController : MonoBehaviour
 {
     [Header("Dependency")]
     public EntityMover EntityMover;
@@ -11,11 +11,10 @@ public class BasicEnemyController : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
     public Rigidbody2D rb;
 
-    [Header("Attack")]
-    public float AttackDamage = 50f;
+    [Header("Smoke")]
+    public GameObject SmokeObject;
 
-    private void Update()
-    {
+    private void Update() {
         if (EntityMover.IsBlockingMovement) return;
 
         Vector2 velocity = rb.velocity;
@@ -26,27 +25,26 @@ public class BasicEnemyController : MonoBehaviour
             SpriteRenderer.flipX = velocity.x < 0;
     }
 
-    public void OnAnimation()
-    {
+    public void OnAnimation() {
+        Animator.SetTrigger("isAttacking1");
+        Animator.SetTrigger("isAttackingSide");
         Animator.SetTrigger("Attack");
     }
 
-    public void OnAttack(GameObject TargetObject)
-    {
-        HealthScript health = TargetObject.GetComponent<HealthScript>();
-
-        if (!health) return;
-        health.TakeDamage(AttackDamage);
+    public void OnAttack(GameObject TargetObject) {
+        GameObject smoke = Instantiate(SmokeObject);
+        
+        Rigidbody2D smokeRb = smoke.AddComponent<Rigidbody2D>();
+        smokeRb.gravityScale = 0f;
+        smokeRb.position = rb.position;
     }
 
-    public void LockMovement()
-    {
+    public void LockMovement() {
         EntityMover.IsBlockingMovement = true;
         Animator.speed = 1f / EnemyBehavior.AttackDuration;
     }
 
-    public void UnlockMovement()
-    {
+    public void UnlockMovement() {
         EntityMover.IsBlockingMovement = false;
         Animator.speed = 1f;
     }

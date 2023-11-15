@@ -11,7 +11,7 @@ public class levelMove : MonoBehaviour
    private void OnTriggerEnter2D(Collider2D other){
         print("TriggerEnter");
 
-        if(other.tag == "GameController"){
+        if(other.tag == "Player"){
             print("Switch to");
             SceneManager.LoadScene(sceneToLoad);
         }

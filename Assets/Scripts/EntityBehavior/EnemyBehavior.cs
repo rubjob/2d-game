@@ -13,9 +13,10 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Constant")]
     public float FollowingRange = 5f;
     public float AttackingRange = 3f;
-    public float AttackDelay = 0.5f;
+    public float AttackDelay = 1f;
     public float AttackDuration = 1f;
     public float AttackCooldown = 1f;
+    public bool ByPassAttackRange = false;
 
     private float LastAttackTime = 0f;
 
@@ -26,7 +27,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private Rigidbody2D targetRb;
 
-    private void Start() {
+    private void Start()
+    {
         if (!TargetObject)
             TargetObject = GameObject.FindGameObjectWithTag("Player");
 
@@ -35,11 +37,14 @@ public class EnemyBehavior : MonoBehaviour
         StartCoroutine(PerformBehavior());
     }
 
-    private IEnumerator PerformBehavior() {
+    private IEnumerator PerformBehavior()
+    {
         LastAttackTime = Time.time;
 
-        while (true) {
-            if (!TargetObject || !targetRb) {
+        while (true)
+        {
+            if (!TargetObject || !targetRb)
+            {
                 OnMovement?.Invoke(Vector2.zero);
                 yield return new WaitForFixedUpdate();
                 continue;
@@ -47,24 +52,31 @@ public class EnemyBehavior : MonoBehaviour
 
             float distance = Vector2.Distance(rb.position, targetRb.position);
 
-            if (distance <= FollowingRange) {
-                if (distance <= AttackingRange) {
+            if (distance <= FollowingRange)
+            {
+                if (distance <= AttackingRange)
+                {
                     OnMovement?.Invoke(Vector2.zero);
 
-                    if (Time.time >= LastAttackTime + AttackCooldown) {
+                    if (Time.time >= LastAttackTime + AttackCooldown)
+                    {
                         yield return new WaitForSeconds(AttackDelay);
-                        
+
                         OnAnimation?.Invoke();
 
                         yield return new WaitForSeconds(AttackDuration);
-                        
+
                         LastAttackTime = Time.time;
                     }
-                } else {
+                }
+                else
+                {
                     Vector2 direction = (targetRb.position - rb.position).normalized;
                     OnMovement?.Invoke(direction);
                 }
-            } else {
+            }
+            else
+            {
                 OnMovement?.Invoke(Vector2.zero);
             }
 
@@ -72,17 +84,20 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void SignalAttack() {
-        if (Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
+    public void SignalAttack()
+    {
+        if (ByPassAttackRange || Vector2.Distance(rb.position, targetRb.position) <= AttackingRange)
             OnAttacking?.Invoke(TargetObject);
     }
 
-    public void Interrupt(float duration) {
+    public void Interrupt(float duration)
+    {
         StopCoroutine("CoInterrupt");
         StartCoroutine(CoInterrupt(duration));
     }
 
-    private IEnumerator CoInterrupt(float duration) {
+    private IEnumerator CoInterrupt(float duration)
+    {
         OnMovement?.Invoke(Vector2.zero);
         StopCoroutine("PerformBehavior");
 
