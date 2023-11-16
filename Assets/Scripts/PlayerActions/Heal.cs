@@ -19,7 +19,7 @@ namespace Player
         public int MaxPotion = 3;
 
         public override float BaseAttackSpeed => 1f / AnimationDuration;
-        public override float CooldownDuration => HealCooldown;
+        public override float BaseCooldownDuration => HealCooldown;
         public override float BaseAttackDamage => throw new System.NotImplementedException();
         public override HitboxManager Hitbox => throw new System.NotImplementedException();
 

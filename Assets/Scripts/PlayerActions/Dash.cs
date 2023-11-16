@@ -37,6 +37,6 @@ public class Dash : BaseEntityState
     public override float BaseAttackDamage => throw new System.NotImplementedException();
     public override float BaseAttackSpeed => throw new System.NotImplementedException();
     public override HitboxManager Hitbox => null;
-    public override float CooldownDuration => DashCooldown;
+    public override float BaseCooldownDuration => DashCooldown;
 }
 

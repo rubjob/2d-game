@@ -19,7 +19,7 @@ namespace Player
 
         public override float BaseAttackDamage => throw new System.NotImplementedException();
         public override float BaseAttackSpeed => 1f / AnimationDuration;
-        public override float CooldownDuration => 0;
+        public override float BaseCooldownDuration => 0;
         public override HitboxManager Hitbox => throw new System.NotImplementedException();
 
         public override void OnDealingDamage() {

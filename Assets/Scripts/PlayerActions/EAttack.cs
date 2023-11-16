@@ -22,7 +22,7 @@ public class EAttack : BaseEntityState
     public override float BaseAttackDamage => attackDamage;
     public override float BaseAttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => cooldownTime;
+    public override float BaseCooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = AttackSpeed;

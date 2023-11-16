@@ -12,7 +12,9 @@ public abstract class BaseEntityState : MonoBehaviour {
     public float AttackSpeed { get => BaseAttackSpeed * Mathf.Max(1f, AdditionalAttackSpeed); }
     public float AdditionalAttackSpeed { get; set; } = 1f;
 
-    public abstract float CooldownDuration { get; }
+    public abstract float BaseCooldownDuration { get; }
+    public float CooldownDuration { get => BaseCooldownDuration / Mathf.Max(1f, AdditionalAttackSpeed); }
+
     public abstract HitboxManager Hitbox { get; }
 
     public abstract IEnumerator OnPlayingAnimation();

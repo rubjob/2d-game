@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,7 +22,7 @@ public class HeavyAttack : BaseEntityState {
     public override float BaseAttackDamage => attackDamage;
     public override float BaseAttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => attackCooldown;
+    public override float BaseCooldownDuration => attackCooldown;
 
     public override IEnumerator OnPlayingAnimation() {
         animator.speed = AttackSpeed;
@@ -31,6 +32,8 @@ public class HeavyAttack : BaseEntityState {
     }
 
     public override void OnDealingDamage() {
+        Debug.Log(CooldownDuration);
+
         GameObject[] targets = hitbox.GetCollidedObjects();
 
         if (targets.Length > 0) {
