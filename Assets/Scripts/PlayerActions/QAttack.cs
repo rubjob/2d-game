@@ -19,10 +19,10 @@ public class QAttack : BaseEntityState
     public UnityEvent<GameObject, Vector2> OnTargetHit;
     public UnityEvent<int> OnTargetsHit;
 
-    public override float AttackDamage => attackDamage;
-    public override float AttackSpeed => attackSpeed;
+    public override float BaseAttackDamage => attackDamage;
+    public override float BaseAttackSpeed => attackSpeed;
     public override HitboxManager Hitbox => hitbox;
-    public override float CooldownDuration => cooldownTime;
+    public override float BaseCooldownDuration => cooldownTime;
 
     public override IEnumerator OnPlayingAnimation()
     {
