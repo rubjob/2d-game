@@ -7,6 +7,7 @@ namespace Player
     public class Ultimate : BaseEntityState
     {
         [Header("Dependecy")]
+        public Animator animator;
         public ActionManager ActionManager;
 
         [Header("Constant")]
@@ -21,26 +22,30 @@ namespace Player
         public override float BaseAttackSpeed => 1f / AnimationDuration;
         public override float BaseCooldownDuration => 0;
         public override HitboxManager Hitbox => throw new System.NotImplementedException();
-
-        public override void OnDealingDamage() {
+        public override void OnDealingDamage()
+        {
             throw new System.NotImplementedException();
         }
 
-        public override IEnumerator OnPlayingAnimation() {
-            if (CurrentUltimatePoint == MaxUltimatePoint) {
+        public override IEnumerator OnPlayingAnimation()
+        {
+            if (CurrentUltimatePoint == MaxUltimatePoint)
+            {
+                animator.SetTrigger("Ultimate");
                 yield return new WaitForSeconds(AnimationDuration);
-
                 StartCoroutine(CoUltimating());
             }
         }
 
-        public void AddUltimatePoint(int pt) {
+        public void AddUltimatePoint(int pt)
+        {
             CurrentUltimatePoint = Mathf.Clamp(CurrentUltimatePoint + pt, 0, MaxUltimatePoint);
 
             Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
         }
 
-        public void ReduceUltimatePoint(int pt) {
+        public void ReduceUltimatePoint(int pt)
+        {
             if (!IsUsingUltimate) return;
 
             CurrentUltimatePoint = Mathf.Clamp(CurrentUltimatePoint - pt, 0, MaxUltimatePoint);
@@ -48,12 +53,14 @@ namespace Player
             Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
         }
 
-        private IEnumerator CoUltimating() {
+        private IEnumerator CoUltimating()
+        {
             IsUsingUltimate = true;
 
             ActionManager.SetCooldownByPass(true, SkillCooldown);
 
-            while (IsUsingUltimate) {
+            while (IsUsingUltimate)
+            {
                 if (CurrentUltimatePoint == 0) IsUsingUltimate = false;
                 yield return new WaitForFixedUpdate();
             }
@@ -61,4 +68,5 @@ namespace Player
             ActionManager.SetCooldownByPass(false);
         }
     }
+
 }
