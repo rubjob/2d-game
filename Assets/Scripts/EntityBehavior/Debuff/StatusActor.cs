@@ -9,6 +9,7 @@ namespace EntityBehavior {
         [Header("Dependency")]
         public HealthScript HealthScript;
         public EntityMover EntityMover;
+        public ActionManager ActionManager;
 
         private readonly List<Status> StatusList = new();
         private readonly Dictionary<String, float> StatusEndTime = new();
@@ -30,6 +31,8 @@ namespace EntityBehavior {
         private IEnumerator CoStatusEffect(Status s) {
             yield return new WaitForFixedUpdate();
             
+            ActionManager.SetAdditionalAttackDamage(s.AttackDamageBoost);
+            ActionManager.SetAdditionalAttackSpeed(s.AttackSpeedBoost);
             EntityMover.SetAdditionalMovementSpeed(s.SpeedBoost);
             HealthScript.SetAdditionalMaxHealth(s.MaxHealthBoost);
             HealthScript.Heal(s.HealthBoost);
@@ -42,6 +45,8 @@ namespace EntityBehavior {
                 yield return new WaitForSeconds(s.TriggerEvery);
             }
 
+            ActionManager.SetAdditionalAttackDamage(0);
+            ActionManager.SetAdditionalAttackSpeed(0);
             EntityMover.SetAdditionalMovementSpeed(0);
             HealthScript.SetAdditionalMaxHealth(0);
 
