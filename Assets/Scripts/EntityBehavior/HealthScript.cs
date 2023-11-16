@@ -28,6 +28,7 @@ public class HealthScript : MonoBehaviour
             Health += amount;
 
         Health = Mathf.Clamp(Health, 0, MaxHealth);
+        Debug.Log(Health);
         OnHealthChange?.Invoke(Health);
 
         if (Health <= 0f) {

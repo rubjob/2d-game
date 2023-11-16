@@ -29,6 +29,7 @@ public class PrimaryAttack : BaseEntityState {
     private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float BaseCooldownDuration => attackCooldown;
 
+
     private void Start()
     {
         if (attackWindow == 0f)

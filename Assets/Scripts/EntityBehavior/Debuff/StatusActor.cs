@@ -11,6 +11,9 @@ namespace EntityBehavior {
         public EntityMover EntityMover;
         public ActionManager ActionManager;
 
+        public RectTransform parent;
+
+
         private readonly List<Status> StatusList = new();
         private readonly Dictionary<String, float> StatusEndTime = new();
         private readonly Dictionary<String, Coroutine> StatusCoroutine = new();
@@ -24,6 +27,9 @@ namespace EntityBehavior {
 
             if (StatusList.Find(Finder) == null) {
                 StatusList.Add(Status);
+                for(int i=0;i<StatusList.Count;i++){
+                    PlayerStatus.Create(parent.position,GetStatusDuration(StatusList[i]),parent);
+                }
                 StatusCoroutine[Status.Name] = StartCoroutine(CoStatusEffect(Status));
             }
         }
