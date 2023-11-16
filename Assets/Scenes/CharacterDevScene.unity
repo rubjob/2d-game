@@ -1593,6 +1593,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 953259770894349948, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
   m_PrefabInstance: {fileID: 7951332055613980112}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &709927975 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4685414992071284197, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+  m_PrefabInstance: {fileID: 7951332055613980112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &715067359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3202,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &747195775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.445751
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.6582265
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878627480518782687, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010393201199455421, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
+      propertyPath: m_Name
+      value: SmokeEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee6bca2ad96ed654fa0b732e43f531d2, type: 3}
 --- !u!1 &1038304462
 GameObject:
   m_ObjectHideFlags: 3
@@ -3739,7 +3801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 10000
+  BaseMaxHealth: 100
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -4178,6 +4240,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6272386074585453668, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 709927975}
     - target: {fileID: 7368747041724914095, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4200,3 +4266,4 @@ SceneRoots:
   - {fileID: 1623954028}
   - {fileID: 1187325720}
   - {fileID: 221390737}
+  - {fileID: 747195775}
