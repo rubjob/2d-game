@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 5786285349267645393}
   - component: {fileID: 2504467633998816274}
   - component: {fileID: 260579037778498376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MouseUtil
   m_TagString: MouseUtil
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 7890417994538519364}
   - component: {fileID: 1960846021083133163}
   - component: {fileID: 1889173269563595730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 100
+  BaseMaxHealth: 100
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7168657525142851518}
-  MovementSpeed: 5
+  BaseMovementSpeed: 5
 --- !u!114 &1960846021083133163
 MonoBehaviour:
   m_ObjectHideFlags: 0
