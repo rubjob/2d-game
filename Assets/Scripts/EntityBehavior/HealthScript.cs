@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class HealthScript : MonoBehaviour
 {
     public bool isInvulnerable = false;
-    public float MaxHealth = 100f;
+    public float MaxHealth { get => BaseMaxHealth + AdditionalMaxHealth; }
     public float BaseMaxHealth = 100f;
+    private float AdditionalMaxHealth = 0f;
 
     public UnityEvent<float> OnHeal, OnTakenDamage, OnHealthChange;
     public UnityEvent OnDead;
@@ -16,13 +17,9 @@ public class HealthScript : MonoBehaviour
 
     void Start()
     {
-        MaxHealth = BaseMaxHealth;
         Health = MaxHealth;
     }
 
-    /*
-     * Method
-     */
     public void TakeDamage(float amount) => AdjustHealth(-amount);
     public void Heal(float amount) => AdjustHealth(amount);
     private void AdjustHealth(float amount)
@@ -42,7 +39,8 @@ public class HealthScript : MonoBehaviour
     }
 
     public void SetAdditionalMaxHealth(float Amount) {
-        MaxHealth = BaseMaxHealth + Amount; // Assume that max health buff CANNOT be stacked
+        // Assume that max health buff CANNOT be stacked
+        AdditionalMaxHealth = Amount;
         Health = Mathf.Clamp(0, Health, MaxHealth);
     }
 }

@@ -9,12 +9,9 @@ public class EntityMover : MonoBehaviour
 
     [Header("Player Movement")]
     public float BaseMovementSpeed = 5f;
-    public float MovementSpeed { get; private set; }
+    private float AdditionalMovementSpeed = 0f;
+    public float MovementSpeed { get => BaseMovementSpeed + AdditionalMovementSpeed; }
     public bool IsBlockingMovement { get; set; }
-
-    public EntityMover() {
-        MovementSpeed = BaseMovementSpeed;
-    }
 
     public void MoveToDirection(Vector2 direction) {
         if (IsBlockingMovement) return;
@@ -23,6 +20,6 @@ public class EntityMover : MonoBehaviour
     }
 
     public void SetAdditionalMovementSpeed(float Amount) {
-        MovementSpeed = Amount + BaseMovementSpeed;
+        AdditionalMovementSpeed = Amount;
     }
 }
