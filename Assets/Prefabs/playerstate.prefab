@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4164106856984049573}
   - component: {fileID: 7017642799798772187}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3763351349041008126}
+  - component: {fileID: 6821646147893076705}
   m_Layer: 0
   m_Name: playerstate
   m_TagString: Untagged
@@ -117,6 +118,19 @@ Transform:
   - {fileID: 2486052898630409666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6821646147893076705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312234944393802159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b598682f06c74f47968a750fc02e78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 0}
 --- !u!1 &8404483880051542241
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +142,7 @@ GameObject:
   - component: {fileID: 2486052898630409666}
   - component: {fileID: 7655455239832342876}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

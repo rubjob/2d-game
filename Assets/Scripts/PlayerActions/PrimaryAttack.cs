@@ -29,6 +29,7 @@ public class PrimaryAttack : BaseEntityState {
     private string AnimationTriggerer => "isAttacking" + comboCount;
     public override float BaseCooldownDuration => attackCooldown;
 
+
     private void Start()
     {
         if (attackWindow == 0f)
@@ -59,8 +60,6 @@ public class PrimaryAttack : BaseEntityState {
                 Vector2 direction = (targetRb.position - rb.position).normalized;
 
                 DamagePopup.Create(targetRb.position, AttackDamage, false);
-
-                PlayerStatus.Create(targetRb.position);
 
                 KnockbackScript.Index = comboCount - 1;
                 OnTargetHit?.Invoke(targets[i], direction);

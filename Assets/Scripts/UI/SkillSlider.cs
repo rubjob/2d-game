@@ -12,7 +12,6 @@ public class SkillSlider : MonoBehaviour
     public Slider slider;
     public float cooldown;
     public int ulti_points;
-    private int useSkillCount = 0;
     private void Update()
     {
         

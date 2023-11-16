@@ -13,6 +13,7 @@ namespace EntityBehavior
             if ((Actor = Target.GetComponent<StatusActor>()) == null) return;
 
             Actor.ApplyStatus(ApplyingStatus);
+
         }
     }
 }

@@ -24,6 +24,9 @@ namespace EntityBehavior {
 
             if (StatusList.Find(Finder) == null) {
                 StatusList.Add(Status);
+                for(int i=0;i<StatusList.Count;i++){
+                    PlayerStatus.Create(EntityMover.rb.position,GetStatusDuration(StatusList[i]));
+                }
                 StatusCoroutine[Status.Name] = StartCoroutine(CoStatusEffect(Status));
             }
         }
