@@ -4433,7 +4433,11 @@ PrefabInstance:
     - target: {fileID: 5690362614435329978, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
       propertyPath: ApplyingStatus
       value: 
-      objectReference: {fileID: 11400000, guid: afa1420933714ce4c845da38ce643d50, type: 2}
+      objectReference: {fileID: 11400000, guid: 7bc4dc3d8706841c8a0c697b8af8707e, type: 2}
+    - target: {fileID: 8014002750534363051, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
+      propertyPath: Lifetime
+      value: 1e+20
+      objectReference: {fileID: 0}
     - target: {fileID: 8122017270275017281, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
       propertyPath: m_Name
       value: Smoke

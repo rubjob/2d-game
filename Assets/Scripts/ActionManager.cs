@@ -54,6 +54,12 @@ public class ActionManager : MonoBehaviour
 
                     OnActionStarting?.Invoke();
 
+                    // Set additional attack speed, attack damage
+                    if (e.Key == BindingState.PrimaryAttack || e.Key == BindingState.HeavyAttack) {
+                        GetCurrentState().EntityState.AdditionalAttackDamage = AdditionalAttackDamage;
+                        GetCurrentState().EntityState.AdditionalAttackSpeed = AdditionalAttackSpeed;
+                    }
+
                     // Stop movement on starting action
                     if (GetCurrentState().StopOnActionStarting)
                         rb.velocity = Vector2.zero;

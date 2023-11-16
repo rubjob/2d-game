@@ -1342,7 +1342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  MaxHealth: 100
   BaseMaxHealth: 100
   OnHeal:
     m_PersistentCalls:
@@ -1492,6 +1491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthScript: {fileID: 7336547913919969989}
   EntityMover: {fileID: 5951810038676432971}
+  ActionManager: {fileID: 6849628677050085124}
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0
