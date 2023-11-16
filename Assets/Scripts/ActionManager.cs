@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,11 +15,8 @@ public class ActionManager : MonoBehaviour
     public BindingState currentState;
     public EntityStateBinding[] stateBindings;
 
-    private Dictionary<BindingState, EntityStateBinding> states = new();
-    public Dictionary<BindingState, EntityStateBinding> SkillStates { get => states; }
-
-    private Dictionary<BindingState, float> cooldowns = new();
-    public Dictionary<BindingState, float> SkillCooldowns { get => cooldowns; }
+    public Dictionary<BindingState, EntityStateBinding> SkillStates { get; } = new();
+    public Dictionary<BindingState, float> SkillCooldowns { get; } = new();
 
     [Header("Mouse Util")]
     public MouseUtil MouseUtil;
@@ -32,14 +27,16 @@ public class ActionManager : MonoBehaviour
 
     public bool IsUsingUltimate { private set; get; } = false;
     private float ByPassedCooldown = 1f;
+    private float AdditionalAttackDamage = 0f;
+    private float AdditionalAttackSpeed = 0f;
 
     private void Start()
     {
         foreach (EntityStateBinding e in stateBindings)
-            states.Add(e.StateBinding, e);
+            SkillStates.Add(e.StateBinding, e);
 
         foreach (EntityStateBinding e in stateBindings)
-            cooldowns.Add(e.StateBinding, 0);
+            SkillCooldowns.Add(e.StateBinding, 0);
 
         StartCoroutine(DetectAction());
     }
@@ -49,9 +46,9 @@ public class ActionManager : MonoBehaviour
     {
         while (true)
         {
-            foreach (KeyValuePair<BindingState, EntityStateBinding> e in states)
+            foreach (KeyValuePair<BindingState, EntityStateBinding> e in SkillStates)
             {
-                if (e.Value.InputBinding.action.IsInProgress() && cooldowns[e.Key] <= Time.time)
+                if (e.Value.InputBinding.action.IsInProgress() && SkillCooldowns[e.Key] <= Time.time)
                 {
                     SetState(e.Key);
 
@@ -74,7 +71,7 @@ public class ActionManager : MonoBehaviour
                     yield return StartCoroutine(GetCurrentState().EntityState.OnPlayingAnimation());
 
                     // Set cooldown
-                    cooldowns[e.Key] = Time.time + GetSkillCooldown(e.Key);
+                    SkillCooldowns[e.Key] = Time.time + GetSkillCooldown(e.Key);
 
                     // Reset animation speed
                     animator.speed = 1f;
@@ -90,10 +87,18 @@ public class ActionManager : MonoBehaviour
         }
     }
 
+    public void SetAdditionalAttackSpeed(float Amount) {
+        AdditionalAttackSpeed = Amount;
+    }
+
+    public void SetAdditionalAttackDamage(float Amount) {
+        AdditionalAttackDamage = Amount;
+    }
+
     public float GetSkillCooldown(BindingState state)
     {
-        return ((IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
-                        ByPassedCooldown : states[state].EntityState.CooldownDuration);
+        return (IsUsingUltimate && (state == BindingState.QAttack || state == BindingState.EAttack)) ?
+                        ByPassedCooldown : SkillStates[state].EntityState.CooldownDuration;
     }
 
     private void FocusPointerBidirectional()
@@ -153,7 +158,7 @@ public class ActionManager : MonoBehaviour
 
     public EntityStateBinding GetCurrentState()
     {
-        return states[currentState];
+        return SkillStates[currentState];
     }
 
     // Cooldown bypass
