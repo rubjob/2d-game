@@ -13,8 +13,9 @@ public class SmokeEnemyController : MonoBehaviour
 
     [Header("Smoke")]
     public GameObject SmokeObject;
-
-    private void Update() {
+    private bool hasAttacked = false;
+    private void Update()
+    {
         if (EntityMover.IsBlockingMovement) return;
 
         Vector2 velocity = rb.velocity;
@@ -25,27 +26,34 @@ public class SmokeEnemyController : MonoBehaviour
             SpriteRenderer.flipX = velocity.x < 0;
     }
 
-    public void OnAnimation() {
-        Animator.SetTrigger("isAttacking1");
-        Animator.SetTrigger("isAttackingSide");
+    public void OnAnimation()
+    {
         Animator.SetTrigger("Attack");
     }
 
-    public void OnAttack(GameObject TargetObject) {
-        GameObject smoke = Instantiate(SmokeObject);
-        
-        Rigidbody2D smokeRb = smoke.AddComponent<Rigidbody2D>();
-        smokeRb.gravityScale = 0f;
-        smokeRb.position = rb.position;
+    public void OnAttack(GameObject TargetObject)
+    {
+        if (!hasAttacked)
+        {
+            GameObject smoke = Instantiate(SmokeObject);
+            Rigidbody2D smokeRb = smoke.AddComponent<Rigidbody2D>();
+            smokeRb.gravityScale = 0f;
+            smokeRb.position = rb.position;
+            hasAttacked = true;
+        }
     }
 
-    public void LockMovement() {
+    public void LockMovement()
+    {
         EntityMover.IsBlockingMovement = true;
         Animator.speed = 1f / EnemyBehavior.AttackDuration;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
-    public void UnlockMovement() {
+    public void UnlockMovement()
+    {
         EntityMover.IsBlockingMovement = false;
+
         Animator.speed = 1f;
     }
 }

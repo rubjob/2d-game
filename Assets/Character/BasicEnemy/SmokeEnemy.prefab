@@ -149,7 +149,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 183
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -301,7 +301,7 @@ Animator:
   m_GameObject: {fileID: 7010393201199455421}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b2a099897662143999a80212d5b56878, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2ce36878ff68971449524362851d8517, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -353,8 +353,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1714804323, guid: 2230c316bf1314246b4d76b90685c884, type: 3}
-  m_Color: {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
+  m_Sprite: {fileID: -190384516, guid: c09470e3bdce6d94783306a0d56493dd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 100
+  BaseMaxHealth: 100
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1167496992220321179}
-  MovementSpeed: 5
+  BaseMovementSpeed: 5
 --- !u!114 &389378833864168366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   FollowingRange: 12
   AttackingRange: 2.5
   AttackDelay: 0.25
-  AttackDuration: 0.25
+  AttackDuration: 0.5
   AttackCooldown: 1
   ByPassAttackRange: 1
   OnMovement:
@@ -585,4 +585,3 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 1057839822209511125}
   rb: {fileID: 1167496992220321179}
   SmokeObject: {fileID: 8122017270275017281, guid: 65562a8852c9fe44cb96570c7692b008, type: 3}
-  SmokeLifetime: 5
