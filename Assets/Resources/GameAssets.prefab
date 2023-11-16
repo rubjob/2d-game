@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabDmgPopup: {fileID: 5687400086600111607, guid: 291e9f64d3051844d90255b7e3a32bd0, type: 3}
-  prefabPlayerStatus: {fileID: 3763351349041008126, guid: 32a82bacbefa48044ab0707f64a00b55, type: 3}
+  prefabPlayerStatus: {fileID: 4799242714651207841, guid: 6feebd7ebc3073e4ab5d04dedffc5888, type: 3}
