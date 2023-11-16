@@ -47,6 +47,7 @@ public class SmokeEnemyController : MonoBehaviour
     {
         EntityMover.IsBlockingMovement = true;
         Animator.speed = 1f / EnemyBehavior.AttackDuration;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     public void UnlockMovement()
