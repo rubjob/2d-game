@@ -19,6 +19,7 @@ MonoBehaviour:
   TriggerEvery: 0
   AttackSpeedBoost: 0
   AttackDamageBoost: 0
-  HealthBoost: 5
-  SpeedBoost: 0
+  HealthBoost: 0
+  MaxHealthBoost: 0
+  SpeedBoost: 20
   Damage: 0

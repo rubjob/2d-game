@@ -8,13 +8,21 @@ public class EntityMover : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Player Movement")]
-    public float MovementSpeed = 5f;
-
+    public float BaseMovementSpeed = 5f;
+    public float MovementSpeed { get; private set; }
     public bool IsBlockingMovement { get; set; }
+
+    public EntityMover() {
+        MovementSpeed = BaseMovementSpeed;
+    }
 
     public void MoveToDirection(Vector2 direction) {
         if (IsBlockingMovement) return;
 
         rb.velocity = direction.normalized * MovementSpeed;
+    }
+
+    public void SetAdditionalMovementSpeed(float Amount) {
+        MovementSpeed = Amount + BaseMovementSpeed;
     }
 }
