@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
     public HealthScript HealthScript;
 
     private void Start() {
-        SetMaxHealth(HealthScript.maxHealth);
+        SetMaxHealth(HealthScript.MaxHealth);
     }
 
     public void SetMaxHealth(float maxHealth){

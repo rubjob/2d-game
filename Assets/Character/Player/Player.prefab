@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8650846361892597857}
-  MovementSpeed: 5
+  BaseMovementSpeed: 5
 --- !u!114 &6662189500358283037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  maxHealth: 100
+  BaseMaxHealth: 100
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -1490,6 +1490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthScript: {fileID: 7336547913919969989}
+  EntityMover: {fileID: 5951810038676432971}
+  ActionManager: {fileID: 6849628677050085124}
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93b82685574d314680a0ece3b1cafcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyingDebuff: {fileID: 11400000, guid: 8de39b8e30e6a544cbeffab5cd976926, type: 2}
+  ApplyingStatus: {fileID: 11400000, guid: 8de39b8e30e6a544cbeffab5cd976926, type: 2}
 --- !u!114 &8014002750534363051
 MonoBehaviour:
   m_ObjectHideFlags: 0

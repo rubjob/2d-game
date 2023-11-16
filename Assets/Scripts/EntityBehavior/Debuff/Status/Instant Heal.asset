@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc9a9fdd1b58794cb84ee1782a0005f, type: 3}
-  m_Name: Poison
+  m_Script: {fileID: 11500000, guid: 5f12a36f824520d4aa17a7e72d4ce2b5, type: 3}
+  m_Name: Instant Heal
   m_EditorClassIdentifier: 
-  Name: Poison
-  Duration: 5
-  TriggerEvery: 1
-  Damage: 5
+  Name: Instant Heal
+  Image: {fileID: 0}
+  Type: 0
+  Duration: 0
+  TriggerEvery: 0
+  AttackSpeedBoost: 0
+  AttackDamageBoost: 0
+  HealthBoost: 5
+  MaxHealthBoost: 0
+  SpeedBoost: 0
+  Damage: 0
