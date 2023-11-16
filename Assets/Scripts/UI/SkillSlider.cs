@@ -19,7 +19,6 @@ public class SkillSlider : MonoBehaviour
         setCooldown(ActionManager.GetSkillCooldown(SkillBinding));
         float time = Mathf.Clamp(ActionManager.SkillCooldowns[SkillBinding] - Time.time, 0, cooldown);
         slider.value = cooldown - time;
-        Debug.Log(slider.value);
     }
 
     public void setCooldown(float newCooldown){
