@@ -17,8 +17,8 @@ namespace Player
         public int CurrentUltimatePoint { private set; get; } = 0;
         public bool IsUsingUltimate { private set; get; } = false;
 
-        public override float AttackDamage => throw new System.NotImplementedException();
-        public override float AttackSpeed => 1f / AnimationDuration;
+        public override float BaseAttackDamage => throw new System.NotImplementedException();
+        public override float BaseAttackSpeed => 1f / AnimationDuration;
         public override float CooldownDuration => 0;
         public override HitboxManager Hitbox => throw new System.NotImplementedException();
 
