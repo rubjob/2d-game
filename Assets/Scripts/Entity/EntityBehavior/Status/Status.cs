@@ -11,7 +11,7 @@ namespace EntityBehavior
         Continuous,
     }
 
-    [CreateAssetMenu(menuName = "Status Effect")]
+    [CreateAssetMenu(menuName = "Status/Status Effect")]
     public class Status : ScriptableObject
     {
         [Header("Generic Information")]
