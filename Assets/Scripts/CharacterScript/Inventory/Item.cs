@@ -18,7 +18,7 @@ namespace Inventory {
         public float Amount;
     }
 
-    [CreateAssetMenu(menuName="Item")]
+    [CreateAssetMenu(menuName="Inventory/Item")]
     public class Item : ScriptableObject {
         public string Name;
         public string Description;

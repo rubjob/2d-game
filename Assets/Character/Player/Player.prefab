@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2a9535b0af5964f9791461833c6ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4685414992071284197}
   ActionManager: {fileID: 6849628677050085124}
   SkillCooldown: 1
   AnimationDuration: 1
@@ -1492,6 +1493,7 @@ MonoBehaviour:
   HealthScript: {fileID: 7336547913919969989}
   EntityMover: {fileID: 5951810038676432971}
   ActionManager: {fileID: 6849628677050085124}
+  parent: {fileID: 0}
 --- !u!1 &7559553699086895939
 GameObject:
   m_ObjectHideFlags: 0
