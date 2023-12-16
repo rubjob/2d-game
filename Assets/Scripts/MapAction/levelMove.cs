@@ -9,10 +9,10 @@ public class levelMove : MonoBehaviour
 
 
    private void OnTriggerEnter2D(Collider2D other){
-        print("TriggerEnter");
+        // print("TriggerEnter");
 
         if(other.tag == "Player"){
-            print("Switch to");
+            // print("Switch to");
             SceneManager.LoadScene(sceneToLoad);
         }
    }

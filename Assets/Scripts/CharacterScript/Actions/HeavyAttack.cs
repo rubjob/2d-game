@@ -32,7 +32,7 @@ public class HeavyAttack : BaseEntityState {
     }
 
     public override void OnDealingDamage() {
-        Debug.Log(CooldownDuration);
+        // Debug.Log(CooldownDuration);
 
         GameObject[] targets = hitbox.GetCollidedObjects();
 

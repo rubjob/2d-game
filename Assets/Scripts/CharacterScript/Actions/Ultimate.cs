@@ -41,7 +41,7 @@ namespace Player
         {
             CurrentUltimatePoint = Mathf.Clamp(CurrentUltimatePoint + pt, 0, MaxUltimatePoint);
 
-            Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
+            // Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
         }
 
         public void ReduceUltimatePoint(int pt)
@@ -50,7 +50,7 @@ namespace Player
 
             CurrentUltimatePoint = Mathf.Clamp(CurrentUltimatePoint - pt, 0, MaxUltimatePoint);
 
-            Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
+            // Debug.Log($"({CurrentUltimatePoint}/{MaxUltimatePoint}) ultimate points");
         }
 
         private IEnumerator CoUltimating()

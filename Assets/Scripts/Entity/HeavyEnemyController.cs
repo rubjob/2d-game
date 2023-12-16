@@ -50,4 +50,5 @@ public class HeavyEnemyController : MonoBehaviour
     }
 
     public void RemoveIFrame() { }
+    public void TriggerIFrame() { }
 }
