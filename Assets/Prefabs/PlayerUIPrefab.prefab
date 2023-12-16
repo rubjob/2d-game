@@ -756,8 +756,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -188.21378, y: 133.92636}
-  m_SizeDelta: {x: -631.6274, y: -392.6527}
+  m_AnchoredPosition: {x: -315, y: -199}
+  m_SizeDelta: {x: -1293.2104, y: -464.4442}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5298177885650999779
 GameObject:
@@ -1539,14 +1539,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 7909295161937133836}
-    - target: {fileID: 2516364384002201549, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516364384002201549, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1982655347
-      objectReference: {fileID: 0}
+    - target: {fileID: 6849628677050085124, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
+      propertyPath: stateBindings.Array.data[6].InputBinding
+      value: 
+      objectReference: {fileID: 4291112931633691697, guid: 8680d724ea15e1f4f93ae46ecc79222c, type: 3}
     - target: {fileID: 7336547913919969989, guid: dd9728dd70e67064cac77649ee56e5b6, type: 3}
       propertyPath: healthBar
       value: 
