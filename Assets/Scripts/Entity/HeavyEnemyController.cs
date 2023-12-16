@@ -48,4 +48,6 @@ public class HeavyEnemyController : MonoBehaviour
         EntityMover.IsBlockingMovement = false;
         Animator.speed = 1f;
     }
+
+    public void RemoveIFrame() { }
 }
