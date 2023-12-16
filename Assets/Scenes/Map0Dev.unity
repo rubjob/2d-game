@@ -4287,6 +4287,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUIPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8917282465496908526, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917282465496908526, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9068852090005837168, guid: 15a1e459ed8775645913979bd0ddc5a3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
